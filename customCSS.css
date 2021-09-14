@@ -1,0 +1,19 @@
+@media screen and (max-width: 1023px) {
+    header-component i {
+        color: black !important;
+    }
+    #navbarBasicExample.navbar-item, .navbar-link {
+        color: black !important;
+    }
+}
+
+header-component .icon-text {
+    margin: 0.7rem;
+}
+header-component i {
+    color: white;
+}
+.my-projects-icon {
+    color: #2f2f2f;
+    margin-left: 0.3rem;
+}
