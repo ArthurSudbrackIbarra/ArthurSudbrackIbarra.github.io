@@ -58,3 +58,13 @@ blockquote {
     border-left: 5px solid #1c1b1b !important;
     color: white;
 }
+
+github-button-component .button {
+    background-color: #333 !important;
+    color: white;
+    margin: 0.9rem 0;
+}
+github-button-component .button:hover {
+    background-color: #242323 !important;
+    color: white !important;
+}

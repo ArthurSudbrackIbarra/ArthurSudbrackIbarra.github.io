@@ -9,8 +9,9 @@ class JPCComponent extends HTMLElement {
       <div class="box">
           <div class="content">
               <h1 id="java-project-creator">Java Project Creator</h1>
-              <p style="margin-bottom: 0"><strong>Description: </strong>Automatically create Java projects and open them in Visual Studio Code. (Windows and Linux Ubuntu only).</p>
-              <h3 id="setting-up-the-environment-" style="margin: 0.8rem 0">Setting up the environment:</h3>
+              <p style="margin: 0"><strong>Description: </strong>Automatically create Java projects and open them in Visual Studio Code. (Windows and Linux Ubuntu only).</p>
+              <github-button-component repolink="https://github.com/ArthurSudbrackIbarra/Java-Project-Creator"></github-button-component>
+              <h3 id="setting-up-the-environment-" style="margin: 0;">Setting up the environment:</h3>
               <h4 id="windows-">Windows:</h4>
               <ol>
                 <li>Clone this repository anywhere you wish.</li>
