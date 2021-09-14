@@ -3,12 +3,13 @@ class HeaderComponent extends HTMLElement {
   constructor() {
     super();
     // Setup
-    this.setup();
+    this.setupNavbarBurgerOnClick();
+    this.setupMyProjectsOnClick();
   }
 
   connectedCallback() {
     this.innerHTML = `
-      <nav class="navbar is-link" role="navigation" aria-label="main navigation">
+      <nav class="navbar is-info" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item">
                 <h1>Arthur</h1>
@@ -21,30 +22,33 @@ class HeaderComponent extends HTMLElement {
         </div>
 
         <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
+            <div class="navbar-start">               
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
                         My Projects
                     </a>
                     <div class="navbar-dropdown">
-                        <a class="navbar-item">
+                        <a id="jpc" class="navbar-item">
                             Java Project Creator
                             <i class="fab fa-java my-projects-icon"></i>
                         </a>
-                        <a class="navbar-item">
+                        <a id="case-changer" class="navbar-item">
                             Case Changer
                             <i class="fab fa-python my-projects-icon"></i>
                         </a>
-                        <a class="navbar-item">
+                        <a id="magcounters" class="navbar-item">
                             MagCounters
                             <i class="fab fa-js-square my-projects-icon"></i>
                         </a>
-                        <a class="navbar-item">
+                        <a id="autozoom" class="navbar-item">
                             Autozoom
                             <i class="fab fa-java my-projects-icon"></i>
                         </a>
                     </div>
                 </div>
+                <a class="navbar-item">
+                    Curriculum
+                </a>
             </div>
             <div class="navbar-end">
                 <a class="navbar-item" href="https://github.com/ArthurSudbrackIbarra" target="_blank">
@@ -69,24 +73,26 @@ class HeaderComponent extends HTMLElement {
     `;
   }
 
-  setup(){
-    document.addEventListener('DOMContentLoaded', () => {
-      // Get all "navbar-burger" elements
-      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-      // Check if there are any navbar burgers
-      if ($navbarBurgers.length > 0) {
-        // Add a click event on each of them
-        $navbarBurgers.forEach( el => {
-          el.addEventListener('click', () => {
-            // Get the target from the "data-target" attribute
-            const target = el.dataset.target;
-            const $target = document.getElementById(target);
-            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-            el.classList.toggle('is-active');
-            $target.classList.toggle('is-active');
-          });
-        });
-      }
+  setupNavbarBurgerOnClick() {
+    $(document).ready(() => {
+      $(".navbar-burger").click(function() {
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
+      });
+    });
+  }
+
+  setupMyProjectsOnClick() {
+    $(document).ready(() => {
+      $(".navbar-dropdown .navbar-item").click(() => {
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
+      });
+      $("#jpc").click(() => {
+        $("#main-content").html("<jpc-component></jpc-component>");
+        $("jpc-component *").hide();
+        $("jpc-component *").fadeIn(600);
+      });
     });
   }
 }
