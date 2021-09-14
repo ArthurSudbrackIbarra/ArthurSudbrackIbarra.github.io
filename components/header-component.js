@@ -9,7 +9,7 @@ class HeaderComponent extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-      <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+      <nav class="navbar is-black" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
             <a class="navbar-item">
                 <h1>Arthur</h1>
