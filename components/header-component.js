@@ -9,9 +9,9 @@ class HeaderComponent extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-      <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+      <nav class="navbar is-black" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item">
+            <a class="navbar-item" href=".">
                 <h1>Arthur</h1>
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -89,9 +89,12 @@ class HeaderComponent extends HTMLElement {
         $(".navbar-menu").toggleClass("is-active");
       });
       $("#jpc").click(() => {
+        if(screen.width <= 1023){
+          makeMainContentFirst();
+        }
         $("#main-content").html("<jpc-component></jpc-component>");
         $("jpc-component *").hide();
-        $("jpc-component *").fadeIn(600);
+        $("jpc-component *").fadeIn(800);
       });
     });
   }

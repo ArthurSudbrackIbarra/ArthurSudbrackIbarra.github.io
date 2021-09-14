@@ -21,14 +21,27 @@
 <body>
     <!-- Header -->
     <header-component></header-component>
-    <div class="columns">
+    <div id="content" class="columns">
         <!-- Lateral Section -->
-        <div class="column is-one-fifth">
+        <div id="lateral-content" class="column is-one-fifth">
             <lateral-section-component></lateral-section-component>
         </div>
         <div id="main-content" class="column">
             <jpc-component></jpc-component>
         </div>
     </div>
+    <script>
+        $(window).resize(() => {
+          if(screen.width > 1023){
+            makeMainContentLast();
+          }
+        });
+        function makeMainContentFirst(){
+          $("#main-content").after($("#lateral-content"));
+        }
+        function makeMainContentLast(){
+          $("#main-content").before($("#lateral-content"));
+        }
+    </script>
 </body>
 </html>

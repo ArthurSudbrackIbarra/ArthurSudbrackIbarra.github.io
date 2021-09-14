@@ -1,9 +1,13 @@
 body {
-    background-color: #a8d8ff;
+    background-color: white;
 }
 
 .columns {
     margin: 0.5rem !important;
+}
+
+.column {
+    padding: 1.5rem !important;
 }
 
 .box {
@@ -11,12 +15,15 @@ body {
 }
 
 @media screen and (max-width: 1023px) {
+    .column {
+        padding: 0.75rem !important;
+    }
+    .box {
+        border: 2px solid #4a4a4a;
+    }
     header-component i {
         color: black !important;
     }
-}
-header-component .icon-text {
-    margin: 0.7rem;
 }
 header-component i {
     color: white;
