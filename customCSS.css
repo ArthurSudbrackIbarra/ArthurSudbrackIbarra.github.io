@@ -25,6 +25,9 @@ body {
         color: black !important;
     }
 }
+.navbar-link:not(.is-arrowless)::after {
+    border-color: black !important;
+}
 header-component i {
     color: white;
 }
