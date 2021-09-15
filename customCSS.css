@@ -27,10 +27,20 @@ body {
 }
 @media screen and (min-width: 1024px) {
     .navbar-item:hover, .navbar-link:hover, .navbar-item.selected, .navbar-link:hover.selected {
-        background-color: #081a3d !important;
+        background-color: #2e857f !important;
+    }
+    .navbar-dropdown {
+        background-color: black !important;
+    }
+    .navbar-dropdown .navbar-item {
+        background-color: black !important;
+        color: white !important;
+    }
+    .navbar-dropdown .navbar-item i {
+        color: white;
     }
     .navbar-dropdown .navbar-item:hover {
-        background-color: white !important;
+        background-color: #2e857f !important;
     }
 }
 header-component i {
@@ -73,8 +83,8 @@ lateral-section-component p {
     text-align: center;
 }
 blockquote {
-    background-color: #081a3d !important;
-    border-left: 5px solid #040f26 !important;
+    background-color: #2e857f !important;
+    border-left: 5px solid #214a47 !important;
     color: white;
 }
 
@@ -97,6 +107,7 @@ curriculum-component li {
     margin-bottom: 1rem;
 }
 curriculum-component i {
+    color: #2e857f;
     margin-right: 0.4rem;
     font-size: 1.2rem;
 }
