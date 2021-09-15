@@ -4,14 +4,14 @@ class HeaderComponent extends HTMLElement {
     super();
     // Setup
     this.setupNavbarBurgerOnClick();
-    this.setupMyProjectsOnClick();
+    this.setupMenuOptionsOnClick();
   }
 
   connectedCallback() {
     this.innerHTML = `
       <nav class="navbar is-black" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href=".">
+            <a id="logo" class="navbar-item selected" href=".">
                 <h1>Arthur</h1>
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -46,7 +46,7 @@ class HeaderComponent extends HTMLElement {
                         </a>
                     </div>
                 </div>
-                <a class="navbar-item">
+                <a id="curriculum" class="navbar-item">
                     Curriculum
                 </a>
             </div>
@@ -74,6 +74,7 @@ class HeaderComponent extends HTMLElement {
   }
 
   setupNavbarBurgerOnClick() {
+    // Burger menu logic.
     $(document).ready(() => {
       $(".navbar-burger").click(function() {
         $(".navbar-burger").toggleClass("is-active");
@@ -82,26 +83,41 @@ class HeaderComponent extends HTMLElement {
     });
   }
 
-  setupMyProjectsOnClick() {
+  setupMenuOptionsOnClick() {
     $(document).ready(() => {
-      $(".navbar-dropdown .navbar-item").click(() => {
+      // Making burger menu unexpanded.
+      $(".navbar-dropdown .navbar-item, #curriculum").click(() => {
         $(".navbar-burger").toggleClass("is-active");
         $(".navbar-menu").toggleClass("is-active");
       });
+      // Changing the class of selected option in menu.
+      $("#logo, #curriculum").click(e => {
+        $(".selected").removeClass("selected");
+        $(e.target).addClass("selected");
+      });
+      // Rendering components on click.
+      $("#curriculum").click(() => {
+        this.renderComponent("curriculum-component");
+      });
       $("#jpc").click(() => {
-        this.renderMyProjectComponent("jpc-component");
+        // Removing color highlight from the current selected option in menu.
+        $(".selected").removeClass("selected");
+        this.renderComponent("jpc-component");
       });
     });
   }
 
-  renderMyProjectComponent(componentName){
+  renderComponent(componentName){
+    // Swap columns if device is small.
     if(screen.width <= 1023){
       makeMainContentFirst();
     }
+    // Adding custom component to DOM.
     $("#main-content").html(`<${componentName}></${componentName}>`);
     $(`${componentName} *`).hide();
     $(`${componentName} *`).fadeIn(800);
   }
+
 }
 
 customElements.define('header-component', HeaderComponent);

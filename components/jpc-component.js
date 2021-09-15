@@ -9,11 +9,12 @@ class JPCComponent extends HTMLElement {
       <div class="box">
           <div class="content">
               <h1 id="java-project-creator">Java Project Creator</h1>
-              <p><strong>Description: </strong>Automatically create Java projects and open them in Visual Studio Code. (Windows and Linux Ubuntu only).</p>         
+              <p><strong>Description: </strong>Automatically create Java projects and open them in Visual Studio Code. (Windows and Linux Ubuntu only).</p> 
+              <github-button-component repolink="https://github.com/ArthurSudbrackIbarra/Java-Project-Creator"></github-button-component>        
               <h3 id="setting-up-the-environment">Setting up the environment:</h3>
               <h4 id="windows-">Windows:</h4>
               <ol>
-                <li>Clone this repository anywhere you wish.</li>
+                <li>Clone my GitHub repository anywhere you wish.</li>
                 <li>Copy the path of the &#39;bin&#39; folder you cloned. (Example: C:\\Users\\Arthur\\Desktop\\Java-Project-Creator\\windows\\bin).</li>
                 <li>Create a path environment variable in your computer with the path you copied. More on how to do that here: <a href="https://www.computerhope.com/issues/ch000549.htm">https://www.computerhope.com/issues/ch000549.htm</a></li>
               </ol>
@@ -51,7 +52,6 @@ class JPCComponent extends HTMLElement {
                 <a href="https://drive.google.com/uc?export=view&id=1zsAQF-bxamC9EHQWEqjD30A4l9N9G-sk" target="_blank">
                 <img src="https://drive.google.com/uc?export=view&id=1zsAQF-bxamC9EHQWEqjD30A4l9N9G-sk" style="max-width: 100%; height: auto" title="Click to enlarge gif"/>
               </p>
-              <github-button-component repolink="https://github.com/ArthurSudbrackIbarra/Java-Project-Creator"></github-button-component>
           </div>
       </div>
     `;

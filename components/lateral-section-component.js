@@ -12,7 +12,9 @@ class LateralSectionComponent extends HTMLElement {
           </figure>
           <h1>Arthur Sudbrack Ibarra</h1>
           <p>
-              Hi! My name is Arthur and I'm a Software Engineering student at PUCRS, Porto Alegre, Brazil. Here you'll find personal projects I made, as well as my college work. I love programming in Java, however, I'm willing to explore everything out there!
+              Hi! My name is Arthur and I'm a Software Engineering student at PUCRS, Porto Alegre, Brazil. Here you'll 
+              find personal projects I made, as well as some personal information. I love programming in Java, however, I'm willing 
+              to explore everything out there!
           </p>
       </div>
     `;
