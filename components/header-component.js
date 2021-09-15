@@ -89,14 +89,18 @@ class HeaderComponent extends HTMLElement {
         $(".navbar-menu").toggleClass("is-active");
       });
       $("#jpc").click(() => {
-        if(screen.width <= 1023){
-          makeMainContentFirst();
-        }
-        $("#main-content").html("<jpc-component></jpc-component>");
-        $("jpc-component *").hide();
-        $("jpc-component *").fadeIn(800);
+        this.renderMyProjectComponent("jpc-component");
       });
     });
+  }
+
+  renderMyProjectComponent(componentName){
+    if(screen.width <= 1023){
+      makeMainContentFirst();
+    }
+    $("#main-content").html(`<${componentName}></${componentName}>`);
+    $(`${componentName} *`).hide();
+    $(`${componentName} *`).fadeIn(800);
   }
 }
 
