@@ -14,7 +14,7 @@ class CaseChangerComponent extends HTMLElement {
           <github-button-component repolink="https://github.com/ArthurSudbrackIbarra/Case-Changer"></github-button-component>
           <h3 id="setting-up-the-environment">Setting up the environment:</h3>
           <ol>
-            <li>Open a Shell terminal and go to the folder of this project.</li>
+            <li>Open a command prompt terminal and go to the folder of this project.</li>
             <li>Enter the following commands:</li>
             <li>pip install SpeechRecognition</li>
             <li>pip install pipwin</li>
