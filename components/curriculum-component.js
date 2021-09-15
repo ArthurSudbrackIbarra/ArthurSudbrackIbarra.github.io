@@ -18,7 +18,7 @@ class CurriculumComponent extends HTMLElement {
             </ul>
             <h3>Professional Experience</h3>
             <ul>
-              <li><i class="fas fa-hand-point-right"></i>Internship at LIS-HP (Software Innovation Laboratory) - PUCRS-HP partnership</li>
+              <li><i class="fas fa-hand-point-right"></i>Internship at LIS-HP (Software Innovation Laboratory) - PUCRS-HP partnership;</li>
             </ul>
             <h3>Technical Abilities:</h3>
             <ul>
