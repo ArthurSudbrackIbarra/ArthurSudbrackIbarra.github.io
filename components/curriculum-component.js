@@ -52,7 +52,7 @@ class CurriculumComponent extends HTMLElement {
       const currentDate = new Date();
       const year = currentDate.getFullYear();
       const month = currentDate.getMonth() + 1;
-      const verb = "Studying";
+      let verb = "Studying";
       let semester = "";
       switch (true){
         case month <= 6 && year == 2020:
