@@ -11,7 +11,8 @@ class CaseChangerComponent extends HTMLElement {
           <h1 id="case-changer">Case-Changer</h1>
           <p style="margin-bottom: 0.25rem"><strong>Description: </strong>Turn your text into uppercase, lowercase ou titlecase by simply spelling voice commands. (Windows only).</p> 
           <p><strong>Language used: </strong>Python</p> 
-          <h4 id="setting-up-the-environment">Setting up the environment:</h4>
+          <github-button-component repolink="https://github.com/ArthurSudbrackIbarra/Case-Changer"></github-button-component>
+          <h3 id="setting-up-the-environment">Setting up the environment:</h3>
           <ol>
             <li>Open a Shell terminal and go to the folder of this project.</li>
             <li>Enter the following commands:</li>
@@ -21,18 +22,18 @@ class CaseChangerComponent extends HTMLElement {
             <li>pip install pyautogui</li>
             <li>pip install pyperclip</li>
           </ol>
-          <h4 id="languages">Supported Languages:</h4>
+          <h3 id="languages">Supported Languages:</h3>
           <ul>
             <li>English (USA)</li>
             <li>Portuguese (Brazil)</li>
           </ul>
-          <h4 id="commands">Commands:</h4>
+          <h3 id="commands">Commands:</h3>
           <ul>
             <li>UPPERCASE: uppercase (en) | maiúsculo (pt)</li>
             <li>LOWERCASE: lowercase (en) | minúsculo (pt)</li>
             <li>TITLECASE: title (en) | título (pt)</li>
           </ul>
-          <h4 id="demonstration-video">Demonstration:</h4>
+          <h3 id="demonstration-video">Demonstration:</h3>
           <iframe src="https://www.youtube.com/embed/hUE3wNpmA1E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
