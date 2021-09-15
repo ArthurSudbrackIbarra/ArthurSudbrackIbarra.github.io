@@ -24,6 +24,9 @@ body {
     .navbar-link:not(.is-arrowless)::after {
         border-color: black !important;
     }
+    .navbar-link.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, a.navbar-item.is-active, a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover {
+        color: #2e857f !important;
+    }
 }
 @media screen and (min-width: 1024px) {
     .navbar-item:hover, .navbar-link:hover, .navbar-item.selected, .navbar-link:hover.selected {
@@ -110,4 +113,14 @@ curriculum-component i {
     color: #2e857f;
     margin-right: 0.4rem;
     font-size: 1.2rem;
+}
+
+jpc-component img {
+    width: 100%;
+    height: auto;
+}
+
+case-changer-component iframe {
+    width: 100%;
+    height: 35rem;
 }

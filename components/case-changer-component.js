@@ -1,0 +1,44 @@
+class CaseChangerComponent extends HTMLElement {
+
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
+      <div class="box">
+        <div class="content">     
+          <h1 id="case-changer">Case-Changer</h1>
+          <p style="margin-bottom: 0.25rem"><strong>Description: </strong>Turn your text into uppercase, lowercase ou titlecase by simply spelling voice commands. (Windows only).</p> 
+          <p><strong>Language used: </strong>Python</p> 
+          <h4 id="setting-up-the-environment">Setting up the environment:</h4>
+          <ol>
+            <li>Open a Shell terminal and go to the folder of this project.</li>
+            <li>Enter the following commands:</li>
+            <li>pip install SpeechRecognition</li>
+            <li>pip install pipwin</li>
+            <li>pipwin install pyaudio</li>
+            <li>pip install pyautogui</li>
+            <li>pip install pyperclip</li>
+          </ol>
+          <h4 id="languages">Supported Languages:</h4>
+          <ul>
+            <li>English (USA)</li>
+            <li>Portuguese (Brazil)</li>
+          </ul>
+          <h4 id="commands">Commands:</h4>
+          <ul>
+            <li>UPPERCASE: uppercase (en) | maiúsculo (pt)</li>
+            <li>LOWERCASE: lowercase (en) | minúsculo (pt)</li>
+            <li>TITLECASE: title (en) | título (pt)</li>
+          </ul>
+          <h4 id="demonstration-video">Demonstration:</h4>
+          <iframe src="https://www.youtube.com/embed/hUE3wNpmA1E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    `;
+  }
+
+}
+
+customElements.define('case-changer-component', CaseChangerComponent);

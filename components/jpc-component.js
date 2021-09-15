@@ -9,7 +9,8 @@ class JPCComponent extends HTMLElement {
       <div class="box">
           <div class="content">
               <h1 id="java-project-creator">Java Project Creator</h1>
-              <p><strong>Description: </strong>Automatically create Java projects and open them in Visual Studio Code. (Windows and Linux Ubuntu only).</p> 
+              <p style="margin-bottom: 0.25rem"><strong>Description: </strong>Automatically create Java projects and open them in Visual Studio Code. (Windows and Linux Ubuntu only).</p>
+              <p><strong>Language used: </strong>Java</p>  
               <github-button-component repolink="https://github.com/ArthurSudbrackIbarra/Java-Project-Creator"></github-button-component>        
               <h3 id="setting-up-the-environment">Setting up the environment:</h3>
               <h4 id="windows-">Windows:</h4>
@@ -50,7 +51,7 @@ class JPCComponent extends HTMLElement {
               <h3 id="demonstration-">Demonstration:</h3>
               <p>
                 <a href="https://drive.google.com/uc?export=view&id=1zsAQF-bxamC9EHQWEqjD30A4l9N9G-sk" target="_blank">
-                <img src="https://drive.google.com/uc?export=view&id=1zsAQF-bxamC9EHQWEqjD30A4l9N9G-sk" style="max-width: 100%; height: auto" title="Click to enlarge gif"/>
+                <img src="https://drive.google.com/uc?export=view&id=1zsAQF-bxamC9EHQWEqjD30A4l9N9G-sk" title="Click to enlarge gif"/>
               </p>
           </div>
       </div>
