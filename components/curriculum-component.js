@@ -14,7 +14,7 @@ class CurriculumComponent extends HTMLElement {
             <h3>Formation:</h3>
             <ul>
               <li><i class="fas fa-graduation-cap"></i>Graduated in Highschool in 2019 at Colégio Farroupilha, Brazil, Porto Alegre, RS;</li>
-              <li><i class="fas fa-university"></i>Studying Software Engineering at PUCRS (<span id="semester">4</span>th Semester), Brazil, Porto Alegre, RS;</li>
+              <li><i class="fas fa-university"></i><span id="verb"></span> Software Engineering at PUCRS <span id="semester">(4th Semester)</span>, Brazil, Porto Alegre, RS;</li>
             </ul>
             <h3>Professional Experience</h3>
             <ul>
@@ -52,33 +52,37 @@ class CurriculumComponent extends HTMLElement {
       const currentDate = new Date();
       const year = currentDate.getFullYear();
       const month = currentDate.getMonth() + 1;
-      let semester;
+      const verb = "Studying";
+      let semester = "";
       switch (true){
         case month <= 6 && year == 2020:
-          semester = 1;
+          semester = "(1st semester)";
         break;
         case month > 6 && year == 2020:
-          semester = 2;
+          semester = "(2nd semester)";
         break;
         case month <= 6 && year == 2021:
-          semester = 3;
+          semester = "(3rd semester)";
         break;
         case month > 6 && year == 2021:
-          semester = 4;
+          semester = "(4th semester)";
         break;
         case month <= 6 && year == 2022:
-          semester = 5;
+          semester = "(5th semester)";
           break;
         case month > 6 && year == 2022:
-          semester = 6;
+          semester = "(6th semester)";
         break;
         case month <= 6 && year == 2023:
-          semester = 7;
+          semester = "(7th semester)";
         break;
         case month > 6 && year == 2023:
-          semester = 8;
+          semester = "(8th semester)";
         break;
+        default:
+          verb = "Studied";
       }
+      $("#verb").text(verb);
       $("#semester").text(semester);
     });
   }
