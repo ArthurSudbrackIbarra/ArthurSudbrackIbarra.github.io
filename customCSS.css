@@ -1,6 +1,13 @@
-body {
-    background-color: white;
+:root {
+    --primary-color: #2e857f;
+    --primary-color-darker: #214a47;
+
+    --github-color: #333;
+    --github-color-darker: #242323;
+    --discord-color: #5865F2;
+    --discord-color-darker: #424ec9;
 }
+
 .columns {
     margin: 0.5rem !important;
 }
@@ -25,12 +32,12 @@ body {
         border-color: black !important;
     }
     .navbar-link.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, a.navbar-item.is-active, a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover {
-        color: #2e857f !important;
+        color: var(--primary-color) !important;
     }
 }
 @media screen and (min-width: 1024px) {
     .navbar-item:hover, .navbar-link:hover, .navbar-item.selected, .navbar-link:hover.selected {
-        background-color: #2e857f !important;
+        background-color: var(--primary-color) !important;
     }
     .navbar-dropdown {
         background-color: black !important;
@@ -43,14 +50,11 @@ body {
         color: white;
     }
     .navbar-dropdown .navbar-item:hover {
-        background-color: #2e857f !important;
+        background-color: var(--primary-color) !important;
     }
 }
-header-component i {
-    color: white;
-}
+
 .my-projects-icon {
-    color: #2f2f2f;
     margin-left: 0.3rem;
 }
 
@@ -86,8 +90,8 @@ lateral-section-component p {
     text-align: center;
 }
 blockquote {
-    background-color: #2e857f !important;
-    border-left: 5px solid #214a47 !important;
+    background-color: var(--primary-color) !important;
+    border-left: 5px solid var(--primary-color-darker) !important;
     color: white;
 }
 
@@ -95,28 +99,25 @@ custom-button-component .button {
     color: white !important;
     width: 100%;
     height: 2.8rem;
+    margin: 0.2rem 0;
 }
-custom-button-component .button:hover {
-    color: white !important;
-}
-
 .github-button {
-    background-color: #333 !important;
+    background-color: var(--github-color) !important;
 }
 .github-button:hover {
-    background-color: #242323 !important;
+    background-color: var(--github-color-darker) !important;
 }
 .discord-button {
-    background-color: #7289da !important;
+    background-color: var(--discord-color) !important;
 }
 .discord-button:hover {
-    background-color: #4a5fa8 !important;
+    background-color: var(--discord-color-darker) !important;
 }
 .default-button {
-    background-color: #2e857f !important;
+    background-color: var(--primary-color) !important;
 }
 .default-button:hover {
-    background-color: #214a47 !important;
+    background-color: var(--primary-color-darker) !important;
 }
 
 curriculum-component ul {
@@ -127,7 +128,7 @@ curriculum-component li {
     margin-bottom: 1rem;
 }
 curriculum-component i {
-    color: #2e857f;
+    color: var(--primary-color);
     margin-right: 0.4rem;
     font-size: 1.2rem;
 }

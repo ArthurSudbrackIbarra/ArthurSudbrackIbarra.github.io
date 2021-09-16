@@ -18,7 +18,6 @@ class CustomButton extends HTMLElement {
         this.class = "default-button";
         this.icon = "fas fa-link";
     }
-    console.log(this.icon);
     this.href = this.attributes["href"].value;
   }
 
