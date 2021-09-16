@@ -91,15 +91,32 @@ blockquote {
     color: white;
 }
 
-github-button-component .button {
-    background-color: #333 !important;
+custom-button-component .button {
     color: white !important;
     width: 100%;
     height: 2.8rem;
 }
-github-button-component .button:hover {
-    background-color: #242323 !important;
+custom-button-component .button:hover {
     color: white !important;
+}
+
+.github-button {
+    background-color: #333 !important;
+}
+.github-button:hover {
+    background-color: #242323 !important;
+}
+.discord-button {
+    background-color: #7289da !important;
+}
+.discord-button:hover {
+    background-color: #4a5fa8 !important;
+}
+.default-button {
+    background-color: #2e857f !important;
+}
+.default-button:hover {
+    background-color: #214a47 !important;
 }
 
 curriculum-component ul {

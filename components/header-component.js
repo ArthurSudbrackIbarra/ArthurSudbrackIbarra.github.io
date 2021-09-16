@@ -109,6 +109,11 @@ class HeaderComponent extends HTMLElement {
         $(".selected").removeClass("selected");
         this.renderComponent("case-changer-component");
       });
+      $("#magcounters").click(() => {
+        // Removing color highlight from the current selected option in menu.
+        $(".selected").removeClass("selected");
+        this.renderComponent("magcounters-component");
+      });
     });
   }
 
