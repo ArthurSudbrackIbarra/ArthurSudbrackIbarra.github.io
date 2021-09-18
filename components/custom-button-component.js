@@ -1,4 +1,4 @@
-class CustomButton extends HTMLElement {
+class CustomButtonComponent extends HTMLElement {
 
   constructor() {
     super();
@@ -36,4 +36,4 @@ class CustomButton extends HTMLElement {
 
 }
 
-customElements.define('custom-button-component', CustomButton);
+customElements.define('custom-button-component', CustomButtonComponent);
