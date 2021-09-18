@@ -80,14 +80,18 @@ lateral-section-component p {
     text-align: justify;
 }
 
-#main-content {
+.content {
     overflow-wrap: break-word;
 }
-#main-content h1 {
+.content h1 {
     font-weight: bold;
     font-size: 2rem;
     margin-bottom: 1.5rem;
     text-align: center;
+}
+.content img:not(.spinner), .content iframe {
+    border: 3px solid var(--primary-color);
+    border-radius: 3%;
 }
 blockquote {
     background-color: var(--primary-color) !important;
@@ -133,12 +137,21 @@ curriculum-component i {
     font-size: 1.2rem;
 }
 
-jpc-component img {
-    width: 100%;
-    height: auto;
+.spinner-container {
+    display: flex;
+    justify-content: center;
+}
+.spinner {
+    margin-top: 1.6rem;
+    margin-right: auto;
+    margin-left: auto;
+    width: 70px;
+}
+.loading-image {
+    display: none !important;
 }
 
 case-changer-component iframe {
     width: 100%;
-    height: 35rem;
+    height: 55vh;
 }

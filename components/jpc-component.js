@@ -11,11 +11,7 @@ class JPCComponent extends HTMLElement {
               <h1 id="java-project-creator">Java Project Creator</h1>
               <p style="margin-bottom: 0.25rem"><strong>Description: </strong>Automatically create Java projects and open them in Visual Studio Code. (Windows and Linux Ubuntu only).</p>
               <p><strong>Language used: </strong>Java</p>  
-              <custom-button-component
-                text = "Go to Repository"
-                to = "github"
-                href = "https://github.com/ArthurSudbrackIbarra/Java-Project-Creator"
-              ></custom-button-component>                
+              <custom-button-component text = "Go to Repository" to = "github" href = "https://github.com/ArthurSudbrackIbarra/Java-Project-Creator"></custom-button-component>                
               <h3 id="setting-up-the-environment">Setting up the environment:</h3>
               <h4 id="windows">Windows:</h4>
               <ol>
@@ -53,13 +49,17 @@ class JPCComponent extends HTMLElement {
               </blockquote>
               <p>By doing that, your main class will be called <strong>&quot;Main&quot;</strong>.</p>
               <h3 id="demonstration">Demonstration:</h3>
-              <p>
-                <a href="https://drive.google.com/uc?export=view&id=1zsAQF-bxamC9EHQWEqjD30A4l9N9G-sk" target="_blank">
-                <img src="https://drive.google.com/uc?export=view&id=1zsAQF-bxamC9EHQWEqjD30A4l9N9G-sk" title="Click to enlarge gif"/>
-              </p>
+              <div id="sc-1" class="spinner-container">
+                <img class="spinner" src="../assets/spinner.gif" title="Loading...">
+              </div>     
+              <a href="https://drive.google.com/uc?export=view&id=1zsAQF-bxamC9EHQWEqjD30A4l9N9G-sk" target="_blank">
+                <img id="demo-gif-1" class="loading-image" src="https://drive.google.com/uc?export=view&id=1zsAQF-bxamC9EHQWEqjD30A4l9N9G-sk" title="Click to enlarge gif"/>
+              </a>
           </div>
       </div>
     `;
+    // Utilities
+    loadingImages(1);
   }
 
 }

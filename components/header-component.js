@@ -2,9 +2,6 @@ class HeaderComponent extends HTMLElement {
 
   constructor() {
     super();
-    // Setup
-    this.setupNavbarBurgerOnClick();
-    this.setupMenuOptionsOnClick();
   }
 
   connectedCallback() {
@@ -71,55 +68,55 @@ class HeaderComponent extends HTMLElement {
         </div>
     </nav>
     `;
+    // Setup
+    this.setupNavbarBurgerOnClick();
+    this.setupMenuOptionsOnClick();
   }
 
   setupNavbarBurgerOnClick() {
     // Burger menu logic.
-    $(document).ready(() => {
-      $(".navbar-burger").click(function() {
-        $(".navbar-burger").toggleClass("is-active");
-        $(".navbar-menu").toggleClass("is-active");
-      });
+    $(".navbar-burger").click(function() {
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
     });
   }
 
   setupMenuOptionsOnClick() {
-    $(document).ready(() => {
-      // Making burger menu unexpanded.
-      $(".navbar-dropdown .navbar-item, #curriculum").click(() => {
-        $(".navbar-burger").toggleClass("is-active");
-        $(".navbar-menu").toggleClass("is-active");
-      });
-      // Changing the class of selected option in menu.
-      $("#logo, #curriculum").click(e => {
-        $(".selected").removeClass("selected");
-        $(e.target).addClass("selected");
-      });
-      // Rendering components on click.
-      $("#curriculum").click(() => {
-        this.renderComponent("curriculum-component");
-      });
-      $("#jpc").click(() => {
-        // Removing color highlight from the current selected option in menu.
-        $(".selected").removeClass("selected");
-        this.renderComponent("jpc-component");
-      });
-      $("#case-changer").click(() => {
-        // Removing color highlight from the current selected option in menu.
-        $(".selected").removeClass("selected");
-        this.renderComponent("case-changer-component");
-      });
-      $("#magcounters").click(() => {
-        // Removing color highlight from the current selected option in menu.
-        $(".selected").removeClass("selected");
-        this.renderComponent("magcounters-component");
-      });
+    // Making burger menu unexpanded.
+    $(".navbar-dropdown .navbar-item, #curriculum").click(() => {
+      $(".navbar-burger").toggleClass("is-active");
+      $(".navbar-menu").toggleClass("is-active");
+    });
+    // Changing the class of selected option in menu.
+    $("#logo, #curriculum").click(e => {
+      $(".selected").removeClass("selected");
+      $(e.target).addClass("selected");
+    });
+    // Rendering components on click.
+    $("#curriculum").click(() => {
+      this.renderComponent("curriculum-component");
+    });
+    $("#jpc").click(() => {
+      // Removing color highlight from the current selected option in menu.
+      $(".selected").removeClass("selected");
+      this.renderComponent("jpc-component");
+    });
+    $("#case-changer").click(() => {
+      // Removing color highlight from the current selected option in menu.
+      $(".selected").removeClass("selected");
+      this.renderComponent("case-changer-component");
+    });
+    $("#magcounters").click(() => {
+      // Removing color highlight from the current selected option in menu.
+      $(".selected").removeClass("selected");
+      this.renderComponent("magcounters-component");
     });
   }
 
   renderComponent(componentName){
     // Swap columns if device is small.
     if(screen.width <= 1023){
+      // index.html function.
       makeMainContentFirst();
     }
     // Adding custom component to DOM.

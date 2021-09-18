@@ -2,8 +2,6 @@ class CurriculumComponent extends HTMLElement {
 
   constructor() {
     super();
-    // Setup
-    this.updateSemester();
   }
 
   connectedCallback() {
@@ -45,46 +43,46 @@ class CurriculumComponent extends HTMLElement {
           </div>
       </div>
     `;
+    // Setup
+    this.updateSemester();
   }
 
   updateSemester(){
-    $(document).ready(() => {
-      const currentDate = new Date();
-      const year = currentDate.getFullYear();
-      const month = currentDate.getMonth() + 1;
-      let verb = "Studying";
-      let semester = "";
-      switch (true){
-        case month <= 6 && year == 2020:
-          semester = "(1st semester)";
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth() + 1;
+    let verb = "Studying";
+    let semester = "";
+    switch (true){
+      case month <= 6 && year == 2020:
+        semester = "(1st semester)";
+      break;
+      case month > 6 && year == 2020:
+        semester = "(2nd semester)";
+      break;
+      case month <= 6 && year == 2021:
+        semester = "(3rd semester)";
+      break;
+      case month > 6 && year == 2021:
+        semester = "(4th semester)";
+      break;
+      case month <= 6 && year == 2022:
+        semester = "(5th semester)";
         break;
-        case month > 6 && year == 2020:
-          semester = "(2nd semester)";
-        break;
-        case month <= 6 && year == 2021:
-          semester = "(3rd semester)";
-        break;
-        case month > 6 && year == 2021:
-          semester = "(4th semester)";
-        break;
-        case month <= 6 && year == 2022:
-          semester = "(5th semester)";
-          break;
-        case month > 6 && year == 2022:
-          semester = "(6th semester)";
-        break;
-        case month <= 6 && year == 2023:
-          semester = "(7th semester)";
-        break;
-        case month > 6 && year == 2023:
-          semester = "(8th semester)";
-        break;
-        default:
-          verb = "Studied";
-      }
-      $("#verb").text(verb);
-      $("#semester").text(semester);
-    });
+      case month > 6 && year == 2022:
+        semester = "(6th semester)";
+      break;
+      case month <= 6 && year == 2023:
+        semester = "(7th semester)";
+      break;
+      case month > 6 && year == 2023:
+        semester = "(8th semester)";
+      break;
+      default:
+        verb = "Studied";
+    }
+    $("#verb").text(verb);
+    $("#semester").text(semester);
   }
 
 }
