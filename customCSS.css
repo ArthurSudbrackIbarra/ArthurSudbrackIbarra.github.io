@@ -90,7 +90,6 @@ lateral-section-component p {
     text-align: center;
 }
 .content img:not(.spinner), .content iframe {
-    border: 3px solid var(--primary-color);
     border-radius: 3%;
 }
 blockquote {

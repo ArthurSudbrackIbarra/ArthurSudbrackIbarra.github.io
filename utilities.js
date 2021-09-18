@@ -1,16 +1,14 @@
 // This function will remove the loading spinners
 // once the images have been loaded.
-function loadingImages(gifsQuantity) {
+function loadingImages(gifsQuantity, customComponent) {
   for(let i = 1; i <= gifsQuantity; i++){
-    $(`#demo-gif-${i}`).one("load", function() {
-      $(`#sc-${i}`).remove();
-      $(this).hide();
-      $(this).removeClass("loading-image");
-      $(this).show(500);
-    }).each(function() {
-      if(this.complete) {
-        $(this).trigger("load");
-      }
+    $(`${customComponent} #demo-gif-${i}`).on("load", () => {
+      const spinner = $(`${customComponent} #sc-${i}`);
+      const gif = $(`${customComponent} #demo-gif-${i}`);
+      spinner.remove();
+      gif.hide();
+      gif.removeClass("loading-image");
+      gif.show(500);
     });
   }
 }

@@ -33,17 +33,27 @@
         </div>
         <div id="main-content" class="column">
             <curriculum-component></curriculum-component>
+            <jpc-component></jpc-component>
+            <case-changer-component></case-changer-component>
+            <magcounters-component></magcounters-component>
         </div>
     </div>
     <script>
+        // Hiding colums when document is loaded.
+        $(document).ready(() => {
+          $("jpc-component .box, case-changer-component .box, magcounters-component .box").hide();
+        });
+        // If the window is resized to a size larger than 1023px, makes main content come after lateral section.
         $(window).resize(() => {
           if(screen.width > 1023){
             makeMainContentLast();
           }
         });
+        // Function to make main content come before lateral section.
         function makeMainContentFirst(){
           $("#main-content").after($("#lateral-content"));
         }
+        // Function to make main content come after lateral section.
         function makeMainContentLast(){
           $("#main-content").before($("#lateral-content"));
         }

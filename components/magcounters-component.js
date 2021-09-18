@@ -40,7 +40,7 @@ class MagcountersComponent extends HTMLElement {
       </div>
     `;
     // Utilities
-    loadingImages(2);
+    loadingImages(2, "magcounters-component");
   }
 
 }

@@ -59,7 +59,7 @@ class JPCComponent extends HTMLElement {
       </div>
     `;
     // Utilities
-    loadingImages(1);
+    loadingImages(1, "jpc-component");
   }
 
 }

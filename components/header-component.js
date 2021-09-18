@@ -2,6 +2,7 @@ class HeaderComponent extends HTMLElement {
 
   constructor() {
     super();
+    this.currentShowingComponent = "curriculum-component";
   }
 
   connectedCallback() {
@@ -94,35 +95,42 @@ class HeaderComponent extends HTMLElement {
     });
     // Rendering components on click.
     $("#curriculum").click(() => {
-      this.renderComponent("curriculum-component");
+      this.showComponent("curriculum-component");
     });
     $("#jpc").click(() => {
       // Removing color highlight from the current selected option in menu.
       $(".selected").removeClass("selected");
-      this.renderComponent("jpc-component");
+      this.showComponent("jpc-component");
     });
     $("#case-changer").click(() => {
       // Removing color highlight from the current selected option in menu.
       $(".selected").removeClass("selected");
-      this.renderComponent("case-changer-component");
+      this.showComponent("case-changer-component");
     });
     $("#magcounters").click(() => {
       // Removing color highlight from the current selected option in menu.
       $(".selected").removeClass("selected");
-      this.renderComponent("magcounters-component");
+      this.showComponent("magcounters-component");
     });
   }
 
-  renderComponent(componentName){
-    // Swap columns if device is small.
-    if(screen.width <= 1023){
-      // index.html function.
-      makeMainContentFirst();
-    }
-    // Adding custom component to DOM.
-    $("#main-content").html(`<${componentName}></${componentName}>`);
-    $(`${componentName} *`).hide();
-    $(`${componentName} *`).fadeIn(800);
+  showComponent(componentName){
+    // Checking if device is small.
+    let isDeviceSmall = false;
+    if(screen.width <= 1023){ isDeviceSmall = true; }
+    // Fading off current custom component.
+    $(`${this.currentShowingComponent} .box`).fadeOut(400);
+    if(isDeviceSmall) { $("lateral-section-component .box").fadeOut(400); }
+    // Fading in chosen custom component.
+    setTimeout(() => {
+      $(`${componentName} .box`).fadeIn(400);
+      if(isDeviceSmall) {
+        $("lateral-section-component .box").fadeIn(400);
+        makeMainContentFirst();
+      }
+    }, 600);
+    // Updating current showing component;
+    this.currentShowingComponent = componentName;
   }
 
 }
