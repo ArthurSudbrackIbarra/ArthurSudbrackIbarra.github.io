@@ -118,14 +118,17 @@ class HeaderComponent extends HTMLElement {
     // Checking if device is small.
     let isDeviceSmall = false;
     if(screen.width <= 1023){ isDeviceSmall = true; }
-    // Fading off current custom component.
+    // Fading out current custom component.
     $(`${this.currentShowingComponent} .box`).fadeOut(400);
+    // If the device is small, also fades out the lateral section component.
     if(isDeviceSmall) { $("lateral-section-component .box").fadeOut(400); }
     // Fading in chosen custom component.
     setTimeout(() => {
       $(`${componentName} .box`).fadeIn(400);
+      // If the device is small, also fades in the lateral section component.
       if(isDeviceSmall) {
         $("lateral-section-component .box").fadeIn(400);
+        // index.html function. Makes main content (#main-content) come before lateral section.
         makeMainContentFirst();
       }
     }, 600);
