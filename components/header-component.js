@@ -3,7 +3,6 @@ class HeaderComponent extends HTMLElement {
   constructor() {
     super();
     this.currentShowingComponent = "curriculum-component";
-    this.selectSound = new Audio("../assets/selectSound.mp3");
     this.currentTimeout = null;
   }
 
@@ -119,7 +118,8 @@ class HeaderComponent extends HTMLElement {
 
   setupAudio(){
     $(".navbar-item:not(.has-dropdown)").click(() => {
-      this.selectSound.play();
+      const audio = new Audio("../assets/selectSound.mp3");
+      audio.play();
     });
   }
 
