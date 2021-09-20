@@ -4,6 +4,7 @@ class HeaderComponent extends HTMLElement {
     super();
     this.currentShowingComponent = "curriculum-component";
     this.selectSound = new Audio("../assets/selectSound.mp3");
+    this.currentTimeout = null;
   }
 
   connectedCallback() {
@@ -124,7 +125,7 @@ class HeaderComponent extends HTMLElement {
 
   showComponent(componentName){
     // Checking if device is small.
-    let isDeviceSmall = screen.width <= 1023;
+    const isDeviceSmall = screen.width <= 1023;
     // Fading out current custom component.
     $(`${this.currentShowingComponent} .box`).fadeOut(400);
     // If the device is small, also fades out the lateral section component.
@@ -132,11 +133,11 @@ class HeaderComponent extends HTMLElement {
       $("lateral-section-component .box").fadeOut(400);
     }
     // This code will prevent bugs if user keeps spamming the menu items
-    if(this.currentTimeOut !== null) {
-      clearTimeout(this.currentTimeOut);
+    if(this.currentTimeout !== null) {
+      clearTimeout(this.currentTimeout);
     }
     // Fading in chosen custom component.
-    this.currentTimeOut = setTimeout(() => {
+    this.currentTimeout = setTimeout(() => {
       $(`${componentName} .box`).fadeIn(400);
       // If the device is small, also fades in the lateral section component.
       if(isDeviceSmall) {
@@ -144,7 +145,7 @@ class HeaderComponent extends HTMLElement {
         // index.html function. Makes main content (#main-content) come before lateral section.
         makeMainContentFirst();
       }
-      this.currentTimeOut = null;
+      this.currentTimeout = null;
     }, 600);
     // Updating current showing component;
     this.currentShowingComponent = componentName;
