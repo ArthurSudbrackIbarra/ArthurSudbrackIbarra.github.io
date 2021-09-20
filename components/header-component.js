@@ -3,6 +3,7 @@ class HeaderComponent extends HTMLElement {
   constructor() {
     super();
     this.currentShowingComponent = "curriculum-component";
+    this.selectSound = new Audio("../assets/selectSound.mp3");
   }
 
   connectedCallback() {
@@ -72,6 +73,7 @@ class HeaderComponent extends HTMLElement {
     // Setup
     this.setupNavbarBurgerOnClick();
     this.setupMenuOptionsOnClick();
+    this.setupAudio();
   }
 
   setupNavbarBurgerOnClick() {
@@ -114,16 +116,27 @@ class HeaderComponent extends HTMLElement {
     });
   }
 
+  setupAudio(){
+    $(".navbar-item:not(.has-dropdown)").click(() => {
+      this.selectSound.play();
+    });
+  }
+
   showComponent(componentName){
     // Checking if device is small.
-    let isDeviceSmall = false;
-    if(screen.width <= 1023){ isDeviceSmall = true; }
+    let isDeviceSmall = screen.width <= 1023;
     // Fading out current custom component.
     $(`${this.currentShowingComponent} .box`).fadeOut(400);
     // If the device is small, also fades out the lateral section component.
-    if(isDeviceSmall) { $("lateral-section-component .box").fadeOut(400); }
+    if(isDeviceSmall) {
+      $("lateral-section-component .box").fadeOut(400);
+    }
+    // This code will prevent bugs if user keeps spamming the menu items
+    if(this.currentTimeOut !== null) {
+      clearTimeout(this.currentTimeOut);
+    }
     // Fading in chosen custom component.
-    setTimeout(() => {
+    this.currentTimeOut = setTimeout(() => {
       $(`${componentName} .box`).fadeIn(400);
       // If the device is small, also fades in the lateral section component.
       if(isDeviceSmall) {
@@ -131,6 +144,7 @@ class HeaderComponent extends HTMLElement {
         // index.html function. Makes main content (#main-content) come before lateral section.
         makeMainContentFirst();
       }
+      this.currentTimeOut = null;
     }, 600);
     // Updating current showing component;
     this.currentShowingComponent = componentName;
