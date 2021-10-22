@@ -37,7 +37,7 @@ class CurriculumComponent extends HTMLElement {
             <h3>Languages</h3>
             <ul>
               <li><i class="fas fa-hand-point-right"></i>Advanced english with CAE certificate (C1 Advanced) from University of Cambridge;</li>
-              <li><i class="fas fa-hand-point-right"></i>Fluent brazilian portuguese;</li>
+              <li><i class="fas fa-hand-point-right"></i>Brazilian portuguese as my native language;</li>
               <li><i class="fas fa-hand-point-right"></i>Basic spanish;</li>                 
             </ul>
           </div>

@@ -9,8 +9,8 @@ class CaseChangerComponent extends HTMLElement {
       <div class="box">
         <div class="content">     
           <h1 id="case-changer">Case Changer</h1>
-          <p style="margin-bottom: 0.25rem"><strong>Description: </strong>Turn your text into uppercase, lowercase ou titlecase by simply spelling voice commands. (Windows only).</p> 
-          <p><strong>Language used: </strong>Python</p> 
+          <p class="descriptionOrLanguage"><strong>Description: </strong>Turn your text into uppercase, lowercase ou titlecase by simply spelling voice commands. (Windows only).</p> 
+          <p class="descriptionOrLanguage"><strong>Language used: </strong>Python</p> 
           <custom-button-component
             text = "Go to Repository"
             to = "github"

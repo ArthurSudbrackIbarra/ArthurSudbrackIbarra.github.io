@@ -4,6 +4,8 @@
     <title>Arthur Sudbrack Ibarra</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico"/>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="customCSS.css">
     <!-- Bulma -->
@@ -22,6 +24,7 @@
     <script src="./components/magcounters-component.js" type="text/javascript" defer></script>
     <script src="./components/custom-button-component.js" type="text/javascript" defer></script>
     <script src="./components/curriculum-component.js" type="text/javascript" defer></script>
+    <script src="./components/autozoom-component.js" type="text/javascript" defer></script>
 </head>
 <body>
     <!-- Header -->
@@ -36,12 +39,13 @@
             <jpc-component></jpc-component>
             <case-changer-component></case-changer-component>
             <magcounters-component></magcounters-component>
+            <autozoom-component></autozoom-component>
         </div>
     </div>
     <script>
         // Hiding colums when document is loaded.
         $(document).ready(() => {
-          $("jpc-component .box, case-changer-component .box, magcounters-component .box").hide();
+          $("jpc-component .box, case-changer-component .box, magcounters-component .box, autozoom-component .box").hide();
         });
         // If the window is resized to a size larger than 1023px, makes main content come after lateral section.
         $(window).resize(() => {

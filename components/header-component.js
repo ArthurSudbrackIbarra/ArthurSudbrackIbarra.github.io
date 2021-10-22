@@ -10,8 +10,8 @@ class HeaderComponent extends HTMLElement {
     this.innerHTML = `
       <nav class="navbar is-black" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a id="logo" class="navbar-item selected" href=".">
-                <h1>Arthur</h1>
+            <a id="logo" class="navbar-item" href=".">
+                <img id="logo" src="../assets/logo.svg">
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -45,7 +45,7 @@ class HeaderComponent extends HTMLElement {
                         </a>
                     </div>
                 </div>
-                <a id="curriculum" class="navbar-item">
+                <a id="curriculum" class="navbar-item selected">
                     Curriculum
                 </a>
             </div>
@@ -78,7 +78,7 @@ class HeaderComponent extends HTMLElement {
 
   setupNavbarBurgerOnClick() {
     // Burger menu logic.
-    $(".navbar-burger").click(function() {
+    $(".navbar-burger").click(() => {
       $(".navbar-burger").toggleClass("is-active");
       $(".navbar-menu").toggleClass("is-active");
     });
@@ -91,7 +91,7 @@ class HeaderComponent extends HTMLElement {
       $(".navbar-menu").toggleClass("is-active");
     });
     // Changing the class of selected option in menu.
-    $("#logo, #curriculum").click(e => {
+    $("#curriculum").click(e => {
       $(".selected").removeClass("selected");
       $(e.target).addClass("selected");
     });
@@ -114,6 +114,11 @@ class HeaderComponent extends HTMLElement {
       $(".selected").removeClass("selected");
       this.showComponent("magcounters-component");
     });
+    $("#autozoom").click(() => {
+      // Removing color highlight from the current selected option in menu.
+      $(".selected").removeClass("selected");
+      this.showComponent("autozoom-component");
+    });
   }
 
   setupAudio(){
@@ -126,12 +131,18 @@ class HeaderComponent extends HTMLElement {
   showComponent(componentName){
     // Checking if device is small.
     const isDeviceSmall = screen.width <= 1023;
+    if (isDeviceSmall) {
+      this.mobileShow(componentName);
+    } else {
+      this.desktopShow(componentName)
+    }
+    // Updating current showing component;
+    this.currentShowingComponent = componentName;
+  }
+
+  desktopShow(componentName) {
     // Fading out current custom component.
     $(`${this.currentShowingComponent} .box`).fadeOut(400);
-    // If the device is small, also fades out the lateral section component.
-    if(isDeviceSmall) {
-      $("lateral-section-component .box").fadeOut(400);
-    }
     // This code will prevent bugs if user keeps spamming the menu items
     if(this.currentTimeout !== null) {
       clearTimeout(this.currentTimeout);
@@ -139,16 +150,20 @@ class HeaderComponent extends HTMLElement {
     // Fading in chosen custom component.
     this.currentTimeout = setTimeout(() => {
       $(`${componentName} .box`).fadeIn(400);
-      // If the device is small, also fades in the lateral section component.
-      if(isDeviceSmall) {
-        $("lateral-section-component .box").fadeIn(400);
-        // index.html function. Makes main content (#main-content) come before lateral section.
-        makeMainContentFirst();
-      }
       this.currentTimeout = null;
     }, 600);
-    // Updating current showing component;
-    this.currentShowingComponent = componentName;
+  }
+
+  mobileShow(componentName) {
+    // Hiding current custom component.
+    $(`${this.currentShowingComponent} .box`).hide();
+    // The device is small, so also hides the lateral section component.
+    $("lateral-section-component .box").hide();
+    // Fading in chosen custom component.
+    $(`${componentName} .box`).fadeIn(400);
+    $("lateral-section-component .box").fadeIn(400);
+    // index.html function. Makes main content (#main-content) come before lateral section.
+    makeMainContentFirst();
   }
 
 }

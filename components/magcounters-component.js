@@ -9,10 +9,10 @@ class MagcountersComponent extends HTMLElement {
       <div class="box">
         <div class="content">     
           <h1 id="magcounters-site">MagCounters Site</h1>
-          <p style="margin-bottom: 0.25rem"><strong>Description: </strong>
+          <p class="descriptionOrLanguage"><strong>Description: </strong>
             Official MagCounters Site. Find out the best counters against any Pokemon present in Sword and Shield game series.
           </p> 
-          <p style="margin-bottom: 0.25rem"><strong>Language used: </strong>Javascript</p> 
+          <p class="descriptionOrLanguage"><strong>Language used: </strong>Javascript</p> 
           <p><strong>Framework used: </strong>Node.js (Express)</p> 
           <custom-button-component text = "Go to Repository" to = "github" href = "https://github.com/ArthurSudbrackIbarra/MagCounters-Site"></custom-button-component>
           <custom-button-component text="Go to Site" to="default" href="http://www.magcounters.com"></custom-button-component>
