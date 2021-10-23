@@ -24,11 +24,20 @@ class AutozoomComponent extends HTMLElement {
             <li>Download the .jar file available on Autozoom's Github repository</li>
             <li>Please, after you extract the application zip, DO NOT DELETE dados-autozoom.txt file, since all of your classes names and zoom links are saved there. In case you delete that file, it will be created again when you run Autozoom, however, you are going to lose all the information that you had previously typed.</li>
           </ul>
-          <h3 id="demonstration">Demonstration:</h3>
-          <img src="../assets/autozoom.png">       
+          <h3 id="demonstration-image">Demonstration 1:</h3>
+          <img src="../assets/autozoom.png">        
+          <h3 id="demonstration-image">Demonstration 2:</h3>
+          <div id="sc-1" class="spinner-container">
+            <img class="spinner" src="../assets/spinner.svg" title="Loading...">
+          </div> 
+          <a href="https://drive.google.com/uc?export=view&id=1n1wHTIM-uqzAHfJQvpFPQwtiJRdEQowg" target="_blank">           
+            <img id="demo-gif-1" class="loading-image" src="https://drive.google.com/uc?export=view&id=1KSD7VZAEulobSzMNu4YHn2ga1FslakmM" title="Click to enlarge gif"/>
+          </a>   
         </div>
       </div>
     `;
+    // Utilities
+    loadingImages(1, "autozoom-component");
   }
 
 }

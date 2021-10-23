@@ -50,7 +50,7 @@ class JPCComponent extends HTMLElement {
               <p>By doing that, your main class will be called <strong>&quot;Main&quot;</strong>.</p>
               <h3 id="demonstration">Demonstration:</h3>
               <div id="sc-1" class="spinner-container">
-                <img class="spinner" src="../assets/spinner.gif" title="Loading...">
+                <img class="spinner" src="../assets/spinner.svg" title="Loading...">
               </div>     
               <a href="https://drive.google.com/uc?export=view&id=1zsAQF-bxamC9EHQWEqjD30A4l9N9G-sk" target="_blank">
                 <img id="demo-gif-1" class="loading-image" src="https://drive.google.com/uc?export=view&id=1zsAQF-bxamC9EHQWEqjD30A4l9N9G-sk" title="Click to enlarge gif"/>

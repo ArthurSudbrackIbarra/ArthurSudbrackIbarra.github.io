@@ -8,6 +8,29 @@
     --discord-color-darker: #424ec9;
 }
 
+@font-face {
+    font-family: 'Batmfa';
+    src: url("./fonts/batmfa.ttf") format("truetype");
+}
+
+.navbar-brand img {
+    width: 50px;
+}
+.navbar-item img {
+    max-height: 100% !important;
+}
+.navbar-brand p {
+    font-size: 1.4rem;
+    font-family: 'Batmfa', sans-serif;
+    font-weight: normal;
+    color: white;
+    margin-left: 0.3rem;
+}
+
+.navbar-burger {
+    height: auto !important;
+}
+
 .columns {
     margin: 0.5rem !important;
 }
@@ -147,7 +170,7 @@ curriculum-component i {
     margin-top: 1.6rem;
     margin-right: auto;
     margin-left: auto;
-    width: 70px;
+    height: 15vh;
 }
 .loading-image {
     display: none !important;

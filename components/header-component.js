@@ -10,8 +10,9 @@ class HeaderComponent extends HTMLElement {
     this.innerHTML = `
       <nav class="navbar is-black" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a id="logo" class="navbar-item" href=".">
-                <img id="logo" src="../assets/logo.svg">
+            <a class="navbar-item" href=".">
+                <img src="../assets/currentLogo.svg">     
+                <p>A.S.I</p>                        
             </a>
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
@@ -160,8 +161,8 @@ class HeaderComponent extends HTMLElement {
     // The device is small, so also hides the lateral section component.
     $("lateral-section-component .box").hide();
     // Fading in chosen custom component.
-    $(`${componentName} .box`).fadeIn(400);
-    $("lateral-section-component .box").fadeIn(400);
+    $(`${componentName} .box`).css("display", "block");
+    $("lateral-section-component .box").css("display", "block");
     // index.html function. Makes main content (#main-content) come before lateral section.
     makeMainContentFirst();
   }

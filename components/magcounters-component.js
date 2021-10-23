@@ -18,7 +18,7 @@ class MagcountersComponent extends HTMLElement {
           <custom-button-component text="Go to Site" to="default" href="http://www.magcounters.com"></custom-button-component>
           <h3 id="demonstration-1">Demonstration: </h3>
           <div id="sc-1" class="spinner-container">
-            <img class="spinner" src="../assets/spinner.gif" title="Loading...">
+            <img class="spinner" src="../assets/spinner.svg" title="Loading...">
           </div>  
           <a href="https://drive.google.com/uc?export=view&id=1eY_eKwbHqc_j5eitYUZr8qikO16zMgTp" target="_blank">            
               <img id="demo-gif-1" class="loading-image" src="https://drive.google.com/uc?export=view&id=1eY_eKwbHqc_j5eitYUZr8qikO16zMgTp" title="Click to enlarge gif"/>
@@ -31,7 +31,7 @@ class MagcountersComponent extends HTMLElement {
           <custom-button-component text="Invite Bot To Your Server" to="discord" href="https://discord.com/api/oauth2/authorize?client_id=808576823569940492&permissions=2148006976&scope=bot"></custom-button-component>
           <h3 id="demonstration-2">Demonstration: </h3>
           <div id="sc-2" class="spinner-container">
-            <img class="spinner" src="../assets/spinner.gif" title="Loading...">
+            <img class="spinner" src="../assets/spinner.svg" title="Loading...">
           </div>       
           <a href="https://drive.google.com/uc?export=view&id=1n1wHTIM-uqzAHfJQvpFPQwtiJRdEQowg" target="_blank">           
             <img id="demo-gif-2" class="loading-image" src="https://drive.google.com/uc?export=view&id=1n1wHTIM-uqzAHfJQvpFPQwtiJRdEQowg" title="Click to enlarge gif"/>
