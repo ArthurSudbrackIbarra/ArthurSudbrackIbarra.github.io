@@ -3,7 +3,8 @@ class HeaderComponent extends HTMLElement {
   constructor() {
     super();
     this.currentShowingComponent = "curriculum-component";
-    this.currentTimeout = null;
+    this.currentDesktopTimeout = null;
+    this.audio = new Audio("../assets/selectSound.mp3");
   }
 
   connectedCallback() {
@@ -124,15 +125,14 @@ class HeaderComponent extends HTMLElement {
 
   setupAudio(){
     $(".navbar-item:not(.has-dropdown)").click(() => {
-      const audio = new Audio("../assets/selectSound.mp3");
-      audio.play();
+      this.audio.currentTime = 0;
+      this.audio.play();
     });
   }
 
   showComponent(componentName){
     // Checking if device is small.
-    const isDeviceSmall = screen.width <= 1023;
-    if (isDeviceSmall) {
+    if (screen.width <= 1023) {
       this.mobileShow(componentName);
     } else {
       this.desktopShow(componentName)
@@ -145,13 +145,13 @@ class HeaderComponent extends HTMLElement {
     // Fading out current custom component.
     $(`${this.currentShowingComponent} .box`).fadeOut(400);
     // This code will prevent bugs if user keeps spamming the menu items
-    if(this.currentTimeout !== null) {
-      clearTimeout(this.currentTimeout);
+    if(this.currentDesktopTimeout !== null) {
+      clearTimeout(this.currentDesktopTimeout);
     }
     // Fading in chosen custom component.
-    this.currentTimeout = setTimeout(() => {
+    this.currentDesktopTimeout = setTimeout(() => {
       $(`${componentName} .box`).fadeIn(400);
-      this.currentTimeout = null;
+      this.currentDesktopTimeout = null;
     }, 600);
   }
 
