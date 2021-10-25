@@ -4,7 +4,6 @@ class HeaderComponent extends HTMLElement {
     super();
     this.currentShowingComponent = "curriculum-component";
     this.currentDesktopTimeout = null;
-    this.audio = new Audio("../assets/selectSound.mp3");
   }
 
   connectedCallback() {
@@ -125,8 +124,7 @@ class HeaderComponent extends HTMLElement {
 
   setupAudio(){
     $(".navbar-item:not(.has-dropdown)").click(() => {
-      this.audio.currentTime = 0;
-      this.audio.play();
+      new Audio("../assets/selectSound.mp3").play();
     });
   }
 
