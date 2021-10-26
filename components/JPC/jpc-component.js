@@ -1,6 +1,4 @@
 class JPCComponent extends HTMLElement {
-  static COMPONENT_NAME = 'jpc-component';
-
   constructor() {
     super();
   }
@@ -8,11 +6,12 @@ class JPCComponent extends HTMLElement {
   connectedCallback() {
     $(this).load('components/JPC/jpc-component.html', () => {
       // Hiding this custom component once it has been loaded
-      $(`${JPCComponent.COMPONENT_NAME} .box`).hide();
+      $(`${ComponentNames.JPC} .box`).hide();
       // Utilities
-      loadingImages(1, JPCComponent.COMPONENT_NAME);
+      loadingImages(1, ComponentNames.JPC);
     });
   }
 }
 
-customElements.define(JPCComponent.COMPONENT_NAME, JPCComponent);
+// ComponentNames is defined in 'utilities.js'
+customElements.define(ComponentNames.JPC, JPCComponent);

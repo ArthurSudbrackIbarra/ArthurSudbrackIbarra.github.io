@@ -1,6 +1,4 @@
 class AutozoomComponent extends HTMLElement {
-  static COMPONENT_NAME = 'autozoom-component';
-
   constructor() {
     super();
   }
@@ -8,11 +6,12 @@ class AutozoomComponent extends HTMLElement {
   connectedCallback() {
     $(this).load('components/Autozoom/autozoom-component.html', () => {
       // Hiding this custom component once it has been loaded
-      $(`${AutozoomComponent.COMPONENT_NAME} .box`).hide();
+      $(`${ComponentNames.AUTOZOOM} .box`).hide();
       // Utilities
-      loadingImages(1, AutozoomComponent.COMPONENT_NAME);
+      loadingImages(1, ComponentNames.AUTOZOOM);
     });
   }
 }
 
-customElements.define(AutozoomComponent.COMPONENT_NAME, AutozoomComponent);
+// ComponentNames is defined in 'utilities.js'
+customElements.define(ComponentNames.AUTOZOOM, AutozoomComponent);

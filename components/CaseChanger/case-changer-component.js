@@ -1,6 +1,4 @@
 class CaseChangerComponent extends HTMLElement {
-  static COMPONENT_NAME = 'case-changer-component';
-
   constructor() {
     super();
   }
@@ -8,9 +6,10 @@ class CaseChangerComponent extends HTMLElement {
   connectedCallback() {
     $(this).load('components/CaseChanger/case-changer-component.html', () => {
       // Hiding this custom component once it has been loaded
-      $(`${CaseChangerComponent.COMPONENT_NAME} .box`).hide();
+      $(`${ComponentNames.CASE_CHANGER} .box`).hide();
     });
   }
 }
 
-customElements.define(CaseChangerComponent.COMPONENT_NAME, CaseChangerComponent);
+// ComponentNames is defined in 'utilities.js'
+customElements.define(ComponentNames.CASE_CHANGER, CaseChangerComponent);

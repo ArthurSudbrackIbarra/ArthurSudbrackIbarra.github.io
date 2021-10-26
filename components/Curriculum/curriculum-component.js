@@ -1,6 +1,4 @@
 class CurriculumComponent extends HTMLElement {
-  static COMPONENT_NAME = 'curriculum-component';
-
   constructor() {
     super();
   }
@@ -51,4 +49,5 @@ class CurriculumComponent extends HTMLElement {
   }
 }
 
-customElements.define(CurriculumComponent.COMPONENT_NAME, CurriculumComponent);
+// ComponentNames is defined in 'utilities.js'
+customElements.define(ComponentNames.CURRICULUM, CurriculumComponent);

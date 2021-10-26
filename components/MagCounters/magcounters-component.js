@@ -1,6 +1,4 @@
 class MagcountersComponent extends HTMLElement {
-  static COMPONENT_NAME = 'magcounters-component';
-
   constructor() {
     super();
   }
@@ -8,11 +6,12 @@ class MagcountersComponent extends HTMLElement {
   connectedCallback() {
     $(this).load('components/MagCounters/magcounters-component.html', () => {
       // Hiding this custom component once it has been loaded
-      $(`${MagcountersComponent.COMPONENT_NAME} .box`).hide();
+      $(`${ComponentNames.MAGCOUNTERS} .box`).hide();
       // Utilities
-      loadingImages(2, MagcountersComponent.COMPONENT_NAME);
+      loadingImages(2, ComponentNames.MAGCOUNTERS);
     });
   }
 }
 
-customElements.define(MagcountersComponent.COMPONENT_NAME, MagcountersComponent);
+// ComponentNames is defined in 'utilities.js'
+customElements.define(ComponentNames.MAGCOUNTERS, MagcountersComponent);

@@ -1,6 +1,4 @@
 class CustomButtonComponent extends HTMLElement {
-  static COMPONENT_NAME = 'custom-button-component';
-
   constructor() {
     super();
     // Props
@@ -36,4 +34,5 @@ class CustomButtonComponent extends HTMLElement {
   }
 }
 
-customElements.define(CustomButtonComponent.COMPONENT_NAME, CustomButtonComponent);
+// ComponentNames is defined in 'utilities.js'
+customElements.define(ComponentNames.CUSTOM_BUTTON, CustomButtonComponent);

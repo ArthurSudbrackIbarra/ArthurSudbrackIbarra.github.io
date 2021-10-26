@@ -1,9 +1,8 @@
 class HeaderComponent extends HTMLElement {
-  static COMPONENT_NAME = 'header-component';
-
   constructor() {
     super();
-    this.currentShowingComponent = 'curriculum-component';
+    // ComponentNames is defined in 'utilities.js'
+    this.currentShowingComponent = ComponentNames.CURRICULUM;
     this.currentDesktopTimeout = null;
   }
 
@@ -37,27 +36,27 @@ class HeaderComponent extends HTMLElement {
     });
     // Rendering components on click.
     $('#curriculum').click(() => {
-      this.showComponent('curriculum-component');
+      this.showComponent(ComponentNames.CURRICULUM);
     });
     $('#jpc').click(() => {
       // Removing color highlight from the current selected option in menu.
       $('.selected').removeClass('selected');
-      this.showComponent('jpc-component');
+      this.showComponent(ComponentNames.JPC);
     });
     $('#case-changer').click(() => {
       // Removing color highlight from the current selected option in menu.
       $('.selected').removeClass('selected');
-      this.showComponent('case-changer-component');
+      this.showComponent(ComponentNames.CASE_CHANGER);
     });
     $('#magcounters').click(() => {
       // Removing color highlight from the current selected option in menu.
       $('.selected').removeClass('selected');
-      this.showComponent('magcounters-component');
+      this.showComponent(ComponentNames.MAGCOUNTERS);
     });
     $('#autozoom').click(() => {
       // Removing color highlight from the current selected option in menu.
       $('.selected').removeClass('selected');
-      this.showComponent('autozoom-component');
+      this.showComponent(ComponentNames.AUTOZOOM);
     });
   }
 
@@ -96,13 +95,14 @@ class HeaderComponent extends HTMLElement {
     // Hiding current custom component.
     $(`${this.currentShowingComponent} .box`).hide();
     // The device is small, so also hides the lateral section component.
-    $('lateral-section-component .box').hide();
+    $(`${ComponentNames.LATERAL_SECTION} .box`).hide();
     // Fading in chosen custom component.
     $(`${componentName} .box`).css('display', 'block');
-    $('lateral-section-component .box').css('display', 'block');
+    $(`${ComponentNames.LATERAL_SECTION} .box`).css('display', 'block');
     // index.html function. Makes main content (#main-content) come before lateral section.
     makeMainContentFirst();
   }
 }
 
-customElements.define(HeaderComponent.COMPONENT_NAME, HeaderComponent);
+// ComponentNames is defined in 'utilities.js'
+customElements.define(ComponentNames.HEADER, HeaderComponent);

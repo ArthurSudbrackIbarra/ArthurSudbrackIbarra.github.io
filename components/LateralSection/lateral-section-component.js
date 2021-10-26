@@ -1,6 +1,4 @@
 class LateralSectionComponent extends HTMLElement {
-  static COMPONENT_NAME = 'lateral-section-component';
-
   constructor() {
     super();
   }
@@ -10,4 +8,5 @@ class LateralSectionComponent extends HTMLElement {
   }
 }
 
-customElements.define(LateralSectionComponent.COMPONENT_NAME, LateralSectionComponent);
+// ComponentNames is defined in 'utilities.js'
+customElements.define(ComponentNames.LATERAL_SECTION, LateralSectionComponent);
