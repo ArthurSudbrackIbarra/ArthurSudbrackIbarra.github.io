@@ -7,6 +7,7 @@ class MagcountersComponent extends HTMLElement {
 
   connectedCallback() {
     $(this).load('components/MagCounters/magcounters-component.html', () => {
+      // Hiding this custom component once it has been loaded
       $(`${MagcountersComponent.COMPONENT_NAME} .box`).hide();
       // Utilities
       loadingImages(2, MagcountersComponent.COMPONENT_NAME);
