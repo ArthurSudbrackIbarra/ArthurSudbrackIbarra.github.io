@@ -1,5 +1,4 @@
 class CaseChangerComponent extends HTMLElement {
-
   constructor() {
     super();
   }
@@ -11,11 +10,7 @@ class CaseChangerComponent extends HTMLElement {
           <h1 id="case-changer">Case Changer</h1>
           <p class="descriptionOrLanguage"><strong>Description: </strong>Turn your text into uppercase, lowercase ou titlecase by simply spelling voice commands. (Windows only).</p> 
           <p class="descriptionOrLanguage"><strong>Language used: </strong>Python</p> 
-          <custom-button-component
-            text = "Go to Repository"
-            to = "github"
-            href = "https://github.com/ArthurSudbrackIbarra/Case-Changer"
-          ></custom-button-component>
+          <custom-button-component text = "Go to Repository" to = "github" href = "https://github.com/ArthurSudbrackIbarra/Case-Changer"></custom-button-component>
           <h3 id="setting-up-the-environment">Setting up the environment:</h3>
           <ol>
             <li>Open a command prompt terminal and go to the folder of this project.</li>
@@ -43,7 +38,6 @@ class CaseChangerComponent extends HTMLElement {
       </div>
     `;
   }
-
 }
 
 customElements.define('case-changer-component', CaseChangerComponent);
