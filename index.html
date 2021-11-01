@@ -34,9 +34,6 @@
     <header-component></header-component>
     <!-- Content -->
     <div id="content" class="columns">
-      <div id="lateral-content" class="column is-one-third">
-        <lateral-section-component></lateral-section-component>
-      </div>
       <div id="main-content" class="column">
         <welcome-component></welcome-component>
         <curriculum-component></curriculum-component>
@@ -45,28 +42,9 @@
         <magcounters-component></magcounters-component>
         <autozoom-component></autozoom-component>
       </div>
+      <div id="lateral-content" class="column is-one-third">
+        <lateral-section-component></lateral-section-component>
+      </div>
     </div>
-    <script>
-      // Makes main content come first in it's a mobile device.
-      if (screen.width <= 1023) {
-        makeMainContentFirst();
-      }
-      // If the window is resized to a size smaller than 1023px, then the main content come first.
-      $(window).resize(() => {
-        if (screen.width <= 1023) {
-          makeMainContentFirst();
-        } else {
-          makeMainContentLast();
-        }
-      });
-      // Function to make main content come before lateral section.
-      function makeMainContentFirst() {
-        $('#main-content').after($('#lateral-content'));
-      }
-      // Function to make main content come after lateral section.
-      function makeMainContentLast() {
-        $('#main-content').before($('#lateral-content'));
-      }
-    </script>
   </body>
 </html>

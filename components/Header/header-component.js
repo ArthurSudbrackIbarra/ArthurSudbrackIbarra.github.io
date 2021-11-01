@@ -105,8 +105,6 @@ class HeaderComponent extends HTMLElement {
     // Fading in chosen custom component.
     $(`${componentName} .box`).css('display', 'block');
     $(`${ComponentNames.LATERAL_SECTION} .box`).css('display', 'block');
-    // index.html function. Makes main content (#main-content) come before lateral section.
-    makeMainContentFirst();
   }
 
   eraseWelcomeComponent() {
