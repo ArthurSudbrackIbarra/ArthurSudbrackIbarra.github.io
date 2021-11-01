@@ -32,13 +32,13 @@ class WelcomeComponent extends HTMLElement {
     const where = screen.width <= 1023 ? 'HAMBURGER MENU' : 'NAVIGATION BAR';
     this.type(
       dialogueBox,
-      `<br>[CURRICULUM] - CHOOSE 'CURRICULUM' IN THE ${where} TO CHECK OUT MY FORMATION, PROFESSIONAL EXPERIENCE AND SKILLS.`,
+      `<br>[MY PROJECTS] - CHOOSE 'MY PROJECTS' IN THE ${where} TO CHECK OUT SOME COOL PROJECTS I'VE MADE.`,
       3400,
       6000,
     );
     this.type(
       dialogueBox,
-      `<br>[MY PROJECTS] - CHOOSE 'MY PROJECTS' IN THE ${where} TO CHECK OUT SOME COOL PROJECTS I'VE MADE.`,
+      `<br>[CURRICULUM] - CHOOSE 'CURRICULUM' IN THE ${where} TO CHECK OUT MY FORMATION, PROFESSIONAL EXPERIENCE AND SKILLS.`,
       3400,
       6000,
     );
