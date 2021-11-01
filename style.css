@@ -13,6 +13,11 @@
     src: url("./fonts/batmfa.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: 'Code';
+    src: url("./fonts/Code.ttf") format("truetype");
+}
+
 .navbar-brand img {
     width: 50px;
 }
@@ -183,4 +188,38 @@ case-changer-component iframe {
 
 autozoom-component img {
     width: 100%;
+}
+
+#interaction-panel {
+    background-color: var(--primary-color);
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+#interaction-panel h5 {
+    color: white !important;
+    margin-bottom: 0.7rem;
+    font-family: 'Code', monospace;
+    font-weight: normal;
+    letter-spacing: -3px;
+}
+
+.hi-button, .disabled-hi-button {
+    font-family: 'Code', monospace;
+    font-size: 1rem;
+    background-color: var(--primary-color-darker);
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.disabled-hi-button {
+    background-color: #b5aeae !important;
+    color: #5a5757 !important;
+}
+
+#typing-box {
+    height: 0;
 }

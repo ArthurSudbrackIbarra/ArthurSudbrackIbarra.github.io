@@ -8,7 +8,17 @@ class ComponentNames {
   static JPC = 'jpc-component';
   static LATERAL_SECTION = 'lateral-section-component';
   static MAGCOUNTERS = 'magcounters-component';
+  static WELCOME = 'welcome-component';
 }
+
+// Class with all the audios.
+class Audios {
+  static SELECT = null;
+  static TYPING = null;
+}
+
+// List to store timeouts from welcome component.
+const welcomeComponentTimeouts = [];
 
 // This function will remove the loading spinners
 // once the images have been loaded.

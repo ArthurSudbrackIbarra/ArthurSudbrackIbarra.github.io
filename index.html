@@ -25,6 +25,7 @@
     <script src="./components/CustomButton/custom-button-component.js" type="text/javascript" defer></script>
     <script src="./components/Curriculum/curriculum-component.js" type="text/javascript" defer></script>
     <script src="./components/Autozoom/autozoom-component.js" type="text/javascript" defer></script>
+    <script src="./components/Welcome/welcome-component.js" type="text/javascript" defer></script>
     <!-- Google's meta tag to verify site ownership -->
     <meta name="google-site-verification" content="WT0B1vVWChNxVwfRwJb8aZrVbFOuB0kWzhgvlGv1Tm8" />
   </head>
@@ -37,6 +38,7 @@
         <lateral-section-component></lateral-section-component>
       </div>
       <div id="main-content" class="column">
+        <welcome-component></welcome-component>
         <curriculum-component></curriculum-component>
         <jpc-component></jpc-component>
         <case-changer-component></case-changer-component>
@@ -45,9 +47,15 @@
       </div>
     </div>
     <script>
-      // If the window is resized to a size larger than 1023px, makes main content come after lateral section.
+      // Makes main content come first in it's a mobile device.
+      if (screen.width <= 1023) {
+        makeMainContentFirst();
+      }
+      // If the window is resized to a size smaller than 1023px, then the main content come first.
       $(window).resize(() => {
-        if (screen.width > 1023) {
+        if (screen.width <= 1023) {
+          makeMainContentFirst();
+        } else {
           makeMainContentLast();
         }
       });

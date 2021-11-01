@@ -5,6 +5,8 @@ class CurriculumComponent extends HTMLElement {
 
   connectedCallback() {
     $(this).load('components/Curriculum/curriculum-component.html', () => {
+      // Hiding this custom component once it has been loaded
+      $(`${ComponentNames.CURRICULUM} .box`).hide();
       // Setup
       this.updateSemester();
     });
@@ -46,6 +48,14 @@ class CurriculumComponent extends HTMLElement {
     }
     $('#verb').text(verb);
     $('#semester').text(semester);
+  }
+
+  animation() {
+    $('curriculum-component li')
+      .hover
+      // (e) => { $(e.target).animate({ letterSpacing: 0.5 }) },
+      // (e) => { $(e.target).animate({ letterSpacing: 0 }) }
+      ();
   }
 }
 
