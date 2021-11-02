@@ -29,7 +29,8 @@
     font-family: 'Batmfa', sans-serif;
     font-weight: normal;
     color: white;
-    margin-left: 0.3rem;
+    margin-left: 0.7rem;
+    margin-right: 1rem;
 }
 
 .navbar-burger {
@@ -54,7 +55,7 @@
         border: 2px solid #4a4a4a;
     }
     header-component i {
-        color: black !important;
+        color: var(--primary-color) !important;
     }
     .navbar-link:not(.is-arrowless)::after {
         border-color: black !important;
@@ -94,7 +95,7 @@ lateral-section-component figure {
     margin: auto;
 }
 lateral-section-component img {
-    border: 3px solid #4a4a4a;
+    border: 4px inset var(--primary-color);
 }
 lateral-section-component h1 {
     font-weight: bold;

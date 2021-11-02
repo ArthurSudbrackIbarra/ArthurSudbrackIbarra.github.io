@@ -27,18 +27,18 @@ class WelcomeComponent extends HTMLElement {
     const dialogueBox = $(`${ComponentNames.WELCOME} #interaction-panel #dialogue-box`);
     this.type(dialogueBox, "OH, HEY! I'M ARTHUR SUDBRACK IBARRA!", 0, 3000);
     this.type(dialogueBox, 'AND THIS IS MY PERSONAL SITE!', 2400, 5000);
-    this.type(dialogueBox, "OK, SO I'LL BRIEFLY EXPLAING WHAT YOU CAN DO HERE.", 1900, 4000);
+    this.type(dialogueBox, "OK, SO I'LL BRIEFLY EXPLAIN WHAT YOU CAN DO HERE.", 1900, 4000);
     this.type(dialogueBox, '<br>HERE WE GO:', 1000, 2000);
     const where = screen.width <= 1023 ? 'HAMBURGER MENU' : 'NAVIGATION BAR';
     this.type(
       dialogueBox,
-      `<br>[MY PROJECTS] - CHOOSE 'MY PROJECTS' IN THE ${where} TO CHECK OUT SOME COOL PROJECTS I'VE MADE.`,
+      `<br>MY PROJECTS - CHOOSE 'MY PROJECTS' IN THE ${where} TO CHECK OUT SOME COOL PROJECTS I'VE MADE.`,
       3400,
       6000,
     );
     this.type(
       dialogueBox,
-      `<br>[CURRICULUM] - CHOOSE 'CURRICULUM' IN THE ${where} TO CHECK OUT MY FORMATION, PROFESSIONAL EXPERIENCE AND SKILLS.`,
+      `<br>CURRICULUM - CHOOSE 'CURRICULUM' IN THE ${where} TO CHECK OUT MY EDUCATION, PROFESSIONAL EXPERIENCE AND SKILLS.`,
       3400,
       6000,
     );
