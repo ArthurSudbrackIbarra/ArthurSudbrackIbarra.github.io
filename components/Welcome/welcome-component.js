@@ -14,6 +14,7 @@ class WelcomeComponent extends HTMLElement {
     $('.hi-button').click(() => {
       if (!$('.hi-button').hasClass('disabled-hi-button')) {
         $('.hi-button').addClass('disabled-hi-button');
+        $('.arrow').remove();
         $('.hi-button').animate({ marginBottom: '1rem' }, 1800);
         $('#typing-box').animate({ height: 25 }, 1800);
         setTimeout(() => {

@@ -72,7 +72,7 @@
         background-color: black !important;
     }
     .navbar-dropdown .navbar-item {
-        background-color: black !important;
+        background-color: black;
         color: white !important;
     }
     .navbar-dropdown .navbar-item i {
@@ -196,7 +196,6 @@ autozoom-component img {
     padding: 1rem;
     border-radius: 6px;
 }
-
 #interaction-panel h5 {
     color: white !important;
     margin-bottom: 0.7rem;
@@ -204,7 +203,6 @@ autozoom-component img {
     font-weight: normal;
     letter-spacing: -3px;
 }
-
 .hi-button, .disabled-hi-button {
     font-family: 'Code', monospace;
     font-size: 1rem;
@@ -214,13 +212,19 @@ autozoom-component img {
     color: white;
     cursor: pointer;
     margin-bottom: 0;
+    padding: 0.2rem 0.2rem 0.2rem 0.6rem;
 }
-
 .disabled-hi-button {
-    background-color: #b5aeae !important;
+    background-color: #a5a5a5 !important;
     color: #5a5757 !important;
+    cursor: default;
 }
-
+.arrow {
+    position: relative;
+    left: 0.113rem;
+    top: 0.25rem;
+    width: 23px;
+}
 #typing-box {
     height: 0;
 }

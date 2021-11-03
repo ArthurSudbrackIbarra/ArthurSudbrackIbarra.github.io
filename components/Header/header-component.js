@@ -30,7 +30,7 @@ class HeaderComponent extends HTMLElement {
       $('.navbar-menu').toggleClass('is-active');
     });
     // Changing the class of selected option in menu.
-    $('#curriculum').click((e) => {
+    $('#curriculum, #jpc, #case-changer, #magcounters, #autozoom').click((e) => {
       $('.selected').removeClass('selected');
       $(e.target).addClass('selected');
     });
@@ -39,23 +39,15 @@ class HeaderComponent extends HTMLElement {
       this.showComponent(ComponentNames.CURRICULUM);
     });
     $('#jpc').click(() => {
-      // Removing color highlight from the current selected option in menu.
-      $('.selected').removeClass('selected');
       this.showComponent(ComponentNames.JPC);
     });
     $('#case-changer').click(() => {
-      // Removing color highlight from the current selected option in menu.
-      $('.selected').removeClass('selected');
       this.showComponent(ComponentNames.CASE_CHANGER);
     });
     $('#magcounters').click(() => {
-      // Removing color highlight from the current selected option in menu.
-      $('.selected').removeClass('selected');
       this.showComponent(ComponentNames.MAGCOUNTERS);
     });
     $('#autozoom').click(() => {
-      // Removing color highlight from the current selected option in menu.
-      $('.selected').removeClass('selected');
       this.showComponent(ComponentNames.AUTOZOOM);
     });
   }
