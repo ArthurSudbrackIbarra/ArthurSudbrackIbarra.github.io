@@ -55,7 +55,7 @@
         border: 2px solid #4a4a4a;
     }
     header-component i {
-        color: var(--primary-color) !important;
+        color: black !important;
     }
     .navbar-link:not(.is-arrowless)::after {
         border-color: black !important;
@@ -197,7 +197,7 @@ autozoom-component img {
     border-radius: 6px;
 }
 #interaction-panel h5 {
-    color: white !important;
+    color: white;
     margin-bottom: 0.7rem;
     font-family: 'Code', monospace;
     font-weight: normal;
