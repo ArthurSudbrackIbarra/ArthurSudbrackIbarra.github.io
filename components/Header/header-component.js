@@ -107,11 +107,6 @@ class HeaderComponent extends HTMLElement {
     if (typingAudio !== null && typingAudio !== undefined) {
       typingAudio.pause();
     }
-    // Clearing welcome component timeouts.
-    // welcomeComponentTimeouts is defined in utilities.js.
-    for (const timeout of welcomeComponentTimeouts) {
-      clearTimeout(timeout);
-    }
   }
 }
 

@@ -17,9 +17,6 @@ class Audios {
   static TYPING = null;
 }
 
-// List to store timeouts from welcome component.
-const welcomeComponentTimeouts = [];
-
 // This function will remove the loading spinners
 // once the images have been loaded.
 function loadingImages(imagesQuantity, customComponent) {

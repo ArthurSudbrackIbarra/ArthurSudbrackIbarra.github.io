@@ -33,7 +33,7 @@ class WelcomeComponent extends HTMLElement {
         t2: 5000,
         newLine: true,
       },
-      { text: 'WAIT A MINUTE!', t1: 2500, t2: 3200, color: 'red', newLine: true },
+      { text: 'WAIT A MINUTE!', t1: 2500, t2: 4200, color: 'red', newLine: true },
       { text: `WHERE ${where_2}??!!`, t1: 2000, t2: 3000, color: 'red' },
       {
         text: "THIS IS PROBRABLY A BUG, SILLY ARTHUR CAN'T EVEN DO HIS CODING RIGHT...",
@@ -61,6 +61,8 @@ class WelcomeComponent extends HTMLElement {
     });
   }
 
+  // Hides/Shows hamburger menu or navigation bar items according to screen width.
+  // Also handles situations where the screen width changes suddenly (dev tools, for example).
   hideMenu() {
     const mobileHide = $('.navbar-burger');
     const desktopHide = $('.navbar-link, #curriculum');
@@ -70,7 +72,7 @@ class WelcomeComponent extends HTMLElement {
       setTimeout(() => {
         if (screen.width <= 1023) {
           this.menuHide = mobileHide;
-          desktopHide.fadeIn(1000);
+          desktopHide.fadeIn(0);
         } else {
           this.menuHide = desktopHide;
           desktopHide.fadeOut(0);
@@ -89,16 +91,39 @@ class WelcomeComponent extends HTMLElement {
     }
   }
 
+  // Calls 'hideMenu' method on screen resize.
   hideMenuResizeSetup() {
     $(window).resize(() => {
       this.hideMenu();
     });
   }
 
+  // Shows menu hamburger or navigation bar items according to screen width.
+  // Blinks the elements that were hidden 2 times.
+  // Scrolls screen to the position of the elements that were hidden.
   showMenu() {
-    this.menuHide.fadeIn(3000);
+    this.menuHide.fadeIn(2000);
+    this.scrollScreenTo(this.menuHide);
+    let blinkingTimeout = 2200;
+    for (let i = 0; i < 3; i++) {
+      setTimeout(() => {
+        this.menuHide.toggleClass('blinkingMenu');
+      }, blinkingTimeout);
+      blinkingTimeout += 400;
+    }
   }
 
+  // Scrolls the screen to an element
+  scrollScreenTo(element) {
+    $([document.documentElement, document.body]).animate(
+      {
+        scrollTop: element.offset().top,
+      },
+      1000,
+    );
+  }
+
+  // Defines what the first button of the interaction will do on click.
   hiButtonSetup_1() {
     const hiButton = $('.hi-button');
     hiButton.click(() => {
@@ -113,6 +138,7 @@ class WelcomeComponent extends HTMLElement {
     });
   }
 
+  // Defines what the second button of the interaction will do on click.
   hiButtonSetup_2() {
     const hiButton = $('.hi-button');
     hiButton.removeClass('disabled-hi-button');
@@ -127,6 +153,7 @@ class WelcomeComponent extends HTMLElement {
     });
   }
 
+  // Starts the first interaction with the user.
   startChat_1() {
     const dialogueBox = $(`#interaction-panel #dialogue-box`);
     for (const sentence of this.sentencesPartOne) {
@@ -138,6 +165,7 @@ class WelcomeComponent extends HTMLElement {
     }, this.timeoutSum + 4000);
   }
 
+  // Starts the second interaction with the user.
   startChat_2() {
     this.timeoutSum = 0;
     const dialogueBox = $(`#interaction-panel #dialogue-box`);
@@ -145,39 +173,15 @@ class WelcomeComponent extends HTMLElement {
       this.type(dialogueBox, sentence);
     }
     setTimeout(() => {
+      // Ends interaction.
       this.interactionEnded = true;
       this.endChat();
       this.showMenu();
     }, this.timeoutSum + 1000);
   }
 
-  type(dialogueBox, sentence) {
-    // welcomeComponentTimeouts is defined in utilities.js
-    welcomeComponentTimeouts.push(
-      setTimeout(() => {
-        this.playAudio();
-        $('#typing-box').append('<object type="image/svg+xml" data="../../assets/typing.svg" width=\'25px\'></object>');
-      }, this.timeoutSum + sentence.t1),
-    );
-    welcomeComponentTimeouts.push(
-      setTimeout(() => {
-        this.stopAudio();
-        $('#typing-box object').remove();
-        this.createDialogue(dialogueBox, sentence);
-      }, this.timeoutSum + sentence.t2),
-    );
-    this.timeoutSum += sentence.t2;
-  }
-
-  clearDialogueBox() {
-    $('.arrow').fadeIn(1000);
-    const dialogueBoxContent = $(`#interaction-panel #dialogue-box h5`);
-    dialogueBoxContent.animate({ height: 0, margin: 0 }, 1800);
-    setTimeout(() => {
-      dialogueBoxContent.remove();
-    }, 1700);
-  }
-
+  // Creates the elements that will be put in the dialogue box.
+  // Properties such as new lines or colors are handled here.
   createDialogue(dialogueBox, sentence) {
     let dialogue = '<h5';
     if (sentence.color) {
@@ -192,6 +196,34 @@ class WelcomeComponent extends HTMLElement {
     dialogueBox.append(dialogue);
   }
 
+  // Types the sentences in the interaction panel.
+  type(dialogueBox, sentence) {
+    // Types.
+    setTimeout(() => {
+      this.playAudio();
+      $('#typing-box').append('<object type="image/svg+xml" data="../../assets/typing.svg" width=\'25px\'></object>');
+    }, this.timeoutSum + sentence.t1),
+      // Stops typing.
+      setTimeout(() => {
+        this.stopAudio();
+        $('#typing-box object').remove();
+        this.createDialogue(dialogueBox, sentence);
+      }, this.timeoutSum + sentence.t2),
+      (this.timeoutSum += sentence.t2);
+  }
+
+  // Clears the dialogue box with a cool sliding animation.
+  clearDialogueBox() {
+    $('.arrow').fadeIn(1000);
+    const dialogueBoxContent = $(`#interaction-panel #dialogue-box h5`);
+    dialogueBoxContent.animate({ height: 0, margin: 0 }, 1800);
+    this.scrollScreenTo(this.menuHide);
+    setTimeout(() => {
+      dialogueBoxContent.remove();
+    }, 1700);
+  }
+
+  // Plays the typing audio.
   playAudio() {
     // Audios is defined in 'utilities.js'
     Audios.TYPING = new Audio('../../assets/typing.mp3');
@@ -200,11 +232,13 @@ class WelcomeComponent extends HTMLElement {
     Audios.TYPING.play();
   }
 
+  // Stops playing the typing audio.
   stopAudio() {
     // Audios is defined in 'utilities.js'
     Audios.TYPING.volume = 0;
   }
 
+  // Ends chat interaction with a cool sliding animation.
   endChat() {
     setTimeout(() => {
       $('#typing-box').animate({ height: 0 }, 1800);

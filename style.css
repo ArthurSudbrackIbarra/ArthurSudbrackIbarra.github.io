@@ -32,9 +32,12 @@
     margin-left: 0.7rem;
     margin-right: 1rem;
 }
-
 .navbar-burger {
     height: auto !important;
+}
+.blinkingMenu {
+    background-color: var(--primary-color) !important;
+    color: white !important;
 }
 
 .columns {
