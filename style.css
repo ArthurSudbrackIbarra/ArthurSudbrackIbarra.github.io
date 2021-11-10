@@ -192,7 +192,7 @@ autozoom-component img {
 }
 
 #interaction-panel {
-    background-color: var(--primary-color);
+    background-color: black;
     padding: 1rem;
     border-radius: 6px;
 }
@@ -206,23 +206,23 @@ autozoom-component img {
 .hi-button, .disabled-hi-button {
     font-family: 'Code', monospace;
     font-size: 1rem;
-    background-color: var(--primary-color-darker);
+    background-color: black;
+    border: 2px solid white;
     border-radius: 10px;
-    border: none;
     color: white;
     cursor: pointer;
     margin-bottom: 0;
     padding: 0.2rem 0.2rem 0.2rem 0.6rem;
 }
 .disabled-hi-button {
-    background-color: #a5a5a5 !important;
-    color: #5a5757 !important;
+    background-color: white !important;
+    color: black !important;
     cursor: default;
 }
 .arrow {
     position: relative;
-    left: 0.113rem;
-    top: 0.25rem;
+    left: 0.28rem;
+    top: 0.23rem;
     width: 23px;
 }
 #typing-box {
