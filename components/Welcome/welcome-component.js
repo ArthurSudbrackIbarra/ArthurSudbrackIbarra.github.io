@@ -29,7 +29,7 @@ class WelcomeComponent extends HTMLElement {
         t2: 5200,
         newLine: true,
       },
-      { text: "WELL, I HOPE (YOU) CAN FIX THAT...", t1: 2000, t2: 3000 },
+      { text: 'WELL, I HOPE (YOU) CAN FIX THAT...', t1: 2000, t2: 3000 },
     ];
     this.sentencesPartTwo = [
       { text: 'OK, SO', t1: 0, t2: 1300 },
