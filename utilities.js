@@ -4,12 +4,12 @@ class ComponentNames {
   static CASE_CHANGER = 'case-changer-component';
   static CURRICULUM = 'curriculum-component';
   static CUSTOM_BUTTON = 'custom-button-component';
+  static DEMO = 'demo-component';
   static HEADER = 'header-component';
   static JPC = 'jpc-component';
   static LATERAL_SECTION = 'lateral-section-component';
   static MAGCOUNTERS = 'magcounters-component';
   static TERMINAL_COMMAND = 'terminal-command-component';
-  static WELCOME = 'welcome-component';
 }
 
 // Class with all the audios.

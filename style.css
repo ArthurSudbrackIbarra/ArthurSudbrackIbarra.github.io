@@ -240,6 +240,7 @@ autozoom-component img {
     color: var(--primary-color);
     display: inline;
     font-family: monospace;
+    font-weight: bold;
 }
 #terminal-box span {
     color: gray;

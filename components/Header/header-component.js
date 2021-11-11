@@ -2,7 +2,7 @@ class HeaderComponent extends HTMLElement {
   constructor() {
     super();
     // ComponentNames is defined in 'utilities.js'
-    this.currentShowingComponent = ComponentNames.WELCOME;
+    this.currentShowingComponent = ComponentNames.DEMO;
     this.currentDesktopTimeout = null;
   }
 
@@ -81,8 +81,8 @@ class HeaderComponent extends HTMLElement {
     // Fading in chosen custom component.
     this.currentDesktopTimeout = setTimeout(() => {
       $(`${componentName} .box`).fadeIn(400);
-      // Erasing welcome component.
-      this.eraseWelcomeComponent();
+      // Erasing demo component.
+      this.eraseDemoComponent();
       this.currentDesktopTimeout = null;
     }, 600);
   }
@@ -90,8 +90,8 @@ class HeaderComponent extends HTMLElement {
   mobileShow(componentName) {
     // Hiding current custom component.
     $(`${this.currentShowingComponent} .box`).hide();
-    // Erasing welcome component.
-    this.eraseWelcomeComponent();
+    // Erasing demo component.
+    this.eraseDemoComponent();
     // The device is small, so also hides the lateral section component.
     $(`${ComponentNames.LATERAL_SECTION} .box`).hide();
     // Fading in chosen custom component.
@@ -99,10 +99,10 @@ class HeaderComponent extends HTMLElement {
     $(`${ComponentNames.LATERAL_SECTION} .box`).css('display', 'block');
   }
 
-  eraseWelcomeComponent() {
-    // Removing welcome component.
-    $(`${ComponentNames.WELCOME}`).remove();
-    // Stopping welcome component audio.
+  eraseDemoComponent() {
+    // Removing demo component.
+    $(`${ComponentNames.DEMO}`).remove();
+    // Stopping demo component audio.
     const typingAudio = Audios.TYPING;
     if (typingAudio !== null && typingAudio !== undefined) {
       typingAudio.pause();

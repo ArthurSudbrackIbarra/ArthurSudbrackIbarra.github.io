@@ -18,25 +18,32 @@ class TerminalCommandComponent extends HTMLElement {
     terminalBox.fadeOut(0);
     terminalBox.fadeIn(1000);
     this.createSpanTags();
-    this.elements = $('#terminal-box span');
+    this.elements = $('#terminal-box span:not(.space)');
     this.setupKeyboardListening();
   }
 
   // Makes each individual characters in the command have its own span tag.
   createSpanTags() {
     for (let i = 0; i < this.command.length; i++) {
-      $('#terminal-box').append(`<span>${this.command[i]}</span>`);
+      if (this.command[i] !== ' ') {
+        $('#terminal-box').append(`<span>${this.command[i]}</span>`);
+      } else {
+        $('#terminal-box').append(`<span class="space">${this.command[i]}</span>`);
+      }
     }
   }
 
   // Handles keyboard/touch events.
   setupKeyboardListening() {
     if (screen.width <= 1023) {
-      $('#terminal-box').click(() => {
+      const terminalBox = $('#terminal-box');
+      terminalBox.click(() => {
         if (this.count <= this.elements.length) {
           if (this.count >= this.elements.length - 1) {
             this.elements[this.count].style.color = 'white';
             this.onComplete();
+            terminalBox.off();
+            this.count++;
           } else {
             this.elements[this.count].style.color = 'white';
           }
@@ -50,6 +57,7 @@ class TerminalCommandComponent extends HTMLElement {
           if (this.count >= this.elements.length) {
             if (key.toLowerCase() === 'enter') {
               this.onComplete();
+              $(document).off();
               this.count++;
             }
           } else {
@@ -67,8 +75,8 @@ class TerminalCommandComponent extends HTMLElement {
 // ComponentNames is defined in 'utilities.js'
 customElements.define(ComponentNames.TERMINAL_COMMAND, TerminalCommandComponent);
 
-// WelcomeComponente class.
-class WelcomeComponent extends HTMLElement {
+// Demo Component class.
+class DemoComponent extends HTMLElement {
   constructor() {
     super();
     // Timeout Sum.
@@ -115,7 +123,7 @@ class WelcomeComponent extends HTMLElement {
       { text: "THAT WAS AWESOME! YOU'RE A TALENTED DEV AND A BEAST AT DEBUGGING!", t1: 2400, t2: 4100 },
       { text: 'AND WITH THAT WE END THIS SHORT INTERACTION...', t1: 2000, t2: 3500, newLine: true },
       {
-        text: `THANKS FOR PLAYING! IF YOU LIKED THIS EXPERIENCE MAKE SURE TO CHECK SOME OF MY PROJECTS OR MY CURRICULUM WITH YOUR NEWLY FIXED ${where_1}!`,
+        text: `THANKS FOR PLAYING! IF YOU LIKED THIS EXPERIENCE MAKE SURE TO CHECK OUT SOME OF MY PROJECTS OR MY CURRICULUM WITH YOUR NEWLY FIXED ${where_1}!`,
         t1: 4000,
         t2: 7000,
       },
@@ -135,13 +143,13 @@ class WelcomeComponent extends HTMLElement {
   connectedCallback() {
     const demo = localStorage.getItem('demo');
     if (!demo) {
-      $(this).load('components/Welcome/welcome-component.html', () => {
+      $(this).load('components/Demo/demo-component.html', () => {
         this.hideMenu();
         this.hideMenuResizeSetup();
         this.dialogueButtonSetup_1();
       });
     } else {
-      $(this).load('components/Welcome/welcome-component-2.html', () => {
+      $(this).load('components/Demo/demo-component-no-demo.html', () => {
         this.dialogueButtonSetupNoDemo();
       });
     }
@@ -292,7 +300,7 @@ class WelcomeComponent extends HTMLElement {
       // Ends interaction.
       this.interactionEnded = true;
       this.endChat();
-    }, this.timeoutSum + 2000);
+    }, this.timeoutSum + 3500);
   }
 
   // Creates the elements that will be put in the dialogue box.
@@ -363,4 +371,4 @@ class WelcomeComponent extends HTMLElement {
 }
 
 // ComponentNames is defined in 'utilities.js'
-customElements.define(ComponentNames.WELCOME, WelcomeComponent);
+customElements.define(ComponentNames.DEMO, DemoComponent);
