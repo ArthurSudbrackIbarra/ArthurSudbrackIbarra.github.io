@@ -8,6 +8,7 @@ class ComponentNames {
   static JPC = 'jpc-component';
   static LATERAL_SECTION = 'lateral-section-component';
   static MAGCOUNTERS = 'magcounters-component';
+  static TERMINAL_COMMAND = 'terminal-command-component';
   static WELCOME = 'welcome-component';
 }
 

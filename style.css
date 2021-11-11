@@ -232,3 +232,16 @@ autozoom-component img {
 #typing-box {
     height: 0;
 }
+
+#terminal-box {
+    margin: 1.5rem 0;
+}
+#terminal-box #user {
+    color: var(--primary-color);
+    display: inline;
+    font-family: monospace;
+}
+#terminal-box span {
+    color: gray;
+    font-family: monospace;
+}

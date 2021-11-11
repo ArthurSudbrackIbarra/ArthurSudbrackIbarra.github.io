@@ -1,3 +1,73 @@
+// TerminalCommandComponent class.
+class TerminalCommandComponent extends HTMLElement {
+  constructor(command, onComplete) {
+    super();
+    this.command = command;
+    this.elements = null;
+    this.count = 0;
+    this.onComplete = onComplete;
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
+      <div id='terminal-box'>
+        <p id='user'>asi@ubuntu:~$ </p>
+      </div>
+    `;
+    const terminalBox = $('#terminal-box');
+    terminalBox.fadeOut(0);
+    terminalBox.fadeIn(1000);
+    this.createSpanTags();
+    this.elements = $('#terminal-box span');
+    this.setupKeyboardListening();
+  }
+
+  // Makes each individual characters in the command have its own span tag.
+  createSpanTags() {
+    for (let i = 0; i < this.command.length; i++) {
+      $('#terminal-box').append(`<span>${this.command[i]}</span>`);
+    }
+  }
+
+  // Handles keyboard/touch events.
+  setupKeyboardListening() {
+    if (screen.width <= 1023) {
+      $('#terminal-box').click(() => {
+        if (this.count <= this.elements.length) {
+          if (this.count >= this.elements.length - 1) {
+            this.elements[this.count].style.color = 'white';
+            this.onComplete();
+          } else {
+            this.elements[this.count].style.color = 'white';
+          }
+          this.count++;
+        }
+      });
+    } else {
+      $(document).keyup((event) => {
+        const key = event.originalEvent.key;
+        if (this.count <= this.elements.length) {
+          if (this.count >= this.elements.length) {
+            if (key.toLowerCase() === 'enter') {
+              this.onComplete();
+              this.count++;
+            }
+          } else {
+            if (this.elements[this.count].innerText.toLowerCase() === key) {
+              this.elements[this.count].style.color = 'white';
+              this.count++;
+            }
+          }
+        }
+      });
+    }
+  }
+}
+
+// ComponentNames is defined in 'utilities.js'
+customElements.define(ComponentNames.TERMINAL_COMMAND, TerminalCommandComponent);
+
+// WelcomeComponente class.
 class WelcomeComponent extends HTMLElement {
   constructor() {
     super();
@@ -6,18 +76,18 @@ class WelcomeComponent extends HTMLElement {
     // Sentences.
     let where_1;
     let where_2;
-    let where_3;
+    let typeOrPress;
     if (screen.width <= 1023) {
       where_1 = 'HAMBURGER MENU';
       where_2 = 'IS THE HAMBURGER MENU';
-      where_3 = 'HAMBURGUR MENU IS';
+      typeOrPress = 'TOUCHING THE COMMAND MULTIPLE TIMES';
     } else {
       where_1 = 'NAVIGATION BAR';
       where_2 = 'ARE THE MENU ITEMS';
-      where_3 = 'MENU ITEMS ARE';
+      typeOrPress = 'TYPING THE COMMAND AND THEN PRESS ENTER';
     }
     this.sentencesPartOne = [
-      { text: "OH, HEY! I'M ARTHUR SUDBRACK IBARRA!", t1: 0, t2: 2000 },
+      { text: "OH, HEY! I'M ARTHUR SUDBRACK IBARRA!", t1: 0, t2: 3000 },
       { text: 'AND THIS IS MY PERSONAL WEBSITE!', t1: 2400, t2: 3900 },
       { text: "OK, SO I'LL BRIEFLY EXPLAIN WHAT YOU CAN DO HERE.", t1: 1900, t2: 3000 },
       { text: 'HERE WE GO:', t1: 1000, t2: 2000, newLine: true },
@@ -33,12 +103,31 @@ class WelcomeComponent extends HTMLElement {
     ];
     this.sentencesPartTwo = [
       { text: 'OK, SO', t1: 0, t2: 1300 },
-      { text: `TO BE CONTINUED... THE ${where_3} BACK! (FOR NOW...)`, t1: 2300, t2: 4000 },
+      { text: 'MAYBE YOU COULD USE A COMMAND, LIKE PEOPLE DO IN TERMINALS, YOU KNOW?', t1: 2300, t2: 4000 },
+      {
+        text: `HERE, I FOUND THIS IN STACKOVERFLOW, NO WAY IT WON'T WORK. MAYBE TRY ${typeOrPress}?`,
+        t1: 3000,
+        t2: 5000,
+      },
+    ];
+    this.sentencesPartThree = [
+      { text: 'NICE! THAT WAS IT!!!', t1: 0, t2: 1400 },
+      { text: "THAT WAS AWESOME! YOU'RE A TALENTED DEV AND A BEAST AT DEBUGGING!", t1: 2400, t2: 4100 },
+      { text: 'AND WITH THAT WE END THIS SHORT INTERACTION...', t1: 2000, t2: 3500, newLine: true },
+      {
+        text: `THANKS FOR PLAYING! IF YOU LIKED THIS EXPERIENCE MAKE SURE TO CHECK SOME OF MY PROJECTS OR MY CURRICULUM WITH YOUR NEWLY FIXED ${where_1}!`,
+        t1: 4000,
+        t2: 7000,
+      },
     ];
     // Menu hide.
     this.menuHide = null;
     // Interaction ended.
     this.interactionEnded = false;
+    // Terminal Command component.
+    this.terminalCommand = new TerminalCommandComponent('createMenuItems --left my_projects --right curriculum', () => {
+      this.startChat_3();
+    });
   }
 
   // Called once the element is appended to DOM.
@@ -102,15 +191,16 @@ class WelcomeComponent extends HTMLElement {
     this.menuHide.fadeIn(2000);
     this.scrollScreenTo(this.menuHide);
     let blinkingTimeout = 2200;
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 6; i++) {
       setTimeout(() => {
         this.menuHide.toggleClass('blinkingMenu');
       }, blinkingTimeout);
       blinkingTimeout += 400;
     }
+    this.timeoutSum = blinkingTimeout;
   }
 
-  // Scrolls the screen to an element
+  // Scrolls the screen to an element.
   scrollScreenTo(element) {
     $([document.documentElement, document.body]).animate(
       {
@@ -181,11 +271,28 @@ class WelcomeComponent extends HTMLElement {
       this.type(dialogueBox, sentence);
     }
     setTimeout(() => {
+      this.timeoutSum = 0;
+      this.startTerminalCommandPart();
+    }, this.timeoutSum + 2000);
+  }
+
+  // Appends the terminal-command-component element to the dialogue box and starts the terminal part of the interaction.
+  startTerminalCommandPart() {
+    $('#dialogue-box').append(this.terminalCommand);
+  }
+
+  // Starts the third interaction with the user.
+  startChat_3() {
+    this.showMenu();
+    const dialogueBox = $(`#interaction-panel #dialogue-box`);
+    for (const sentence of this.sentencesPartThree) {
+      this.type(dialogueBox, sentence);
+    }
+    setTimeout(() => {
       // Ends interaction.
       this.interactionEnded = true;
       this.endChat();
-      this.showMenu();
-    }, this.timeoutSum + 1000);
+    }, this.timeoutSum + 2000);
   }
 
   // Creates the elements that will be put in the dialogue box.
