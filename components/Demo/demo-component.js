@@ -6,6 +6,7 @@ class TerminalCommandComponent extends HTMLElement {
     this.elements = null;
     this.count = 0;
     this.onComplete = onComplete;
+    this.blinkingInterval = null;
   }
 
   connectedCallback() {
@@ -20,17 +21,42 @@ class TerminalCommandComponent extends HTMLElement {
     this.createSpanTags();
     this.elements = $('#terminal-box span:not(.space)');
     this.setupKeyboardListening();
+    this.startBlinkingAnimation();
   }
 
   // Makes each individual characters in the command have its own span tag.
   createSpanTags() {
     for (let i = 0; i < this.command.length; i++) {
       if (this.command[i] !== ' ') {
-        $('#terminal-box').append(`<span>${this.command[i]}</span>`);
+        if (i === 0) {
+          $('#terminal-box').append(`<span class='blinking-character'>${this.command[i]}</span>`);
+        } else {
+          $('#terminal-box').append(`<span>${this.command[i]}</span>`);
+        }
       } else {
         $('#terminal-box').append(`<span class="space">${this.command[i]}</span>`);
       }
     }
+  }
+
+  // Starts the blinking animation in a span tag.
+  startBlinkingAnimation() {
+    clearInterval(this.blinkingInterval);
+    this.blinkingInterval = setInterval(() => {
+      this.elements[this.count].classList.toggle('blinking-character');
+    }, 500);
+  }
+
+  // Stops the blinking animation in any span tag.
+  stopBlinkingAnimation() {
+    clearInterval(this.blinkingInterval);
+    $('.blinking-character').removeClass('blinking-character');
+  }
+
+  // Changes the span tag that will blink.
+  changeBlinkingCharacter() {
+    $('.blinking-character').removeClass('blinking-character');
+    this.elements[this.count].classList.add('blinking-character');
   }
 
   // Handles keyboard/touch events.
@@ -41,13 +67,15 @@ class TerminalCommandComponent extends HTMLElement {
         if (this.count <= this.elements.length) {
           if (this.count >= this.elements.length - 1) {
             this.elements[this.count].style.color = 'white';
+            this.stopBlinkingAnimation();
             this.onComplete();
             terminalBox.off();
-            this.count++;
           } else {
             this.elements[this.count].style.color = 'white';
+            this.count++;
+            this.changeBlinkingCharacter();
+            this.startBlinkingAnimation();
           }
-          this.count++;
         }
       });
     } else {
@@ -56,14 +84,16 @@ class TerminalCommandComponent extends HTMLElement {
         if (this.count <= this.elements.length) {
           if (this.count >= this.elements.length) {
             if (key.toLowerCase() === 'enter') {
+              this.stopBlinkingAnimation();
               this.onComplete();
               $(document).off();
-              this.count++;
             }
           } else {
             if (this.elements[this.count].innerText.toLowerCase() === key) {
               this.elements[this.count].style.color = 'white';
               this.count++;
+              this.changeBlinkingCharacter();
+              this.startBlinkingAnimation();
             }
           }
         }
@@ -85,14 +115,17 @@ class DemoComponent extends HTMLElement {
     let where_1;
     let where_2;
     let typeOrPress;
+    let command;
     if (screen.width <= 1023) {
       where_1 = 'HAMBURGER MENU';
       where_2 = 'IS THE HAMBURGER MENU';
       typeOrPress = 'TOUCHING THE COMMAND MULTIPLE TIMES';
+      command = 'create-hamburger-menu --color white --placement top-right';
     } else {
       where_1 = 'NAVIGATION BAR';
       where_2 = 'ARE THE MENU ITEMS';
       typeOrPress = 'TYPING THE COMMAND AND THEN PRESS ENTER';
+      command = 'createMenuItems --left my_projects --right curriculum';
     }
     this.sentencesPartOne = [
       { text: "OH, HEY! I'M ARTHUR SUDBRACK IBARRA!", t1: 0, t2: 3000 },
@@ -133,7 +166,7 @@ class DemoComponent extends HTMLElement {
     // Interaction ended.
     this.interactionEnded = false;
     // Terminal Command component.
-    this.terminalCommand = new TerminalCommandComponent('createMenuItems --left my_projects --right curriculum', () => {
+    this.terminalCommand = new TerminalCommandComponent(command, () => {
       this.startChat_3();
     });
   }
@@ -159,7 +192,7 @@ class DemoComponent extends HTMLElement {
   // Also handles situations where the screen width changes suddenly (dev tools, for example).
   hideMenu() {
     const mobileHide = $('.navbar-burger');
-    const desktopHide = $('.navbar-link, #curriculum');
+    const desktopHide = $('.navbar-link, #curriculum, #my-github, #my-youtube');
     if (!this.interactionEnded) {
       mobileHide.fadeOut(0);
       desktopHide.fadeOut(0);
