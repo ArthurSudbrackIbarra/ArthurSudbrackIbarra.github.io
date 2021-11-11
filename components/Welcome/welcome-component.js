@@ -17,31 +17,19 @@ class WelcomeComponent extends HTMLElement {
       where_3 = 'MENU ITEMS ARE';
     }
     this.sentencesPartOne = [
-      { text: "OH, HEY! I'M ARTHUR SUDBRACK IBARRA!", t1: 0, t2: 3000 },
-      { text: 'AND THIS IS MY PERSONAL SITE!', t1: 2400, t2: 5000 },
+      { text: "OH, HEY! I'M ARTHUR SUDBRACK IBARRA!", t1: 0, t2: 2000 },
+      { text: 'AND THIS IS MY PERSONAL WEBSITE!', t1: 2400, t2: 3900 },
       { text: "OK, SO I'LL BRIEFLY EXPLAIN WHAT YOU CAN DO HERE.", t1: 1900, t2: 3000 },
       { text: 'HERE WE GO:', t1: 1000, t2: 2000, newLine: true },
+      { text: 'WAIT A MINUTE!', t1: 2500, t2: 3800, color: 'red', newLine: true },
+      { text: `WHERE ${where_2}??!!`, t1: 1000, t2: 3000, color: 'red' },
       {
-        text: `MY PROJECTS - CHOOSE 'MY PROJECTS' IN THE ${where_1} TO CHECK OUT SOME COOL PROJECTS I'VE MADE.`,
-        t1: 2400,
-        t2: 4000,
-        newLine: true,
-      },
-      {
-        text: `CURRICULUM - CHOOSE 'CURRICULUM' IN THE ${where_1} TO CHECK OUT MY EDUCATION, PROFESSIONAL EXPERIENCE AND SKILLS.`,
-        t1: 2400,
-        t2: 5000,
-        newLine: true,
-      },
-      { text: 'WAIT A MINUTE!', t1: 2500, t2: 4200, color: 'red', newLine: true },
-      { text: `WHERE ${where_2}??!!`, t1: 2000, t2: 3000, color: 'red' },
-      {
-        text: "THIS IS PROBRABLY A BUG, SILLY ARTHUR CAN'T EVEN DO HIS CODING RIGHT...",
-        t1: 3500,
+        text: "THIS MUST BE A BUG, SILLY ARTHUR CAN'T EVEN DO HIS CODING RIGHT...",
+        t1: 3000,
         t2: 5200,
         newLine: true,
       },
-      { text: 'WELL, NOW IT IS YOUR JOB TO FIX THAT...', t1: 2000, t2: 3000 },
+      { text: "WELL, I HOPE (YOU) CAN FIX THAT...", t1: 2000, t2: 3000 },
     ];
     this.sentencesPartTwo = [
       { text: 'OK, SO', t1: 0, t2: 1300 },
@@ -53,12 +41,21 @@ class WelcomeComponent extends HTMLElement {
     this.interactionEnded = false;
   }
 
+  // Called once the element is appended to DOM.
+  // Checks if demo should play or not.
   connectedCallback() {
-    $(this).load('components/Welcome/welcome-component.html', () => {
-      this.hideMenu();
-      this.hideMenuResizeSetup();
-      this.hiButtonSetup_1();
-    });
+    const demo = localStorage.getItem('demo');
+    if (!demo) {
+      $(this).load('components/Welcome/welcome-component.html', () => {
+        this.hideMenu();
+        this.hideMenuResizeSetup();
+        this.dialogueButtonSetup_1();
+      });
+    } else {
+      $(this).load('components/Welcome/welcome-component-2.html', () => {
+        this.dialogueButtonSetupNoDemo();
+      });
+    }
   }
 
   // Hides/Shows hamburger menu or navigation bar items according to screen width.
@@ -99,7 +96,7 @@ class WelcomeComponent extends HTMLElement {
   }
 
   // Shows menu hamburger or navigation bar items according to screen width.
-  // Blinks the elements that were hidden 2 times.
+  // Blinks the elements that were hidden 3 times.
   // Scrolls screen to the position of the elements that were hidden.
   showMenu() {
     this.menuHide.fadeIn(2000);
@@ -124,13 +121,14 @@ class WelcomeComponent extends HTMLElement {
   }
 
   // Defines what the first button of the interaction will do on click.
-  hiButtonSetup_1() {
-    const hiButton = $('.hi-button');
-    hiButton.click(() => {
-      hiButton.off();
-      hiButton.addClass('disabled-hi-button');
+  dialogueButtonSetup_1() {
+    const dialogueButton = $('.dialogue-button');
+    dialogueButton.click(() => {
+      localStorage.setItem('demo', 'done');
+      dialogueButton.off();
+      dialogueButton.addClass('disabled-dialogue-button');
       $('.arrow').fadeOut(1000);
-      hiButton.animate({ marginBottom: '1rem' }, 1800);
+      dialogueButton.animate({ marginBottom: '1rem' }, 1800);
       $('#typing-box').animate({ height: 25 }, 1800);
       setTimeout(() => {
         this.startChat_1();
@@ -139,17 +137,27 @@ class WelcomeComponent extends HTMLElement {
   }
 
   // Defines what the second button of the interaction will do on click.
-  hiButtonSetup_2() {
-    const hiButton = $('.hi-button');
-    hiButton.removeClass('disabled-hi-button');
-    hiButton.text('CONTINUE');
-    hiButton.click(() => {
-      hiButton.off();
-      hiButton.addClass('disabled-hi-button');
+  dialogueButtonSetup_2() {
+    const dialogueButton = $('.dialogue-button');
+    dialogueButton.removeClass('disabled-dialogue-button');
+    dialogueButton.text('CONTINUE');
+    dialogueButton.click(() => {
+      dialogueButton.off();
+      dialogueButton.addClass('disabled-dialogue-button');
       $('.arrow').fadeOut(1000);
       setTimeout(() => {
         this.startChat_2();
       }, 2000);
+    });
+  }
+
+  // Defines what the button of the interaction will do if the demo is not activated.
+  dialogueButtonSetupNoDemo() {
+    const dialogueButton = $('.dialogue-button');
+    dialogueButton.click(() => {
+      dialogueButton.addClass('disabled-dialogue-button');
+      localStorage.removeItem('demo');
+      location.reload();
     });
   }
 
@@ -160,7 +168,7 @@ class WelcomeComponent extends HTMLElement {
       this.type(dialogueBox, sentence);
     }
     setTimeout(() => {
-      this.hiButtonSetup_2();
+      this.dialogueButtonSetup_2();
       this.clearDialogueBox();
     }, this.timeoutSum + 4000);
   }

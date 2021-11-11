@@ -206,7 +206,7 @@ autozoom-component img {
     font-weight: normal;
     letter-spacing: -3px;
 }
-.hi-button, .disabled-hi-button {
+.dialogue-button, .disabled-dialogue-button {
     font-family: 'Code', monospace;
     font-size: 1rem;
     background-color: black;
@@ -214,10 +214,11 @@ autozoom-component img {
     border-radius: 10px;
     color: white;
     cursor: pointer;
+    margin-top: 0.4rem;
     margin-bottom: 0;
     padding: 0.2rem 0.2rem 0.2rem 0.6rem;
 }
-.disabled-hi-button {
+.disabled-dialogue-button {
     background-color: white !important;
     color: black !important;
     cursor: default;
