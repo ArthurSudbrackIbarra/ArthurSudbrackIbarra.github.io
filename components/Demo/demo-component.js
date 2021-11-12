@@ -19,7 +19,7 @@ class TerminalCommandComponent extends HTMLElement {
     terminalBox.fadeOut(0);
     terminalBox.fadeIn(1000);
     this.createSpanTags();
-    this.elements = $('#terminal-box span:not(.space)');
+    this.elements = $('#terminal-box span');
     this.setupKeyboardListening();
     this.startBlinkingAnimation();
   }
@@ -27,14 +27,10 @@ class TerminalCommandComponent extends HTMLElement {
   // Makes each individual characters in the command have its own span tag.
   createSpanTags() {
     for (let i = 0; i < this.command.length; i++) {
-      if (this.command[i] !== ' ') {
-        if (i === 0) {
-          $('#terminal-box').append(`<span class='blinking-character'>${this.command[i]}</span>`);
-        } else {
-          $('#terminal-box').append(`<span>${this.command[i]}</span>`);
-        }
+      if (i === 0) {
+        $('#terminal-box').append(`<span class='blinking-character'>${this.command[i]}</span>`);
       } else {
-        $('#terminal-box').append(`<span class="space">${this.command[i]}</span>`);
+        $('#terminal-box').append(`<span>${this.command[i]}</span>`);
       }
     }
   }
@@ -61,7 +57,8 @@ class TerminalCommandComponent extends HTMLElement {
 
   // Handles keyboard/touch events.
   setupKeyboardListening() {
-    if (screen.width <= 1023) {
+    // isMobile function is defined in 'utilities.js'
+    if (isMobile()) {
       const terminalBox = $('#terminal-box');
       terminalBox.click(() => {
         if (this.count <= this.elements.length) {
@@ -102,7 +99,7 @@ class TerminalCommandComponent extends HTMLElement {
   }
 }
 
-// ComponentNames is defined in 'utilities.js'
+// ComponentNames is defined in 'utilities.js'.
 customElements.define(ComponentNames.TERMINAL_COMMAND, TerminalCommandComponent);
 
 // Demo Component class.
@@ -125,7 +122,7 @@ class DemoComponent extends HTMLElement {
       where_1 = 'NAVIGATION BAR';
       where_2 = 'ARE THE MENU ITEMS';
       typeOrPress = 'TYPING THE COMMAND AND THEN PRESS ENTER';
-      command = 'createMenuItems --left my_projects --right curriculum';
+      command = 'create-menu-items my-projects curriculum --include-social-media';
     }
     this.sentencesPartOne = [
       { text: "OH, HEY! I'M ARTHUR SUDBRACK IBARRA!", t1: 0, t2: 3000 },
