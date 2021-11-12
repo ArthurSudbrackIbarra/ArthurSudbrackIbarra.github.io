@@ -237,7 +237,7 @@ autozoom-component img {
     margin: 1.5rem 0;
 }
 #terminal-box #user {
-    color: var(--primary-color);
+    color: #7ac730;
     display: inline;
     font-family: monospace;
     font-weight: bold;

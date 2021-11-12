@@ -111,17 +111,17 @@ class DemoComponent extends HTMLElement {
     // Sentences.
     let where_1;
     let where_2;
-    let typeOrPress;
+    let typeOrTouch;
     let command;
     if (screen.width <= 1023) {
       where_1 = 'HAMBURGER MENU';
       where_2 = 'IS THE HAMBURGER MENU';
-      typeOrPress = 'TOUCHING THE COMMAND MULTIPLE TIMES';
+      typeOrTouch = 'TOUCHING THE COMMAND MULTIPLE TIMES';
       command = 'create-hamburger-menu --color white --placement top-right';
     } else {
       where_1 = 'NAVIGATION BAR';
       where_2 = 'ARE THE MENU ITEMS';
-      typeOrPress = 'TYPING THE COMMAND AND THEN PRESS ENTER';
+      typeOrTouch = 'TYPING THE COMMAND AND THEN PRESS ENTER';
       command = 'create-menu-items my-projects curriculum --include-social-media';
     }
     this.sentencesPartOne = [
@@ -143,13 +143,13 @@ class DemoComponent extends HTMLElement {
       { text: 'OK, SO', t1: 0, t2: 1300 },
       { text: 'MAYBE YOU COULD USE A COMMAND, LIKE PEOPLE DO IN TERMINALS, YOU KNOW?', t1: 2300, t2: 4000 },
       {
-        text: `HERE, I FOUND THIS IN STACKOVERFLOW, NO WAY IT WON'T WORK. MAYBE TRY ${typeOrPress}?`,
+        text: `HERE, I FOUND THIS IN STACKOVERFLOW, THERE'S NO WAY IT WON'T WORK. MAYBE TRY ${typeOrTouch}?`,
         t1: 3000,
         t2: 5000,
       },
     ];
     this.sentencesPartThree = [
-      { text: 'NICE! THAT WAS IT!!!', t1: 0, t2: 1400 },
+      { text: 'NICE! THAT WAS IT!', t1: 0, t2: 1400 },
       { text: "THAT WAS AWESOME! YOU'RE A TALENTED DEV AND A BEAST AT DEBUGGING!", t1: 2400, t2: 4100 },
       { text: 'AND WITH THAT WE END THIS SHORT INTERACTION...', t1: 2000, t2: 3500, newLine: true },
       {
