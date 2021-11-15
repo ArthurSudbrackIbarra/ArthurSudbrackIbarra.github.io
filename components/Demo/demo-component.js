@@ -38,9 +38,11 @@ class TerminalCommandComponent extends HTMLElement {
   // Starts the blinking animation in a span tag.
   startBlinkingAnimation() {
     clearInterval(this.blinkingInterval);
-    this.blinkingInterval = setInterval(() => {
-      this.elements[this.count].classList.toggle('blinking-character');
-    }, 500);
+    if (this.elements[this.count]) {
+      this.blinkingInterval = setInterval(() => {
+        this.elements[this.count].classList.toggle('blinking-character');
+      }, 500);
+    }
   }
 
   // Stops the blinking animation in any span tag.
@@ -52,7 +54,9 @@ class TerminalCommandComponent extends HTMLElement {
   // Changes the span tag that will blink.
   changeBlinkingCharacter() {
     $('.blinking-character').removeClass('blinking-character');
-    this.elements[this.count].classList.add('blinking-character');
+    if (this.elements[this.count]) {
+      this.elements[this.count].classList.add('blinking-character');
+    }
   }
 
   // Handles keyboard/touch events.
