@@ -71,6 +71,7 @@ class TerminalCommandComponent extends HTMLElement {
             this.stopBlinkingAnimation();
             this.onComplete();
             terminalBox.off();
+            this.playSuccessAudio();
           } else {
             this.elements[this.count].style.color = 'white';
             this.count++;
@@ -88,11 +89,13 @@ class TerminalCommandComponent extends HTMLElement {
               this.stopBlinkingAnimation();
               this.onComplete();
               $(document).off();
+              this.playSuccessAudio();
             }
           } else {
             if (this.elements[this.count].innerText.toLowerCase() === key) {
               this.elements[this.count].style.color = 'white';
               this.count++;
+              this.playKeyPressedAudio();
               this.changeBlinkingCharacter();
               this.startBlinkingAnimation();
             }
@@ -100,6 +103,22 @@ class TerminalCommandComponent extends HTMLElement {
         }
       });
     }
+  }
+
+  playKeyPressedAudio() {
+    if (Audios.KEY_PRESSED) {
+      Audios.KEY_PRESSED.currentTime = 0;
+    } else {
+      Audios.KEY_PRESSED = new Audio('../assets/keyPressed.mp3');
+      Audios.KEY_PRESSED.volume = 0.2;
+    }
+    Audios.KEY_PRESSED.play();
+  }
+
+  playSuccessAudio() {
+    Audios.SUCCESS = new Audio('../assets/success.mp3');
+    Audios.SUCCESS.volume = 0.5;
+    Audios.SUCCESS.play();
   }
 }
 
@@ -357,12 +376,12 @@ class DemoComponent extends HTMLElement {
   type(dialogueBox, sentence) {
     // Types.
     setTimeout(() => {
-      this.playAudio();
+      this.playTypingAudio();
       $('#typing-box').append('<object type="image/svg+xml" data="../../assets/typing.svg" width=\'25px\'></object>');
     }, this.timeoutSum + sentence.t1),
       // Stops typing.
       setTimeout(() => {
-        this.stopAudio();
+        this.stopTypingAudio();
         $('#typing-box object').remove();
         this.createDialogue(dialogueBox, sentence);
       }, this.timeoutSum + sentence.t2),
@@ -381,7 +400,7 @@ class DemoComponent extends HTMLElement {
   }
 
   // Plays the typing audio.
-  playAudio() {
+  playTypingAudio() {
     // Audios is defined in 'utilities.js'
     Audios.TYPING = new Audio('../../assets/typing.mp3');
     Audios.TYPING.volume = 0.2;
@@ -390,9 +409,9 @@ class DemoComponent extends HTMLElement {
   }
 
   // Stops playing the typing audio.
-  stopAudio() {
+  stopTypingAudio() {
     // Audios is defined in 'utilities.js'
-    Audios.TYPING.volume = 0;
+    Audios.TYPING.pause();
   }
 
   // Ends chat interaction with a cool sliding animation.

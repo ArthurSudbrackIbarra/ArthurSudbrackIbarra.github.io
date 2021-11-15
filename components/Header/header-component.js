@@ -58,6 +58,19 @@ class HeaderComponent extends HTMLElement {
       Audios.SELECT = new Audio('../assets/selectSound.mp3');
       Audios.SELECT.play();
     });
+    // isMobile function is defined in 'utilities.js'
+    if (!isMobile()) {
+      $('.navbar-item').mouseenter(() => {
+        if (Audios.HOVER) {
+          Audios.HOVER.currentTime = 0;
+        } else {
+          Audios.HOVER = new Audio('../assets/hover.mp3');
+        }
+        Audios.HOVER.play().catch((error) => {
+          console.log('User must interact with the document first for the hover audio to play!');
+        });
+      });
+    }
   }
 
   showComponent(componentName) {

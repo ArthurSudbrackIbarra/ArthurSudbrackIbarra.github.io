@@ -27,7 +27,10 @@ class ComponentNames {
 // Class with all the audios.
 class Audios {
   static SELECT = null;
+  static HOVER = null;
   static TYPING = null;
+  static KEY_PRESSED = null;
+  static SUCCESS = null;
 }
 
 // This function will remove the loading spinners
