@@ -1,4 +1,4 @@
-/** Root **/
+/* Root */
 :root {
   --primary-color: #2995a0;
   --primary-color-darker: #186c73;
@@ -19,7 +19,7 @@
   src: url('./fonts/Code.ttf') format('truetype');
 }
 
-/** Scrollbar **/
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 3px;
   display: none;
@@ -34,7 +34,7 @@
   background-color: var(--primary-color-darker);
 }
 
-/** Elements **/
+/* Elements */
 .navbar-brand img {
   width: 50px;
 }
@@ -67,7 +67,7 @@
   background-color: #f5f5f5 !important;
 }
 
-/** Mobile **/
+/* Mobile */
 @media screen and (max-width: 1023px) {
   .column {
     padding: 0.75rem !important;
@@ -93,13 +93,13 @@
   }
 }
 
-/** Desktop **/
+/* Desktop */
 @media screen and (min-width: 1024px) {
-  #main-content.column > * > div {
+  .scrollable > div {
     max-height: 85vh;
     overflow-y: scroll;
   }
-  #main-content.column > * > div::-webkit-scrollbar {
+  .scrollable > div::-webkit-scrollbar {
     display: block;
   }
   #navbarBasicExample .navbar-item:hover,
