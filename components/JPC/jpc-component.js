@@ -6,7 +6,7 @@ class JPCComponent extends HTMLElement {
   connectedCallback() {
     $(this).load('components/JPC/jpc-component.html', () => {
       // Hiding this custom component once it has been loaded
-      $(`${ComponentNames.JPC} .box`).hide();
+      $(`${ComponentNames.JPC}`).children().first().hide();
       // Utilities
       loadingImages(1, ComponentNames.JPC);
     });

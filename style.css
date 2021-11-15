@@ -1,252 +1,291 @@
+/** Root **/
 :root {
-    --primary-color: #2995A0;
-    --primary-color-darker: #186c73;
+  --primary-color: #2995a0;
+  --primary-color-darker: #186c73;
 
-    --github-color: #333;
-    --github-color-darker: #242323;
-    --discord-color: #5865F2;
-    --discord-color-darker: #424ec9;
+  --github-color: #333;
+  --github-color-darker: #242323;
+  --discord-color: #5865f2;
+  --discord-color-darker: #424ec9;
 }
 
+/** Fonts **/
 @font-face {
-    font-family: 'Batmfa';
-    src: url("./fonts/batmfa.ttf") format("truetype");
+  font-family: 'Batmfa';
+  src: url('./fonts/batmfa.ttf') format('truetype');
 }
-
 @font-face {
-    font-family: 'Code';
-    src: url("./fonts/Code.ttf") format("truetype");
+  font-family: 'Code';
+  src: url('./fonts/Code.ttf') format('truetype');
 }
 
+/** Scrollbar **/
+::-webkit-scrollbar {
+  width: 3px;
+  display: none;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-color-darker);
+}
+
+/** Elements **/
 .navbar-brand img {
-    width: 50px;
+  width: 50px;
 }
 .navbar-item img {
-    max-height: 100% !important;
+  max-height: 100% !important;
 }
 .navbar-brand p {
-    font-size: 1.4rem;
-    font-family: 'Batmfa', sans-serif;
-    font-weight: normal;
-    color: white;
-    margin-left: 0.7rem;
-    margin-right: 1rem;
+  font-size: 1.4rem;
+  font-family: 'Batmfa', sans-serif;
+  font-weight: normal;
+  color: white;
+  margin-left: 0.7rem;
+  margin-right: 1rem;
 }
 .navbar-burger {
-    height: auto !important;
+  height: auto !important;
 }
 .blinkingMenu {
-    background-color: var(--primary-color) !important;
-    color: white !important;
+  background-color: var(--primary-color) !important;
+  color: white !important;
 }
 
 .columns {
-    margin: 0.5rem !important;
+  margin: 0.5rem !important;
 }
 .column {
-    padding: 1.5rem !important;
+  padding: 1.5rem !important;
 }
 .box {
-    background-color: #f5f5f5 !important;
+  background-color: #f5f5f5 !important;
 }
 
+/** Mobile **/
 @media screen and (max-width: 1023px) {
-    .column {
-        padding: 0.75rem !important;
-    }
-    .box {
-        border: 2px solid #4a4a4a;
-    }
-    header-component i {
-        color: black !important;
-    }
-    .navbar-link:not(.is-arrowless)::after {
-        border-color: black !important;
-    }
-    .navbar-link.is-active, .navbar-link:focus, .navbar-link:focus-within, .navbar-link:hover, a.navbar-item.is-active, a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover {
-        color: var(--primary-color) !important;
-    }
+  .column {
+    padding: 0.75rem !important;
+  }
+  .box {
+    border: 2px solid #4a4a4a;
+  }
+  header-component i {
+    color: black !important;
+  }
+  .navbar-link:not(.is-arrowless)::after {
+    border-color: black !important;
+  }
+  .navbar-link.is-active,
+  .navbar-link:focus,
+  .navbar-link:focus-within,
+  .navbar-link:hover,
+  a.navbar-item.is-active,
+  a.navbar-item:focus,
+  a.navbar-item:focus-within,
+  a.navbar-item:hover {
+    color: var(--primary-color) !important;
+  }
 }
+
+/** Desktop **/
 @media screen and (min-width: 1024px) {
-    #navbarBasicExample .navbar-item:hover, .navbar-link:hover, .navbar-item.selected, .navbar-link:hover.selected {
-        background-color: var(--primary-color) !important;
-    }
-    .navbar-dropdown {
-        background-color: black !important;
-    }
-    .navbar-dropdown .navbar-item {
-        background-color: black;
-        color: white !important;
-    }
-    .navbar-dropdown .navbar-item i {
-        color: white;
-    }
-    .navbar-dropdown .navbar-item:hover {
-        background-color: var(--primary-color) !important;
-    }
+  #main-content.column > * > div {
+    max-height: 85vh;
+    overflow-y: scroll;
+  }
+  #main-content.column > * > div::-webkit-scrollbar {
+    display: block;
+  }
+  #navbarBasicExample .navbar-item:hover,
+  .navbar-link:hover,
+  .navbar-item.selected,
+  .navbar-link:hover.selected {
+    background-color: var(--primary-color) !important;
+  }
+  .navbar-dropdown {
+    background-color: black !important;
+  }
+  .navbar-dropdown .navbar-item {
+    background-color: black;
+    color: white !important;
+  }
+  .navbar-dropdown .navbar-item i {
+    color: white;
+  }
+  .navbar-dropdown .navbar-item:hover {
+    background-color: var(--primary-color) !important;
+  }
 }
 
 .my-projects-icon {
-    margin-left: 0.3rem;
+  margin-left: 0.3rem;
 }
 
 lateral-section-component .box {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 lateral-section-component figure {
-    margin: auto;
+  margin: auto;
 }
 lateral-section-component img {
-    border: 4px inset var(--primary-color);
+  border: 4px inset var(--primary-color);
 }
 lateral-section-component h1 {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
-    text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  text-align: center;
 }
 lateral-section-component p {
-    font-size: 1.1rem;
-    margin-top: 0.7rem;
-    text-align: justify;
+  font-size: 1.1rem;
+  margin-top: 0.7rem;
+  text-align: justify;
 }
 
 .descriptonOrLanguage {
-    margin-bottom: 0.9rem;
+  margin-bottom: 0.9rem;
 }
 .content {
-    overflow-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .content h1 {
-    font-weight: bold;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
-.content img:not(.spinner), .content iframe {
-    border-radius: 3%;
+.content img:not(.spinner),
+.content iframe {
+  border-radius: 3%;
 }
 blockquote {
-    background-color: var(--primary-color) !important;
-    border-left: 5px solid var(--primary-color-darker) !important;
-    color: white;
+  background-color: var(--primary-color) !important;
+  border-left: 5px solid var(--primary-color-darker) !important;
+  color: white;
 }
 
 custom-button-component .button {
-    color: white !important;
-    width: 100%;
-    height: 2.8rem;
-    margin: 0.2rem 0;
+  color: white !important;
+  width: 100%;
+  height: 2.8rem;
+  margin: 0.2rem 0;
 }
 .github-button {
-    background-color: var(--github-color) !important;
+  background-color: var(--github-color) !important;
 }
 .github-button:hover {
-    background-color: var(--github-color-darker) !important;
+  background-color: var(--github-color-darker) !important;
 }
 .discord-button {
-    background-color: var(--discord-color) !important;
+  background-color: var(--discord-color) !important;
 }
 .discord-button:hover {
-    background-color: var(--discord-color-darker) !important;
+  background-color: var(--discord-color-darker) !important;
 }
 .default-button {
-    background-color: var(--primary-color) !important;
+  background-color: var(--primary-color) !important;
 }
 .default-button:hover {
-    background-color: var(--primary-color-darker) !important;
+  background-color: var(--primary-color-darker) !important;
 }
 
 curriculum-component ul {
-    list-style: none !important;
-    margin-left: 0 !important;
+  list-style: none !important;
+  margin-left: 0 !important;
 }
 curriculum-component li {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 curriculum-component i {
-    color: var(--primary-color);
-    margin-right: 0.4rem;
-    font-size: 1.2rem;
+  color: var(--primary-color);
+  margin-right: 0.4rem;
+  font-size: 1.2rem;
 }
 
 .spinner-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .spinner {
-    margin-top: 1.6rem;
-    margin-right: auto;
-    margin-left: auto;
-    height: 15vh;
+  margin-top: 1.6rem;
+  margin-right: auto;
+  margin-left: auto;
+  height: 15vh;
 }
 .loading-image {
-    display: none !important;
+  display: none !important;
 }
 
 case-changer-component iframe {
-    width: 100%;
-    height: 55vh;
+  width: 100%;
+  height: 55vh;
 }
 
 autozoom-component img {
-    width: 100%;
+  width: 100%;
 }
 
 #interaction-panel {
-    background-color: black;
-    padding: 1rem;
-    border-radius: 6px;
+  background-color: black;
+  padding: 1rem;
+  border-radius: 6px;
 }
 #interaction-panel h5 {
-    color: white;
-    margin-bottom: 0.7rem;
-    font-family: 'Code', monospace;
-    font-weight: normal;
-    letter-spacing: -3px;
+  color: white;
+  margin-bottom: 0.7rem;
+  font-family: 'Code', monospace;
+  font-weight: normal;
+  letter-spacing: -3px;
 }
-.dialogue-button, .disabled-dialogue-button {
-    font-family: 'Code', monospace;
-    font-size: 1rem;
-    background-color: black;
-    border: 2px solid white;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    margin-top: 0.4rem;
-    margin-bottom: 0;
-    padding: 0.2rem 0.2rem 0.2rem 0.6rem;
+.dialogue-button,
+.disabled-dialogue-button {
+  font-family: 'Code', monospace;
+  font-size: 1rem;
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+  padding: 0.2rem 0.2rem 0.2rem 0.6rem;
 }
 .disabled-dialogue-button {
-    background-color: white !important;
-    color: black !important;
-    cursor: default;
+  background-color: white !important;
+  color: black !important;
+  cursor: default;
 }
 .arrow {
-    position: relative;
-    left: 0.28rem;
-    top: 0.23rem;
-    width: 23px;
+  position: relative;
+  left: 0.28rem;
+  top: 0.23rem;
+  width: 23px;
 }
 #typing-box {
-    height: 0;
+  height: 0;
 }
 
 #terminal-box {
-    margin: 1.5rem 0;
+  margin: 1.5rem 0;
 }
 #terminal-box #user {
-    color: #7ac730;
-    display: inline;
-    font-family: monospace;
-    font-weight: bold;
+  color: #7ac730;
+  display: inline;
+  font-family: monospace;
+  font-weight: bold;
 }
 #terminal-box span {
-    color: gray;
-    font-family: monospace;
-    border-left: 1px solid transparent;
+  color: gray;
+  font-family: monospace;
+  border-left: 1px solid transparent;
 }
 .blinking-character {
-    border-left: 1px solid white !important;
+  border-left: 1px solid white !important;
 }

@@ -6,7 +6,7 @@ class CurriculumComponent extends HTMLElement {
   connectedCallback() {
     $(this).load('components/Curriculum/curriculum-component.html', () => {
       // Hiding this custom component once it has been loaded
-      $(`${ComponentNames.CURRICULUM} .box`).hide();
+      $(`${ComponentNames.CURRICULUM}`).children().first().hide();
       // Setup
       this.updateSemester();
     });
