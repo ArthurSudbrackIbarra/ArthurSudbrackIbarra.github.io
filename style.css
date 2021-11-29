@@ -18,6 +18,10 @@
   font-family: 'Code';
   src: url('./fonts/Code.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'Prompt';
+  src: url('./fonts/Prompt-Regular.ttf') format('truetype');
+}
 
 /* Scrollbar */
 ::-webkit-scrollbar {
@@ -32,6 +36,10 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--primary-color-darker);
+}
+
+* {
+  font-family: 'Prompt', sans-serif;;
 }
 
 /* Elements */
@@ -102,10 +110,14 @@
   .scrollable > div::-webkit-scrollbar {
     display: block;
   }
+
   #navbarBasicExample .navbar-item:hover,
   .navbar-link:hover,
   .navbar-item.selected,
   .navbar-link:hover.selected {
+    background-color: var(--primary-color) !important;
+  }
+  .navbar-item.selected {
     background-color: var(--primary-color) !important;
   }
   .navbar-dropdown {
