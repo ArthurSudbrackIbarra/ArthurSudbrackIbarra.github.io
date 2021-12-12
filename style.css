@@ -159,7 +159,7 @@ lateral-section-component h1,
 contact-component h1 {
   font-weight: bold;
   font-size: 1.2rem;
-  margin-top: 0.5rem;
+  margin: 0.7rem 0;
   text-align: center;
 }
 lateral-section-component p,
