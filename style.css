@@ -149,9 +149,11 @@ contact-component figure {
 }
 lateral-section-component img,
 contact-component object {
-  border: 3px inset var(--primary-color);
+  border: 3px solid var(--primary-color-darker);
   padding: 0.5rem;
   background-color: white;
+  width: 128px !important;
+  height: 128px !important;
 }
 lateral-section-component h1,
 contact-component h1 {
@@ -167,10 +169,12 @@ contact-component p {
 }
 
 contact-component object {
-  border-radius: 50%;
+  border-radius: 9999px;
+  display: block;
 }
 .email {
   font-weight: bold;
+  word-break: break-all;
   color: var(--primary-color);
 }
 
