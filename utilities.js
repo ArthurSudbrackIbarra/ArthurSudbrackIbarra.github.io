@@ -14,6 +14,7 @@ function isMobile() {
 class ComponentNames {
   static AUTOZOOM = 'autozoom-component';
   static CASE_CHANGER = 'case-changer-component';
+  static CONTACT = 'contact-component';
   static CURRICULUM = 'curriculum-component';
   static CUSTOM_BUTTON = 'custom-button-component';
   static DEMO = 'demo-component';
