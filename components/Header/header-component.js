@@ -25,7 +25,7 @@ class HeaderComponent extends HTMLElement {
 
   setupMenuOptionsOnClick() {
     // Making burger menu unexpanded.
-    $('.navbar-dropdown .navbar-item, #curriculum').click(() => {
+    $('.navbar-dropdown .navbar-item, .navbar-link, #curriculum').click(() => {
       $('.navbar-burger').toggleClass('is-active');
       $('.navbar-menu').toggleClass('is-active');
     });
