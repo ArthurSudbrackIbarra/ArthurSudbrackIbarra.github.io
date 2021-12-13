@@ -377,7 +377,9 @@ class DemoComponent extends HTMLElement {
     // Types.
     setTimeout(() => {
       this.playTypingAudio();
-      $('#typing-box').append('<object type="image/svg+xml" data="../../Assets/General/typing.svg" width=\'25px\'></object>');
+      $('#typing-box').append(
+        '<object type="image/svg+xml" data="../../Assets/General/typing.svg" width=\'25px\'></object>',
+      );
     }, this.timeoutSum + sentence.t1),
       // Stops typing.
       setTimeout(() => {

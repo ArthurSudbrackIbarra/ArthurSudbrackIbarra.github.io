@@ -8,7 +8,7 @@ class TechCardComponent extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-      <div class="tech-card-box">
+      <div class="tech-card-box hvr-float">
         <img src=${this.imageSrc} alt=${this.cardTitle}>
         <p>${this.cardTitle}</p>
       </div>
