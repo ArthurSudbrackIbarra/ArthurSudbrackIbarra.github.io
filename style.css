@@ -12,15 +12,15 @@
 /** Fonts **/
 @font-face {
   font-family: 'Batmfa';
-  src: url('./fonts/batmfa.ttf') format('truetype');
+  src: url('./Fonts/batmfa.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Code';
-  src: url('./fonts/Code.ttf') format('truetype');
+  src: url('./Fonts/Code.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Prompt';
-  src: url('./fonts/Prompt-Regular.ttf') format('truetype');
+  src: url('./Fonts/Prompt-Regular.ttf') format('truetype');
 }
 
 /* Scrollbar */

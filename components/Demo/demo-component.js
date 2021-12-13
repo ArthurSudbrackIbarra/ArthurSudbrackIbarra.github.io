@@ -109,14 +109,14 @@ class TerminalCommandComponent extends HTMLElement {
     if (Audios.KEY_PRESSED) {
       Audios.KEY_PRESSED.currentTime = 0;
     } else {
-      Audios.KEY_PRESSED = new Audio('../assets/keyPressed.mp3');
+      Audios.KEY_PRESSED = new Audio('../Assets/Audios/keyPressed.mp3');
       Audios.KEY_PRESSED.volume = 0.2;
     }
     Audios.KEY_PRESSED.play();
   }
 
   playSuccessAudio() {
-    Audios.SUCCESS = new Audio('../assets/success.mp3');
+    Audios.SUCCESS = new Audio('../Assets/Audios/success.mp3');
     Audios.SUCCESS.volume = 0.5;
     Audios.SUCCESS.play();
   }
@@ -196,13 +196,13 @@ class DemoComponent extends HTMLElement {
   connectedCallback() {
     const demo = localStorage.getItem('demo');
     if (!demo) {
-      $(this).load('components/Demo/demo-component.html', () => {
+      $(this).load('Components/Demo/demo-component.html', () => {
         this.hideMenu();
         this.hideMenuResizeSetup();
         this.dialogueButtonSetup_1();
       });
     } else {
-      $(this).load('components/Demo/demo-component-no-demo.html', () => {
+      $(this).load('Components/Demo/demo-component-no-demo.html', () => {
         this.dialogueButtonSetupNoDemo();
       });
     }
@@ -377,7 +377,7 @@ class DemoComponent extends HTMLElement {
     // Types.
     setTimeout(() => {
       this.playTypingAudio();
-      $('#typing-box').append('<object type="image/svg+xml" data="../../assets/typing.svg" width=\'25px\'></object>');
+      $('#typing-box').append('<object type="image/svg+xml" data="../../Assets/General/typing.svg" width=\'25px\'></object>');
     }, this.timeoutSum + sentence.t1),
       // Stops typing.
       setTimeout(() => {
@@ -402,7 +402,7 @@ class DemoComponent extends HTMLElement {
   // Plays the typing audio.
   playTypingAudio() {
     // Audios is defined in 'utilities.js'
-    Audios.TYPING = new Audio('../../assets/typing.mp3');
+    Audios.TYPING = new Audio('../../Assets/Audios/typing.mp3');
     Audios.TYPING.volume = 0.2;
     Audios.TYPING.loop = true;
     Audios.TYPING.play();

@@ -4,7 +4,7 @@ class MagcountersComponent extends HTMLElement {
   }
 
   connectedCallback() {
-    $(this).load('components/MagCounters/magcounters-component.html', () => {
+    $(this).load('Components/MagCounters/magcounters-component.html', () => {
       // Hiding this custom component once it has been loaded
       $(`${ComponentNames.MAGCOUNTERS}`).children().first().hide();
       // Utilities

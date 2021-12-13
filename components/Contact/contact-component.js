@@ -4,7 +4,7 @@ class ContactComponent extends HTMLElement {
   }
 
   connectedCallback() {
-    $(this).load('components/Contact/contact-component.html');
+    $(this).load('Components/Contact/contact-component.html');
   }
 }
 

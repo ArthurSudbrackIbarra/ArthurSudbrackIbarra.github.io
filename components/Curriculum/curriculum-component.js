@@ -4,7 +4,7 @@ class CurriculumComponent extends HTMLElement {
   }
 
   connectedCallback() {
-    $(this).load('components/Curriculum/curriculum-component.html', () => {
+    $(this).load('Components/Curriculum/curriculum-component.html', () => {
       // Hiding this custom component once it has been loaded
       $(`${ComponentNames.CURRICULUM}`).children().first().hide();
       // Setup
@@ -48,14 +48,6 @@ class CurriculumComponent extends HTMLElement {
     }
     $('#verb').text(verb);
     $('#semester').text(semester);
-  }
-
-  animation() {
-    $('curriculum-component li')
-      .hover
-      // (e) => { $(e.target).animate({ letterSpacing: 0.5 }) },
-      // (e) => { $(e.target).animate({ letterSpacing: 0 }) }
-      ();
   }
 }
 

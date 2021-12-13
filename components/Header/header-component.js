@@ -7,7 +7,7 @@ class HeaderComponent extends HTMLElement {
   }
 
   connectedCallback() {
-    $(this).load('components/Header/header-component.html', () => {
+    $(this).load('Components/Header/header-component.html', () => {
       // Setup
       this.setupNavbarBurgerOnClick();
       this.setupMenuOptionsOnClick();
@@ -55,7 +55,7 @@ class HeaderComponent extends HTMLElement {
   setupAudio() {
     $('.navbar-item:not(.has-dropdown)').click(() => {
       // Audios is defined in 'utilities.js'
-      Audios.SELECT = new Audio('../assets/selectSound.mp3');
+      Audios.SELECT = new Audio('../Assets/Audios/selectSound.mp3');
       Audios.SELECT.play();
     });
     // isMobile function is defined in 'utilities.js'
@@ -64,7 +64,7 @@ class HeaderComponent extends HTMLElement {
         if (Audios.HOVER) {
           Audios.HOVER.currentTime = 0;
         } else {
-          Audios.HOVER = new Audio('../assets/hover.mp3');
+          Audios.HOVER = new Audio('../Assets/Audios/hover.mp3');
         }
         Audios.HOVER.play().catch((error) => {
           console.log('User must interact with the document first for the hover audio to play!');

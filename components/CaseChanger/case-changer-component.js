@@ -4,7 +4,7 @@ class CaseChangerComponent extends HTMLElement {
   }
 
   connectedCallback() {
-    $(this).load('components/CaseChanger/case-changer-component.html', () => {
+    $(this).load('Components/CaseChanger/case-changer-component.html', () => {
       // Hiding this custom component once it has been loaded
       $(`${ComponentNames.CASE_CHANGER}`).children().first().hide();
     });

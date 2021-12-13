@@ -4,7 +4,7 @@ class LateralSectionComponent extends HTMLElement {
   }
 
   connectedCallback() {
-    $(this).load('components/LateralSection/lateral-section-component.html');
+    $(this).load('Components/LateralSection/lateral-section-component.html');
   }
 }
 

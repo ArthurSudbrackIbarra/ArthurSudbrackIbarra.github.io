@@ -4,7 +4,7 @@ class AutozoomComponent extends HTMLElement {
   }
 
   connectedCallback() {
-    $(this).load('components/Autozoom/autozoom-component.html', () => {
+    $(this).load('Components/Autozoom/autozoom-component.html', () => {
       // Hiding this custom component once it has been loaded
       $(`${ComponentNames.AUTOZOOM}`).children().first().hide();
       // Utilities
