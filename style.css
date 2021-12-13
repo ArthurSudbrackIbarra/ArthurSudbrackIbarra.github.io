@@ -99,6 +99,10 @@
   a.navbar-item:hover {
     color: var(--primary-color) !important;
   }
+
+  .tech-card-section {
+    justify-content: center !important;
+  }
 }
 
 /* Desktop */
@@ -236,6 +240,37 @@ curriculum-component i {
   color: var(--primary-color);
   margin-right: 0.4rem;
   font-size: 1.2rem;
+}
+
+.tech-card-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+.tech-card-section > tech-card-component {
+  margin: 0.5rem;
+}
+.tech-card-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem;
+  background-color: white;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  width: 120px;
+  height: 120px;
+}
+.tech-card-box > img {
+  display: block;
+  border-radius: 5px !important;
+  width: 60%;
+  height: 60%;
+}
+.tech-card-box > p {
+  margin-top: 0.5rem;
+  font-size: 70%;
+  color: #9a9a9a;
 }
 
 .spinner-container {
