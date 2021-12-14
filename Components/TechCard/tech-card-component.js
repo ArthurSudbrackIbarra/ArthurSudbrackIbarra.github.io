@@ -1,7 +1,7 @@
 class TechCardComponent extends HTMLElement {
   constructor() {
     super();
-    // Props
+    // Props.
     this.imageSrc = this.attributes['image-src'].value;
     this.cardTitle = this.attributes['card-title'].value;
   }
@@ -16,5 +16,5 @@ class TechCardComponent extends HTMLElement {
   }
 }
 
-// ComponentNames is defined in 'utilities.js'
+// ComponentNames is defined in 'utilities.js'.
 customElements.define(ComponentNames.TECH_CARD, TechCardComponent);

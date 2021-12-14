@@ -8,5 +8,5 @@ class LateralSectionComponent extends HTMLElement {
   }
 }
 
-// ComponentNames is defined in 'utilities.js'
+// ComponentNames is defined in 'utilities.js'.
 customElements.define(ComponentNames.LATERAL_SECTION, LateralSectionComponent);

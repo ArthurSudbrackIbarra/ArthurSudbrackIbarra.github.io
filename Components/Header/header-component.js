@@ -1,8 +1,14 @@
 class HeaderComponent extends HTMLElement {
   constructor() {
     super();
-    // ComponentNames is defined in 'utilities.js'
+    // The components that have already been appended to DOM (for performance).
+    this.createdComponents = new Map();
+    // The div element to append new components.
+    this.mainContent = $('#main-content');
+    // ComponentNames is defined in 'utilities.js'.
+    // The component that is currently being show in screen.
     this.currentShowingComponent = ComponentNames.DEMO;
+    // This attribute will help prevent bugs if user keeps spamming the menu items.
     this.currentDesktopTimeout = null;
   }
 
@@ -54,11 +60,11 @@ class HeaderComponent extends HTMLElement {
 
   setupAudio() {
     $('.navbar-item:not(.has-dropdown)').click(() => {
-      // Audios is defined in 'utilities.js'
+      // Audios is defined in 'utilities.js'.
       Audios.SELECT = new Audio('../Assets/Audios/selectSound.mp3');
       Audios.SELECT.play();
     });
-    // isMobile function is defined in 'utilities.js'
+    // isMobile function is defined in 'utilities.js'.
     if (!isMobile()) {
       $('.navbar-item').mouseenter(() => {
         if (Audios.HOVER) {
@@ -73,21 +79,30 @@ class HeaderComponent extends HTMLElement {
     }
   }
 
+  createComponent(componentName) {
+    this.mainContent.append(`<${componentName} class="scrollable"></${componentName}>`);
+    this.createdComponents.set(componentName, true);
+  }
+
   showComponent(componentName) {
-    // Checking if device is small.
-    if (screen.width <= 1023) {
-      this.mobileShow(componentName);
+    if (this.createdComponents.get(componentName)) {
+      // Checking if device is small.
+      if (screen.width <= 1023) {
+        this.mobileShow(componentName);
+      } else {
+        this.desktopShow(componentName);
+      }
+      // Updating current showing component.
+      this.currentShowingComponent = componentName;
     } else {
-      this.desktopShow(componentName);
+      this.createComponent(componentName);
     }
-    // Updating current showing component;
-    this.currentShowingComponent = componentName;
   }
 
   desktopShow(componentName) {
     // Fading out current custom component.
     $(`${this.currentShowingComponent}`).children().first().fadeOut(400);
-    // This code will prevent bugs if user keeps spamming the menu items
+    // This code will prevent bugs if user keeps spamming the menu items.
     if (this.currentDesktopTimeout !== null) {
       clearTimeout(this.currentDesktopTimeout);
     }
@@ -107,7 +122,7 @@ class HeaderComponent extends HTMLElement {
     this.eraseDemoComponent();
     // The device is small, so also hides the lateral section component.
     $(`${ComponentNames.LATERAL_SECTION}`).children().first().hide();
-    // Fading in chosen custom component.
+    // Displaying chosen custom component + lateral section.
     $(`${componentName}`).children().first().css('display', 'block');
     $(`${ComponentNames.LATERAL_SECTION} .box`).css('display', 'block');
   }
@@ -118,5 +133,5 @@ class HeaderComponent extends HTMLElement {
   }
 }
 
-// ComponentNames is defined in 'utilities.js'
+// ComponentNames is defined in 'utilities.js'.
 customElements.define(ComponentNames.HEADER, HeaderComponent);

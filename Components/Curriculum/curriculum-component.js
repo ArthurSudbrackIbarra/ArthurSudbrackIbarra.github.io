@@ -5,10 +5,13 @@ class CurriculumComponent extends HTMLElement {
 
   connectedCallback() {
     $(this).load('Components/Curriculum/curriculum-component.html', () => {
-      // Hiding this custom component once it has been loaded
+      // Hiding this custom component once it has been loaded.
       $(`${ComponentNames.CURRICULUM}`).children().first().hide();
-      // Setup
+      // Setup.
       this.updateSemester();
+      // Telling the header component this component has loaded.
+      const headerComponent = $('header-component')[0];
+      headerComponent.showComponent(ComponentNames.CURRICULUM);
     });
   }
 
@@ -51,5 +54,5 @@ class CurriculumComponent extends HTMLElement {
   }
 }
 
-// ComponentNames is defined in 'utilities.js'
+// ComponentNames is defined in 'utilities.js'.
 customElements.define(ComponentNames.CURRICULUM, CurriculumComponent);

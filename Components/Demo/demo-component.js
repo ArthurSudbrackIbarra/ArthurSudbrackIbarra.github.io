@@ -61,7 +61,7 @@ class TerminalCommandComponent extends HTMLElement {
 
   // Handles keyboard/touch events.
   setupKeyboardListening() {
-    // isMobile function is defined in 'utilities.js'
+    // isMobile function is defined in 'utilities.js'.
     if (isMobile()) {
       const terminalBox = $('#terminal-box');
       terminalBox.click(() => {
@@ -105,6 +105,7 @@ class TerminalCommandComponent extends HTMLElement {
     }
   }
 
+  // Plays the key pressed audio.
   playKeyPressedAudio() {
     if (Audios.KEY_PRESSED) {
       Audios.KEY_PRESSED.currentTime = 0;
@@ -115,6 +116,7 @@ class TerminalCommandComponent extends HTMLElement {
     Audios.KEY_PRESSED.play();
   }
 
+  // Plays the success audio.
   playSuccessAudio() {
     Audios.SUCCESS = new Audio('../Assets/Audios/success.mp3');
     Audios.SUCCESS.volume = 0.5;
@@ -403,7 +405,7 @@ class DemoComponent extends HTMLElement {
 
   // Plays the typing audio.
   playTypingAudio() {
-    // Audios is defined in 'utilities.js'
+    // Audios is defined in 'utilities.js'.
     Audios.TYPING = new Audio('../../Assets/Audios/typing.mp3');
     Audios.TYPING.volume = 0.2;
     Audios.TYPING.loop = true;
@@ -425,5 +427,5 @@ class DemoComponent extends HTMLElement {
   }
 }
 
-// ComponentNames is defined in 'utilities.js'
+// ComponentNames is defined in 'utilities.js'.
 customElements.define(ComponentNames.DEMO, DemoComponent);

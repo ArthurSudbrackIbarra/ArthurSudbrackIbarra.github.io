@@ -8,5 +8,5 @@ class ContactComponent extends HTMLElement {
   }
 }
 
-// ComponentNames is defined in 'utilities.js'
+// ComponentNames is defined in 'utilities.js'.
 customElements.define(ComponentNames.CONTACT, ContactComponent);
