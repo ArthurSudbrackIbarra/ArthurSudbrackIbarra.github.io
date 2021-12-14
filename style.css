@@ -326,6 +326,10 @@ autozoom-component img {
   color: black !important;
   cursor: default;
 }
+.disabled-dialogue-button:focus {
+  outline: none;
+  box-shadow: none;
+}
 .arrow {
   position: relative;
   left: 0.28rem;
