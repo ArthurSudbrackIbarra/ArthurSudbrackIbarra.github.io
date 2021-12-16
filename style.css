@@ -115,7 +115,7 @@
     display: block;
   }
 
-  #navbarBasicExample .navbar-item:hover,
+  #navbar .navbar-item:hover,
   .navbar-link:hover,
   .navbar-item.selected,
   .navbar-link:hover.selected {
