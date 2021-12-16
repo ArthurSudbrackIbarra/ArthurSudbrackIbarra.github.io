@@ -35,8 +35,7 @@ class Audios {
   static SUCCESS = null;
 }
 
-// This function will remove the loading spinners
-// once the images have been loaded.
+// This function will remove the loading spinners once the images have been loaded.
 function loadingImages(imagesQuantity, customComponent) {
   for (let i = 1; i <= imagesQuantity; i++) {
     $(`${customComponent} #demo-image-${i}`).on('load', () => {

@@ -1,9 +1,12 @@
 class CustomButtonComponent extends HTMLElement {
+  // Constructor.
   constructor() {
     super();
     // Props.
     this.text = this.attributes['text'].value;
     this.to = this.attributes['to'].value.toLowerCase();
+    // Customizing the button depending on the 'to' attribute, which can assume
+    // the values 'github', 'discord' or any other value for default configurations.
     switch (this.to) {
       case 'github':
         this.class = 'github-button';
@@ -20,6 +23,7 @@ class CustomButtonComponent extends HTMLElement {
     this.href = this.attributes['href'].value;
   }
 
+  // This method is called once this custom element has been appended to DOM.
   connectedCallback() {
     this.innerHTML = `
       <a class="button ${this.class}" href=${this.href} target="_blank">

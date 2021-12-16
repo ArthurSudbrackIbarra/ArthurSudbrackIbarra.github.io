@@ -1,15 +1,18 @@
 class JPCComponent extends HTMLElement {
+  // Constructor.
   constructor() {
     super();
   }
 
+  // This method is called once this custom element has been appended to DOM.
   connectedCallback() {
+    // Using JQuery to load, inside of this custom component, the contents of an HTML file.
     $(this).load('Components/JPC/jpc-component.html', () => {
       // Hiding this custom component once it has been loaded.
       $(`${ComponentNames.JPC}`).children().first().hide();
-      // Utilities.
+      // loadingImages function is defined in 'utilities.js'.
       loadingImages(1, ComponentNames.JPC);
-      // Telling the header component this component has loaded.
+      // Telling the header component that this component has loaded.
       const headerComponent = $('header-component')[0];
       headerComponent.showComponent(ComponentNames.JPC);
     });

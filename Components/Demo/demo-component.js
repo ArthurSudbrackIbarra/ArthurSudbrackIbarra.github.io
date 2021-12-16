@@ -1,5 +1,6 @@
 // TerminalCommandComponent class.
 class TerminalCommandComponent extends HTMLElement {
+  // Constructor.
   constructor(command, onComplete) {
     super();
     this.command = command;
@@ -9,6 +10,7 @@ class TerminalCommandComponent extends HTMLElement {
     this.blinkingInterval = null;
   }
 
+  // This method is called once this custom element has been appended to DOM.
   connectedCallback() {
     this.innerHTML = `
       <div id='terminal-box'>
@@ -129,6 +131,7 @@ customElements.define(ComponentNames.TERMINAL_COMMAND, TerminalCommandComponent)
 
 // Demo Component class.
 class DemoComponent extends HTMLElement {
+  // Constructor.
   constructor() {
     super();
     // Timeout Sum.
@@ -183,9 +186,9 @@ class DemoComponent extends HTMLElement {
         t2: 7000,
       },
     ];
-    // Menu hide.
+    // The menu components/parts that will be hidden.
     this.menuHide = null;
-    // Interaction ended.
+    // Boolean indicating if the interaction has ended or not.
     this.interactionEnded = false;
     // Terminal Command component.
     this.terminalCommand = new TerminalCommandComponent(command, () => {
@@ -193,17 +196,19 @@ class DemoComponent extends HTMLElement {
     });
   }
 
-  // Called once the element is appended to DOM.
-  // Checks if demo should play or not.
+  // This method is called once this custom element has been appended to DOM.
   connectedCallback() {
+    // Checks if the demo interaction should happen or not by consulting the local storage object.
     const demo = localStorage.getItem('demo');
     if (!demo) {
+      // Using JQuery to load, inside of this custom component, the contents of an HTML file.
       $(this).load('Components/Demo/demo-component.html', () => {
         this.hideMenu();
         this.hideMenuResizeSetup();
         this.dialogueButtonSetup_1();
       });
     } else {
+      // Using JQuery to load, inside of this custom component, the contents of an HTML file.
       $(this).load('Components/Demo/demo-component-no-demo.html', () => {
         this.dialogueButtonSetupNoDemo();
       });
@@ -414,7 +419,7 @@ class DemoComponent extends HTMLElement {
 
   // Stops playing the typing audio.
   stopTypingAudio() {
-    // Audios is defined in 'utilities.js'
+    // Audios is defined in 'utilities.js'.
     Audios.TYPING.pause();
   }
 

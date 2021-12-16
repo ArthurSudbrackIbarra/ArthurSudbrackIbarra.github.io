@@ -1,4 +1,5 @@
 class HeaderComponent extends HTMLElement {
+  // Constructor.
   constructor() {
     super();
     // The components that have already been appended to DOM (for performance).
@@ -6,21 +7,24 @@ class HeaderComponent extends HTMLElement {
     // The div element to append new components.
     this.mainContent = $('#main-content');
     // ComponentNames is defined in 'utilities.js'.
-    // The component that is currently being show in screen.
+    // The component that is currently being show on screen.
     this.currentShowingComponent = ComponentNames.DEMO;
     // This attribute will help prevent bugs if user keeps spamming the menu items.
     this.currentDesktopTimeout = null;
   }
 
+  // This method is called once this custom element has been appended to DOM.
   connectedCallback() {
+    // Using JQuery to load, inside of this custom component, the contents of an HTML file.
     $(this).load('Components/Header/header-component.html', () => {
-      // Setup
+      // Calling the setup methods.
       this.setupNavbarBurgerOnClick();
       this.setupMenuOptionsOnClick();
       this.setupAudio();
     });
   }
 
+  // Configures the setup that allows the hamburger menu to work.
   setupNavbarBurgerOnClick() {
     // Burger menu logic.
     $('.navbar-burger').click(() => {
@@ -29,6 +33,7 @@ class HeaderComponent extends HTMLElement {
     });
   }
 
+  // Configures what happens when itens in the menu are clicked.
   setupMenuOptionsOnClick() {
     // Making burger menu unexpanded.
     $('.navbar-dropdown .navbar-item, .navbar-link, #curriculum').click(() => {
@@ -58,6 +63,7 @@ class HeaderComponent extends HTMLElement {
     });
   }
 
+  // Configures the menu audios.
   setupAudio() {
     $('.navbar-item:not(.has-dropdown)').click(() => {
       // Audios is defined in 'utilities.js'.
@@ -79,11 +85,14 @@ class HeaderComponent extends HTMLElement {
     }
   }
 
+  // Creates a custom component, specified in the method parameters, and appends it to the main content
+  // area. Also tells the components Map object that the custom element has now already been created.
   createComponent(componentName) {
     this.mainContent.append(`<${componentName} class="scrollable"></${componentName}>`);
     this.createdComponents.set(componentName, true);
   }
 
+  // Displays the menu sections on screen based on the user's device (desktop or mobile).
   showComponent(componentName) {
     if (this.createdComponents.get(componentName)) {
       // Checking if device is small.
@@ -99,6 +108,7 @@ class HeaderComponent extends HTMLElement {
     }
   }
 
+  // Method called to display a menu section on screen when the user's device is desktop.
   desktopShow(componentName) {
     // Fading out current custom component.
     $(`${this.currentShowingComponent}`).children().first().fadeOut(400);
@@ -109,16 +119,17 @@ class HeaderComponent extends HTMLElement {
     // Fading in chosen custom component.
     this.currentDesktopTimeout = setTimeout(() => {
       $(`${componentName}`).children().first().fadeIn(400);
-      // Erasing demo component.
+      // Erasing the demo component.
       this.eraseDemoComponent();
       this.currentDesktopTimeout = null;
     }, 600);
   }
 
+  // Method called to display a menu section on screen when the user's device is mobile.
   mobileShow(componentName) {
     // Hiding current custom component.
     $(`${this.currentShowingComponent}`).children().first().hide();
-    // Erasing demo component.
+    // Erasing the demo component.
     this.eraseDemoComponent();
     // The device is small, so also hides the lateral section component.
     $(`${ComponentNames.LATERAL_SECTION}`).children().first().hide();
@@ -127,8 +138,9 @@ class HeaderComponent extends HTMLElement {
     $(`${ComponentNames.LATERAL_SECTION} .box`).css('display', 'block');
   }
 
+  // Erases the demo component to save resources.
   eraseDemoComponent() {
-    // Removing demo component.
+    // Removing the demo component.
     $(`${ComponentNames.DEMO}`).remove();
   }
 }

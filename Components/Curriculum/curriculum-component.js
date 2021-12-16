@@ -1,20 +1,24 @@
 class CurriculumComponent extends HTMLElement {
+  // Constructor.
   constructor() {
     super();
   }
 
+  // This method is called once this custom element has been appended to DOM.
   connectedCallback() {
     $(this).load('Components/Curriculum/curriculum-component.html', () => {
       // Hiding this custom component once it has been loaded.
       $(`${ComponentNames.CURRICULUM}`).children().first().hide();
       // Setup.
       this.updateSemester();
-      // Telling the header component this component has loaded.
+      // Telling the header component that this component has loaded.
       const headerComponent = $('header-component')[0];
       headerComponent.showComponent(ComponentNames.CURRICULUM);
     });
   }
 
+  // This method automatically updates the text in the curriculum section to match
+  // my current semester, based on the current month and year.
   updateSemester() {
     const currentDate = new Date();
     const year = currentDate.getFullYear();
