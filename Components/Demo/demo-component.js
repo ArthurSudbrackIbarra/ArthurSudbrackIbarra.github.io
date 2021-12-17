@@ -14,7 +14,7 @@ class TerminalCommandComponent extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <div id='terminal-box'>
-        <p id='user'>asi@ubuntu:~$ </p>
+        <p id='user'>asi@asi-desktop:~$ </p>
       </div>
     `;
     const terminalBox = $('#terminal-box');
@@ -423,12 +423,11 @@ class DemoComponent extends HTMLElement {
     Audios.TYPING.pause();
   }
 
-  // Ends chat interaction with a cool sliding animation.
+  // Ends chat interaction.
   endChat() {
     setTimeout(() => {
-      $('#typing-box').animate({ height: 0 }, 1800);
       this.showMenu();
-    }, 1200);
+    }, 2200);
   }
 }
 

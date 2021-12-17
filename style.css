@@ -80,7 +80,7 @@
   .column {
     padding: 0.75rem !important;
   }
-  .box {
+  .box:not(#demo-box) {
     border: 2px solid #4a4a4a;
   }
   header-component i {
@@ -296,10 +296,64 @@ autozoom-component img {
   width: 100%;
 }
 
+#demo-box {
+  padding: 0 !important;
+}
+#demo-box,
+#demo-content,
+#interaction-panel {
+  height: 100%;
+}
+#terminal-tab {
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  background-color: #f5f5f5;
+  padding: 0.3rem;
+  color: black;
+  border-radius: 6px 6px 0 0;
+  border-width: 1px 1px 0 1px;
+  border-style: solid;
+  border-color: black;
+}
+#terminal-tab p {
+  font-size: 0.8rem;
+  line-height: 1px;
+  width: 100%;
+}
+#terminal-tab img {
+  margin: 0 0.8rem 0 0.5rem;
+  width: 17px;
+}
+#terminal-controls {
+  display: flex;
+  justify-self: end;
+}
+#red-control,
+#yellow-control,
+#green-control {
+  display: inline-block;
+  border-radius: 9999px;
+  width: 13px;
+  height: 13px;
+  margin: 0 0.3rem;
+}
+#red-control {
+  background-color: #ff6059;
+  border: 1px solid #e15752;
+}
+#yellow-control {
+  background-color: #ffbd2e;
+  border: 1px solid #e0a942;
+}
+#green-control {
+  background-color: #28c941;
+  border: 1px solid #37bc49;
+}
 #interaction-panel {
   background-color: black;
-  padding: 1rem;
-  border-radius: 6px;
+  padding: 1.5rem;
+  border-radius: 0 0 6px 6px;
 }
 #interaction-panel h5 {
   color: white;
@@ -307,6 +361,7 @@ autozoom-component img {
   font-family: 'Code', monospace;
   font-weight: normal;
   letter-spacing: -3px;
+  max-width: 70%;
 }
 .dialogue-button,
 .disabled-dialogue-button {
