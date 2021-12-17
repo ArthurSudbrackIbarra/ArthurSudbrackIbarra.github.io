@@ -103,6 +103,10 @@
   .tech-card-section {
     justify-content: center !important;
   }
+
+  #interaction-panel h5 {
+    max-height: 100% !important;
+  }
 }
 
 /* Desktop */
