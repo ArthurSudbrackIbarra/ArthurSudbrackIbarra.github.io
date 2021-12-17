@@ -30,9 +30,11 @@ class TerminalCommandComponent extends HTMLElement {
   createSpanTags() {
     for (let i = 0; i < this.command.length; i++) {
       if (i === 0) {
-        $('#terminal-box').append(`<span class='blinking-character'>${this.command[i]}</span>`);
+        $('#terminal-box').append(
+          `<span class='blinking-character' data-original_value='${this.command[i]}'>${this.command[i]}</span>`,
+        );
       } else {
-        $('#terminal-box').append(`<span>${this.command[i]}</span>`);
+        $('#terminal-box').append(`<span data-original_value='${this.command[i]}'>${this.command[i]}</span>`);
       }
     }
   }
@@ -85,17 +87,38 @@ class TerminalCommandComponent extends HTMLElement {
     } else {
       $(document).keyup((event) => {
         const key = event.originalEvent.key;
-        if (this.count <= this.elements.length) {
-          if (this.count >= this.elements.length) {
-            if (key.toLowerCase() === 'enter') {
-              this.stopBlinkingAnimation();
-              this.onComplete();
-              $(document).off();
-              this.playSuccessAudio();
+        switch (key.toLowerCase()) {
+          case 'enter':
+            {
+              if (this.count === this.elements.length && this.checkCommand()) {
+                this.stopBlinkingAnimation();
+                this.onComplete();
+                $(document).off();
+                this.playSuccessAudio();
+              }
             }
-          } else {
-            if (this.elements[this.count].innerText.toLowerCase() === key) {
-              this.elements[this.count].style.color = 'white';
+            break;
+          case 'backspace':
+            this.playKeyPressedAudio();
+            {
+              if (this.elements[this.count - 1]) {
+                this.elements[this.count - 1].innerText = this.elements[this.count - 1].dataset.original_value;
+                this.elements[this.count - 1].style.color = 'gray';
+                if (this.elements[this.count]) {
+                  this.elements[this.count].classList.remove('blinking-character');
+                }
+                this.count--;
+              }
+            }
+            break;
+          default: {
+            if (this.elements[this.count] && key.length === 1) {
+              if (this.elements[this.count].dataset.original_value === key) {
+                this.elements[this.count].style.color = 'white';
+              } else {
+                this.elements[this.count].style.color = 'red';
+                this.elements[this.count].innerText = key;
+              }
               this.count++;
               this.playKeyPressedAudio();
               this.changeBlinkingCharacter();
@@ -105,6 +128,16 @@ class TerminalCommandComponent extends HTMLElement {
         }
       });
     }
+  }
+
+  // This function checks if the command was typed correctly.
+  checkCommand() {
+    for (const element of this.elements) {
+      if (element.dataset.original_value !== element.innerText) {
+        return false;
+      }
+    }
+    return true;
   }
 
   // Plays the key pressed audio.
@@ -381,6 +414,9 @@ class DemoComponent extends HTMLElement {
 
   // Types the sentences in the interaction panel.
   type(dialogueBox, sentence) {
+    sentence.t1 = 100;
+    sentence.t2 = 200;
+
     // Types.
     setTimeout(() => {
       this.playTypingAudio();
