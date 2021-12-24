@@ -120,8 +120,7 @@
 
   .close-tab-button {
     margin-left: 2rem !important;
-    width: 17px !important;
-    height: 10px !important;
+    width: 15px !important;
   }
 
   #interaction-panel h5 {
@@ -349,7 +348,7 @@ autozoom-component img {
   display: flex;
   align-items: center;
   height: 96%;
-  width: 98.8%;
+  width: 99.2%;
   clip-path: polygon(9% 0, 91% 0, 100% 100%, 0% 100%);
   background-color: #f2f2f2;
   padding: 0 1.3rem 0 1.3rem;
@@ -379,8 +378,8 @@ autozoom-component img {
     50% 30%
   );
   margin-left: 4rem;
-  width: 21px;
-  height: 10px;
+  width: 18px;
+  height: 9px;
   background-color: #5b5b5b;
 }
 .new-tab-button {
