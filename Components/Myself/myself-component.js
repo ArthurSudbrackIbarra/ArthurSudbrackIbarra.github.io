@@ -1,4 +1,4 @@
-class LateralSectionComponent extends HTMLElement {
+class MyselfComponent extends HTMLElement {
   // Constructor.
   constructor() {
     super();
@@ -7,9 +7,9 @@ class LateralSectionComponent extends HTMLElement {
   // This method is called once this custom element has been appended to DOM.
   connectedCallback() {
     // Using JQuery to load, inside of this custom component, the contents of an HTML file.
-    $(this).load('Components/LateralSection/lateral-section-component.html');
+    $(this).load('Components/Myself/myself-component.html');
   }
 }
 
 // ComponentNames is defined in 'utilities.js'.
-customElements.define(ComponentNames.LATERAL_SECTION, LateralSectionComponent);
+customElements.define(ComponentNames.MYSELF, MyselfComponent);

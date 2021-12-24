@@ -72,19 +72,13 @@ class HeaderComponent extends HTMLElement {
     const dropdown = $('.navbar-dropdown');
     if (screen.width <= 1023) {
       navbarLink.click(() => {
-        if (this.isDropdownExpanded) {
-          dropdown.css('display', 'none');
-          this.isDropdownExpanded = false;
-        } else {
-          dropdown.removeAttr('style');
-          this.isDropdownExpanded = true;
-        }
+        dropdown.toggleClass('closed');
         navbarLink.toggleClass('closed');
       });
     } else {
       if (!this.isDropdownExpanded) {
-        dropdown.removeAttr('style');
-        this.isDropdownExpanded = true;
+        dropdown.removeClass('closed');
+        navbarLink.removeClass('closed');
       }
     }
     $(window).resize(() => {
@@ -162,11 +156,11 @@ class HeaderComponent extends HTMLElement {
     $(`${this.currentShowingComponent}`).children().first().hide();
     // Erasing the demo component.
     this.eraseDemoComponent();
-    // The device is small, so also hides the lateral section component.
-    $(`${ComponentNames.LATERAL_SECTION}`).children().first().hide();
-    // Displaying chosen custom component + lateral section.
+    // The device is small, so also hides the "myself" section component.
+    $(`${ComponentNames.MYSELF}`).children().first().hide();
+    // Displaying chosen custom component + "myself" component.
     $(`${componentName}`).children().first().css('display', 'block');
-    $(`${ComponentNames.LATERAL_SECTION} .box`).css('display', 'block');
+    $(`${ComponentNames.MYSELF} .box`).css('display', 'block');
   }
 
   // Erases the demo component to save resources.

@@ -103,11 +103,15 @@
     color: #4a4a4a !important;
   }
   .navbar-link::after {
-    transition: ease 0.2s;
+    transition: transform ease 0.2s;
   }
   .navbar-link.closed::after {
     transform: rotate(135deg) !important;
-    transition: ease 0.2s;
+    transition: transform ease 0.2s;
+  }
+  .navbar-dropdown.closed,
+  .navbar-dropdown.closed > * {
+    display: none;
   }
 
   .tech-card-section {
@@ -157,15 +161,15 @@
   margin-left: 0.3rem;
 }
 
-lateral-section-component .box {
+myself-component .box {
   margin-bottom: 1.5rem;
 }
 
-lateral-section-component figure,
+myself-component figure,
 contact-component figure {
   margin: auto;
 }
-lateral-section-component img,
+myself-component img,
 contact-component object {
   border: 3px solid var(--primary-color-darker);
   padding: 0.5rem;
@@ -173,14 +177,14 @@ contact-component object {
   width: 128px !important;
   height: 128px !important;
 }
-lateral-section-component h1,
+myself-component h1,
 contact-component h1 {
   font-weight: bold;
   font-size: 1.2rem;
   margin: 0.7rem 0;
   text-align: center;
 }
-lateral-section-component p,
+myself-component p,
 contact-component p {
   margin-top: 0.7rem;
   text-align: justify;
@@ -196,7 +200,7 @@ contact-component object {
   color: var(--primary-color);
 }
 
-.descriptonOrLanguage {
+.descripton-or-language {
   margin-bottom: 0.9rem;
 }
 .content {

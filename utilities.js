@@ -20,8 +20,8 @@ class ComponentNames {
   static DEMO = 'demo-component';
   static HEADER = 'header-component';
   static JPC = 'jpc-component';
-  static LATERAL_SECTION = 'lateral-section-component';
   static MAGCOUNTERS = 'magcounters-component';
+  static MYSELF = 'myself-component';
   static TERMINAL_COMMAND = 'terminal-command-component';
   static TECH_CARD = 'tech-card-component';
 }
