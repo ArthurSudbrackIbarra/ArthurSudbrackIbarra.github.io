@@ -43,6 +43,9 @@
 }
 
 /* Elements */
+.navbar.is-black {
+  background-color: black !important;
+}
 .navbar-brand img {
   width: 50px;
 }
@@ -97,7 +100,14 @@
   a.navbar-item:focus,
   a.navbar-item:focus-within,
   a.navbar-item:hover {
-    color: var(--primary-color) !important;
+    color: #4a4a4a !important;
+  }
+  .navbar-link::after {
+    transition: ease 0.2s;
+  }
+  .navbar-link.closed::after {
+    transform: rotate(135deg) !important;
+    transition: ease 0.2s;
   }
 
   .tech-card-section {
@@ -303,10 +313,9 @@ autozoom-component img {
 #demo-box {
   padding: 0 !important;
 }
-#demo-box,
-#demo-content,
-#interaction-panel {
-  height: 100%;
+#interaction-panel,
+#demo-box {
+  height: 98%;
 }
 #terminal-tab {
   display: flex;
@@ -363,7 +372,7 @@ autozoom-component img {
   color: white;
   margin-bottom: 0.7rem;
   font-family: 'Code', monospace;
-  font-weight: normal;
+  font-size: 1.15rem;
   letter-spacing: -3px;
   max-width: 70%;
 }
@@ -398,7 +407,6 @@ autozoom-component img {
 #typing-box {
   height: 0;
 }
-
 #terminal-box {
   margin: 1.5rem 0;
 }

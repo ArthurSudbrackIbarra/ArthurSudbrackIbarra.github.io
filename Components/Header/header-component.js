@@ -9,6 +9,8 @@ class HeaderComponent extends HTMLElement {
     // ComponentNames is defined in 'utilities.js'.
     // The component that is currently being show on screen.
     this.currentShowingComponent = ComponentNames.DEMO;
+    // Indicates if the menu dropdown is expanded or not.
+    this.isDropdownExpanded = true;
     // This attribute will help prevent bugs if user keeps spamming the menu items.
     this.currentDesktopTimeout = null;
   }
@@ -20,6 +22,7 @@ class HeaderComponent extends HTMLElement {
       // Calling the setup methods.
       this.setupNavbarBurgerOnClick();
       this.setupMenuOptionsOnClick();
+      this.setupMenuDropdown();
       this.setupAudio();
     });
   }
@@ -36,7 +39,7 @@ class HeaderComponent extends HTMLElement {
   // Configures what happens when itens in the menu are clicked.
   setupMenuOptionsOnClick() {
     // Making burger menu unexpanded.
-    $('.navbar-dropdown .navbar-item, .navbar-link, #curriculum').click(() => {
+    $('.navbar-dropdown .navbar-item, #curriculum').click(() => {
       $('.navbar-burger').toggleClass('is-active');
       $('.navbar-menu').toggleClass('is-active');
     });
@@ -60,6 +63,32 @@ class HeaderComponent extends HTMLElement {
     });
     $('#autozoom').click(() => {
       this.showComponent(ComponentNames.AUTOZOOM);
+    });
+  }
+
+  // Menu dropdown open/close setup.
+  setupMenuDropdown() {
+    const navbarLink = $('.navbar-link');
+    const dropdown = $('.navbar-dropdown');
+    if (screen.width <= 1023) {
+      navbarLink.click(() => {
+        if (this.isDropdownExpanded) {
+          dropdown.css('display', 'none');
+          this.isDropdownExpanded = false;
+        } else {
+          dropdown.removeAttr('style');
+          this.isDropdownExpanded = true;
+        }
+        navbarLink.toggleClass('closed');
+      });
+    } else {
+      if (!this.isDropdownExpanded) {
+        dropdown.removeAttr('style');
+        this.isDropdownExpanded = true;
+      }
+    }
+    $(window).resize(() => {
+      this.setupMenuDropdown();
     });
   }
 
