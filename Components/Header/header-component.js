@@ -88,7 +88,9 @@ class HeaderComponent extends HTMLElement {
       }
     }
     $(window).resize(() => {
-      this.setupMenuDropdown();
+      setTimeout(() => {
+        this.setupMenuDropdown();
+      }, 500);
     });
   }
 
