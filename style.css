@@ -372,6 +372,11 @@ autozoom-component img {
   width: 18px;
   height: 9px;
   background-color: #5b5b5b;
+  transition: background-color ease 0.5s;
+}
+.close-tab-button:hover {
+  background-color: #2f2f2f;
+  transition: background-color ease 0.5s;
 }
 .new-tab-button {
   transform: skew(30deg);
