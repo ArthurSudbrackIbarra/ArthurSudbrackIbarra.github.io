@@ -410,8 +410,6 @@ class DemoComponent extends HTMLElement {
 
   // Types the sentences in the interaction panel.
   type(dialogueBox, sentence) {
-    sentence.t1 = 100;
-    sentence.t2 = 200;
     // Types.
     setTimeout(() => {
       this.playTypingAudio();
