@@ -43,34 +43,41 @@ class HeaderComponent extends HTMLElement {
       $('.navbar-burger').toggleClass('is-active');
       $('.navbar-menu').toggleClass('is-active');
     });
-    // Changing the class of selected option in menu.
-    $('#curriculum, #jpc, #case-changer, #magcounters, #autozoom').click((e) => {
-      $('.selected').removeClass('selected');
-      $(e.target).addClass('selected');
-    });
     // Rendering components on click.
     $('#curriculum').click(() => {
+      this.changeSelectedMenuItem('curriculum');
       this.showComponent(ComponentNames.CURRICULUM);
     });
     $('#jpc').click(() => {
+      this.changeSelectedMenuItem('jpc');
       this.showComponent(ComponentNames.JPC);
     });
     $('#case-changer').click(() => {
+      this.changeSelectedMenuItem('case-changer');
       this.showComponent(ComponentNames.CASE_CHANGER);
     });
     $('#magcounters').click(() => {
+      this.changeSelectedMenuItem('magcounters');
       this.showComponent(ComponentNames.MAGCOUNTERS);
     });
     $('#autozoom').click(() => {
+      this.changeSelectedMenuItem('autozoom');
       this.showComponent(ComponentNames.AUTOZOOM);
     });
+  }
+
+  // Highlights the menu item that was selected and removes the highlight from the previous selected item.
+  changeSelectedMenuItem(itemName) {
+    $('.selected').removeClass('selected');
+    $(`#${itemName}`).addClass('selected');
   }
 
   // Menu dropdown open/close setup.
   setupMenuDropdown() {
     const navbarLink = $('.navbar-link');
     const dropdown = $('.navbar-dropdown');
-    if (screen.width <= 1023) {
+    navbarLink.off();
+    if ($(document).width() <= 1023) {
       navbarLink.click(() => {
         dropdown.toggleClass('closed');
         navbarLink.toggleClass('closed');
@@ -82,7 +89,8 @@ class HeaderComponent extends HTMLElement {
       }
     }
     $(window).resize(() => {
-      setTimeout(() => {
+      clearTimeout(window.resizedFinishedDropdown);
+      window.resizedFinishedDropdown = setTimeout(() => {
         this.setupMenuDropdown();
       }, 500);
     });
@@ -121,7 +129,7 @@ class HeaderComponent extends HTMLElement {
   showComponent(componentName) {
     if (this.createdComponents.get(componentName)) {
       // Checking if device is small.
-      if (screen.width <= 1023) {
+      if ($(document).width() <= 1023) {
         this.mobileShow(componentName);
       } else {
         this.desktopShow(componentName);

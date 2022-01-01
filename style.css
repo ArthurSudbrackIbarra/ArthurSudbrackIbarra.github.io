@@ -84,7 +84,7 @@
     padding: 0.75rem !important;
   }
   .box:not(#demo-box) {
-    border: 2px solid #4a4a4a;
+    border: 2px solid #e5e5e5;
   }
   header-component i {
     color: black !important;
@@ -162,8 +162,9 @@
   }
 }
 
-.my-projects-icon {
-  margin-left: 0.3rem;
+.my-projects-icon,
+.icon-text .icon:not(:last-child) {
+  margin-right: 0.5em !important;
 }
 
 myself-component .box {
@@ -176,7 +177,7 @@ contact-component figure {
 }
 myself-component img,
 contact-component object {
-  border: 3px solid var(--primary-color-darker);
+  border: 2px solid var(--primary-color-darker);
   padding: 0.5rem;
   background-color: white;
   width: 128px !important;
@@ -372,11 +373,9 @@ autozoom-component img {
   width: 18px;
   height: 9px;
   background-color: #5b5b5b;
-  transition: background-color ease 0.5s;
 }
 .close-tab-button:hover {
   background-color: #2f2f2f;
-  transition: background-color ease 0.5s;
 }
 .new-tab-button {
   transform: skew(30deg);
@@ -407,29 +406,23 @@ autozoom-component img {
 #red-control {
   background-color: #ff6059;
   border: 1px solid #e15752;
-  transition: background-color ease 0.5s;
 }
 #red-control:hover {
   background-color: #d54e4b;
-  transition: background-color ease 0.5s;
 }
 #yellow-control {
   background-color: #ffbd2e;
   border: 1px solid #e0a942;
-  transition: background-color ease 0.5s;
 }
 #yellow-control:hover {
   background-color: #da9706;
-  transition: background-color ease 0.5s;
 }
 #green-control {
   background-color: #28c941;
   border: 1px solid #37bc49;
-  transition: background-color ease 0.5s;
 }
 #green-control:hover {
   background-color: #19a62e;
-  transition: background-color ease 0.5s;
 }
 #interaction-panel {
   background-color: black;
@@ -438,7 +431,7 @@ autozoom-component img {
 }
 #interaction-panel h5 {
   color: white;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.5rem;
   font-family: 'Code', monospace;
   font-size: 1.15rem;
   letter-spacing: -3px;

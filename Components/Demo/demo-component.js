@@ -174,7 +174,7 @@ class DemoComponent extends HTMLElement {
     let where_2;
     let typeOrTouch;
     let command;
-    if (screen.width <= 1023) {
+    if ($(document).width() <= 1023) {
       where_1 = 'HAMBURGER MENU';
       where_2 = 'IS THE HAMBURGER MENU';
       typeOrTouch = 'TOUCHING THE COMMAND MULTIPLE TIMES';
@@ -221,6 +221,8 @@ class DemoComponent extends HTMLElement {
     ];
     // The menu components/parts that will be hidden.
     this.menuHide = null;
+    // The original screen width.
+    this.originalScreenWidth = $(document).width();
     // Boolean indicating if the interaction has ended or not.
     this.interactionEnded = false;
     // Terminal Command component.
@@ -237,7 +239,6 @@ class DemoComponent extends HTMLElement {
       // Using JQuery to load, inside of this custom component, the contents of an HTML file.
       $(this).load('Components/Demo/demo-component.html', () => {
         this.hideMenu();
-        this.hideMenuResizeSetup();
         this.dialogueButtonSetup_1();
       });
     } else {
@@ -254,34 +255,31 @@ class DemoComponent extends HTMLElement {
     const mobileHide = $('.navbar-burger');
     const desktopHide = $('.navbar-link, #curriculum, #my-github, #my-youtube');
     if (!this.interactionEnded) {
-      mobileHide.fadeOut(0);
-      desktopHide.fadeOut(0);
-      setTimeout(() => {
-        if (screen.width <= 1023) {
-          this.menuHide = mobileHide;
-          desktopHide.fadeIn(0);
-        } else {
-          this.menuHide = desktopHide;
-          desktopHide.fadeOut(0);
-        }
-      }, 1000);
+      if ($(document).width() <= 1023) {
+        desktopHide.fadeIn(0);
+        this.menuHide = mobileHide;
+      } else {
+        this.menuHide = desktopHide;
+      }
+      this.menuHide.fadeOut(0);
     } else {
-      setTimeout(() => {
-        if (screen.width <= 1023) {
-          mobileHide.fadeIn(0);
-          desktopHide.fadeIn(0);
-        } else {
-          mobileHide.fadeOut(0);
-          desktopHide.fadeIn(0);
-        }
-      }, 1000);
+      if ($(document).width() <= 1023) {
+        mobileHide.fadeIn(0);
+        desktopHide.fadeIn(0);
+      } else {
+        mobileHide.fadeOut(0);
+        desktopHide.fadeIn(0);
+      }
     }
-  }
-
-  // Calls 'hideMenu' method on screen resize.
-  hideMenuResizeSetup() {
+    // Calls the method again on screen resize.
     $(window).resize(() => {
-      this.hideMenu();
+      clearTimeout(window.resizedFinishedHideMenu);
+      window.resizedFinishedHideMenu = setTimeout(() => {
+        if ($(document).width() !== this.originalScreenWidth) {
+          this.originalScreenWidth = $(document).width();
+          this.hideMenu();
+        }
+      }, 500);
     });
   }
 
@@ -399,21 +397,21 @@ class DemoComponent extends HTMLElement {
   // Creates the elements that will be put in the dialogue box.
   // Properties such as new lines or colors are handled here.
   createDialogue(dialogueBox, sentence) {
-    let dialogue = '<h5';
+    const dialogue = document.createElement('h5');
+    dialogue.innerText = sentence.text;
     if (sentence.color) {
-      dialogue += ` style="color:${sentence.color};">`;
-    } else {
-      dialogue += '>';
+      dialogue.style.color = sentence.color;
     }
     if (sentence.newLine) {
-      dialogue += '<br/>';
+      dialogue.style.marginTop = '1.3rem';
     }
-    dialogue += `${sentence.text}</h5>`;
     dialogueBox.append(dialogue);
   }
 
   // Types the sentences in the interaction panel.
   type(dialogueBox, sentence) {
+    sentence.t1 = 100;
+    sentence.t2 = 200;
     // Types.
     setTimeout(() => {
       this.playTypingAudio();
