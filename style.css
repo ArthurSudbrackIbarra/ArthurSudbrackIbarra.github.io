@@ -83,8 +83,20 @@
   .column {
     padding: 0.75rem !important;
   }
+  #main-content {
+    padding-bottom: 0 !important;
+    margin-bottom: 1.25rem;
+  }
+  #lateral-content {
+    padding-top: 0 !important;
+  }
+  myself-component .box {
+    margin-bottom: 1.25rem !important;
+  }
   .box:not(#demo-box) {
-    border: 2px solid #e5e5e5;
+    box-shadow: 1px 1px 0 #9d9d9d, 2px 2px 0 #9d9d9d, 3px 3px 0 #9d9d9d, 4px 4px 0 #9d9d9d, 5px 5px 0 #9d9d9d,
+      6px 6px 0 #9d9d9d !important;
+    margin-right: 6px;
   }
   header-component i {
     color: black !important;
@@ -160,6 +172,9 @@
   .navbar-dropdown .navbar-item:hover {
     background-color: var(--primary-color) !important;
   }
+  .curriculum-icon {
+    display: none !important;
+  }
 }
 
 .my-projects-icon,
@@ -175,7 +190,7 @@ myself-component figure,
 contact-component figure {
   margin: auto;
 }
-myself-component img,
+#my-photo,
 contact-component object {
   border: 2px solid var(--primary-color-darker);
   padding: 0.5rem;
