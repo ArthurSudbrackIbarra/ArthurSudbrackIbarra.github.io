@@ -94,8 +94,8 @@
     margin-bottom: 1.25rem !important;
   }
   .box:not(#demo-box) {
-    box-shadow: 1px 1px 0 #9d9d9d, 2px 2px 0 #9d9d9d, 3px 3px 0 #9d9d9d, 4px 4px 0 #9d9d9d, 5px 5px 0 #9d9d9d,
-      6px 6px 0 #9d9d9d !important;
+    box-shadow: 1px 1px 0 #bbb, 2px 2px 0 #bbb, 3px 3px 0 #bbb, 4px 4px 0 #bbb, 5px 5px 0 #bbb,
+      6px 6px 0 #bbb !important;
     margin-right: 6px;
   }
   header-component i {
