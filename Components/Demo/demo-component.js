@@ -186,37 +186,34 @@ class DemoComponent extends HTMLElement {
       command = 'create-menu-items my-projects curriculum --include-social-media';
     }
     this.sentencesPartOne = [
-      { text: "OH, HEY! I'M ARTHUR SUDBRACK IBARRA!", t1: 0, t2: 3000 },
-      { text: 'AND THIS IS MY PERSONAL WEBSITE!', t1: 2400, t2: 3900 },
+      { text: "OH, HEY! I'M ARTHUR SUDBRACK IBARRA!", t1: 0, t2: 2400 },
+      { text: 'AND THIS IS MY PERSONAL WEBSITE!', t1: 1000, t2: 3400 },
       { text: "OK, SO I'LL BRIEFLY EXPLAIN WHAT YOU CAN DO HERE.", t1: 1900, t2: 3000 },
-      { text: 'HERE WE GO:', t1: 1000, t2: 2000, newLine: true },
       { text: 'WAIT A MINUTE!', t1: 2500, t2: 3800, color: 'red', newLine: true },
-      { text: `WHERE ${where_2}??!!`, t1: 1000, t2: 3000, color: 'red' },
+      { text: `WHERE ${where_2}??!!`, t1: 1000, t2: 2000, color: 'red' },
       {
         text: "THIS MUST BE A BUG, SILLY ARTHUR CAN'T EVEN DO HIS CODING RIGHT...",
-        t1: 3000,
-        t2: 5200,
+        t1: 1500,
+        t2: 4200,
         newLine: true,
       },
       { text: 'WELL, I HOPE (YOU) CAN FIX THAT...', t1: 2000, t2: 3000 },
     ];
     this.sentencesPartTwo = [
-      { text: 'OK, SO', t1: 0, t2: 1300 },
-      { text: 'MAYBE YOU COULD USE A COMMAND, LIKE PEOPLE DO IN TERMINALS, YOU KNOW?', t1: 2300, t2: 4000 },
+      { text: 'OK SO, MAYBE YOU COULD USE A COMMAND, LIKE PEOPLE DO IN TERMINALS, YOU KNOW?', t1: 300, t2: 2000 },
       {
         text: `HERE, I FOUND THIS IN STACKOVERFLOW, THERE'S NO WAY IT WON'T WORK. MAYBE TRY ${typeOrTouch}?`,
-        t1: 3000,
-        t2: 5000,
+        t1: 2000,
+        t2: 4000,
       },
     ];
     this.sentencesPartThree = [
-      { text: 'NICE! THAT WAS IT!', t1: 0, t2: 1400 },
-      { text: "THAT WAS AWESOME! YOU'RE A TALENTED DEV AND A BEAST AT DEBUGGING!", t1: 2400, t2: 4100 },
+      { text: "NICE! THAT WAS IT! YOU'RE SUCH A TALENTED DEV AND A BEAST AT DEBUGGING!", t1: 0, t2: 1400 },
       { text: 'AND WITH THAT WE END THIS SHORT INTERACTION...', t1: 2000, t2: 3500, newLine: true },
       {
         text: `THANKS FOR PLAYING! IF YOU LIKED THIS EXPERIENCE MAKE SURE TO CHECK OUT SOME OF MY PROJECTS OR MY CURRICULUM WITH YOUR NEWLY FIXED ${where_1}!`,
-        t1: 4000,
-        t2: 7000,
+        t1: 3000,
+        t2: 6000,
       },
     ];
     // The menu components/parts that will be hidden.
@@ -238,6 +235,8 @@ class DemoComponent extends HTMLElement {
     if (!demo) {
       // Using JQuery to load, inside of this custom component, the contents of an HTML file.
       $(this).load('Components/Demo/demo-component.html', () => {
+        this.setupClosePopupButton();
+        this.setupSkipDemoButton();
         this.hideMenu();
         this.dialogueButtonSetup_1();
       });
@@ -247,6 +246,22 @@ class DemoComponent extends HTMLElement {
         this.dialogueButtonSetupNoDemo();
       });
     }
+  }
+
+  // Setting up the button to close the demo popup.
+  setupClosePopupButton() {
+    $('#close-demo-popup').click(() => {
+      $('#demo-popup').css('display', 'none');
+      $('#program-bar').toggleClass('program-bar-jointed');
+    });
+  }
+
+  // Setting up the button to skip the demo interaction.
+  setupSkipDemoButton() {
+    $('#skip').click(() => {
+      localStorage.setItem('demo', 'done');
+      location.reload();
+    });
   }
 
   // Hides/Shows hamburger menu or navigation bar items according to screen width.
