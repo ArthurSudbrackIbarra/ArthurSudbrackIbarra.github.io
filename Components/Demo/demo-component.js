@@ -268,7 +268,7 @@ class DemoComponent extends HTMLElement {
   // Also handles situations where the screen width changes suddenly (dev tools, for example).
   hideMenu() {
     const mobileHide = $('.navbar-burger');
-    const desktopHide = $('.navbar-link, #curriculum, #my-github, #my-youtube');
+    const desktopHide = $('.navbar-link, #curriculum, #my-github, #my-linkedin');
     if (!this.interactionEnded) {
       if ($(document).width() <= 1023) {
         desktopHide.fadeIn(0);

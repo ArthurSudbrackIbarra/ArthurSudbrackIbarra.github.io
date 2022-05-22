@@ -107,7 +107,7 @@
     color: black !important;
   }
   .navbar-link:not(.is-arrowless)::after {
-    border-color: black !important;
+    border-color: white !important;
   }
   .navbar-link.is-active,
   .navbar-link:focus,
@@ -129,6 +129,29 @@
   .navbar-dropdown.closed,
   .navbar-dropdown.closed > * {
     display: none;
+  }
+  .has-dropdown {
+    background-color: black;
+    border-radius: 30px;
+    margin: 0 0.5rem;
+  }
+  .navbar-link {
+    font-size: 1.2em;
+  }
+  .navbar-link,
+  .navbar-link:hover,
+  .navbar-dropdown .navbar-item {
+    text-align: center;
+    padding: 0.5rem 0.75rem !important;
+    color: white !important;
+    background-color: black !important;
+    border-radius: 30px;
+  }
+  .navbar-dropdown i {
+    color: white !important;
+  }
+  #curriculum {
+    margin-top: 0.5rem;
   }
 
   .tech-card-section {
