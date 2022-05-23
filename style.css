@@ -178,6 +178,26 @@
     display: block;
   }
 
+  .navbar-link {
+    padding-right: 3.2rem !important;
+    padding-left: 2rem !important;
+  }
+  #curriculum,
+  #my-github,
+  #my-linkedin {
+    padding-right: 2rem !important;
+    padding-left: 2rem !important;
+  }
+  .navbar-link:not(.is-arrowless)::after {
+    right: 1.7em !important;
+    top: 48% !important;
+  }
+  .navbar-dropdown {
+    border: 1px solid var(--primary-color) !important;
+    border-top: none !important;
+    width: 100%;
+  }
+
   #navbar .navbar-item:hover,
   .navbar-link:hover,
   .navbar-item.selected,
@@ -325,8 +345,8 @@ curriculum-component i {
   background-color: white;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
 }
 .tech-card-box > img {
   display: block;
